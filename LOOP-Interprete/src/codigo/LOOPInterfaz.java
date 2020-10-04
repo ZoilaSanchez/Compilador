@@ -3,8 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gt.edu.url.compiladores.loop.interprete;
-
+package codigo;
+import codigo.Tokens.*;
+import static codigo.Tokens.Identificador;
+import static codigo.Tokens.error;
+import static codigo.Tokens.incorrecto;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -88,6 +100,11 @@ public class LOOPInterfaz extends javax.swing.JFrame {
         btnRun.setText("RUN");
         btnRun.setToolTipText("Correr programa");
         btnRun.setBorder(null);
+        btnRun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlControlLayout = new javax.swing.GroupLayout(pnlControl);
         pnlControl.setLayout(pnlControlLayout);
@@ -193,6 +210,55 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public String saltos(String cadena) {
+  return cadena.replaceAll("\n", " "); 
+}
+
+    public void leer() throws IOException{
+     File archivo=new File("archivo.txt");
+       PrintWriter escribir;
+        try {
+            escribir=new PrintWriter(archivo);
+            escribir.print(saltos(txaCodigo.getText()));
+            escribir.close();
+        } catch (Exception e) {
+        }
+       
+           System.out.println("inicamos ");
+           Reader lector = new BufferedReader(new FileReader("archivo.txt"));
+            Lexico lexico= new Lexico(lector);
+            String resultado="";
+            while(true){
+                Tokens toke=lexico.yylex();
+                if(toke==null){
+                    resultado+="-----";
+                    txaSalida.setText(resultado);
+                    return;
+                }
+                
+                if(toke==error){
+                    resultado+="el simbolo no existe\n";
+                }else if(toke==Identificador){
+                     resultado+=lexico.lexeme+": es un "+ toke+"\n";
+                }else if(toke==incorrecto){
+                     resultado+=lexico.lexeme+": es un "+ toke+"\n";
+                }
+                     resultado+="Token: "+toke+"\n";
+                
+               
+            }
+          
+         
+}
+    
+    
+    private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        try {
+            leer();
+        } catch (IOException ex) {
+            Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRunActionPerformed
 
     /**
      * @param args the command line arguments
