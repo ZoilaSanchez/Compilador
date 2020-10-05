@@ -12,5 +12,8 @@ package codigo;
 public enum Tokens {
     Identificador,
     error,
-    incorrecto
+    tipo,
+Asignacion,
+opcional,
+No
 }

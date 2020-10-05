@@ -5,9 +5,11 @@
  */
 package codigo;
 import codigo.Tokens.*;
+import static codigo.Tokens.Asignacion;
 import static codigo.Tokens.Identificador;
 import static codigo.Tokens.error;
-import static codigo.Tokens.incorrecto;
+
+import static codigo.Tokens.tipo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -213,7 +215,8 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 public String saltos(String cadena) {
   return cadena.replaceAll("\n", " "); 
 }
-
+int contador=0;
+ String resultado="";
     public void leer() throws IOException{
      File archivo=new File("archivo.txt");
        PrintWriter escribir;
@@ -227,28 +230,30 @@ public String saltos(String cadena) {
            System.out.println("inicamos ");
            Reader lector = new BufferedReader(new FileReader("archivo.txt"));
             Lexico lexico= new Lexico(lector);
-            String resultado="";
+           resultado="";
+            contador=0;
             while(true){
                 Tokens toke=lexico.yylex();
                 if(toke==null){
-                    resultado+="-----";
+                    resultado+="----------------------------------";
                     txaSalida.setText(resultado);
                     return;
                 }
                 
                 if(toke==error){
-                    resultado+="el simbolo no existe\n";
-                }else if(toke==Identificador){
-                     resultado+=lexico.lexeme+": es un "+ toke+"\n";
-                }else if(toke==incorrecto){
-                     resultado+=lexico.lexeme+": es un "+ toke+"\n";
-                }
-                     resultado+="Token: "+toke+"\n";
+                    resultado+=lexico.lexeme+" incorrecto \n";
+                }else if(toke==Identificador ){
+                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
+                     
+                }else if(toke==tipo)
+                {
+                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
+                }else if(toke==Asignacion){
+                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";           
+                }          
                 
-               
-            }
-          
-         
+                        
+            }//fin del while
 }
     
     
