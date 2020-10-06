@@ -13,6 +13,31 @@ igual="="
 num=[0-9]
 sim="'"
 espa=[ ,\t,\r,\n]+ 
+
+
+TABULADOR = [\t]
+TABULADORES = {TABULADOR}*
+FINLINEA = [\r|\n|\r\n]
+ESPACIOENBLANCO = [\s]
+
+{TABULADOR} {
+    lexeme=yytext();
+    return tabulador;
+}
+{TABULADORES} {
+    lexeme=yytext();
+    return tabuladores;
+}
+{FINLINEA} {
+    lexeme=yytext();
+    return finLinea;
+}
+{ESPACIOENBLANCO} {
+    lexeme=yytext();
+    return espacioBlanco;
+}
+
+
 tipos=("entero"|"boolean"|"String"|"cadena")
 variables=({letrasmi}+|{signo}+{num}*)({letrasma}|{letrasmi}+|{num}*)*
 %{

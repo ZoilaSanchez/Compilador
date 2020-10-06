@@ -4,12 +4,7 @@
  * and open the template in the editor.
  */
 package codigo;
-import codigo.Tokens.*;
-import static codigo.Tokens.Asignacion;
-import static codigo.Tokens.Identificador;
-import static codigo.Tokens.error;
-
-import static codigo.Tokens.tipo;
+import static codigo.Tokens.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +14,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 /**
@@ -45,6 +41,7 @@ public class LOOPInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FileChooser = new javax.swing.JFileChooser();
         pnlPrincipal = new javax.swing.JPanel();
         pnlSalida = new javax.swing.JPanel();
         spSalida = new javax.swing.JScrollPane();
@@ -175,8 +172,14 @@ public class LOOPInterfaz extends javax.swing.JFrame {
         mArchivo.setText("Archivo");
         mArchivo.setFont(new java.awt.Font("FreeMono", 0, 16)); // NOI18N
 
+        miAbrirArchivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         miAbrirArchivo.setFont(new java.awt.Font("FreeMono", 0, 15)); // NOI18N
         miAbrirArchivo.setText("Abrir Archivo");
+        miAbrirArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAbrirArchivoActionPerformed(evt);
+            }
+        });
         mArchivo.add(miAbrirArchivo);
 
         miNuevoArchivo.setFont(new java.awt.Font("FreeMono", 0, 15)); // NOI18N
@@ -250,7 +253,15 @@ int contador=0;
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
                 }else if(toke==Asignacion){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";           
-                }          
+                } else if (toke == tabulador){ //Agregue esto
+                resultado += "Tabulador :" + lexico.lexeme + "\n";
+            } else if (toke == tabuladores){
+                resultado += "Tabuladores ;" + lexico.lexeme + "\n";
+            } else if (toke == espacioBlanco){
+                resultado += "Espacio en Blanco" + lexico.lexeme + "\n";
+            } else if (toke == finLinea){
+                resultado += "Fin de línea" + lexico.lexeme + "\n";
+            }       
                 
                         
             }//fin del while
@@ -264,6 +275,21 @@ int contador=0;
             Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRunActionPerformed
+
+    private void miAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirArchivoActionPerformed
+        // Abrimos el archivo que querramos y lo seteamos al editor de LOOP
+        String resultado = "";
+        
+        FileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+        byte decision = (byte) FileChooser.showOpenDialog(null);      
+        if (decision == 0) {
+            String ruta = FileChooser.getSelectedFile().toString();
+            System.out.println(ruta);
+
+            leerArchivo(ruta);
+        }
+    }//GEN-LAST:event_miAbrirArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +327,7 @@ int contador=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFileChooser FileChooser;
     private javax.swing.JButton btnRun;
     private javax.swing.JMenu mAbout;
     private javax.swing.JMenu mArchivo;
@@ -318,4 +345,30 @@ int contador=0;
     private javax.swing.JTextArea txaCodigo;
     private javax.swing.JTextArea txaSalida;
     // End of variables declaration//GEN-END:variables
+
+private void leerArchivo(String archivo)
+    {
+        FileReader file = null;
+        try {
+            String cadena;
+            file = new FileReader(archivo);
+            BufferedReader breader = new BufferedReader(file);
+            try {
+                while((cadena = breader.readLine())!= null)
+                {
+                    txaCodigo.setText(txaCodigo.getText() + cadena + "\n");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                file.close();
+            } catch (IOException ex) {
+                Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }

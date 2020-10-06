@@ -13,7 +13,11 @@ public enum Tokens {
     Identificador,
     error,
     tipo,
-Asignacion,
-opcional,
-No
+    Asignacion,
+    opcional,
+    No,
+    tabulador,
+    tabuladores,
+    espacioBlanco,
+    finLinea
 }
