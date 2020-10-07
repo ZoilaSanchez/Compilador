@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package codigo;
-import static codigo.Tokens.*;
+package gt.edu.url.compiladores.loop.interprete.loop.interprete;
+
+import static gt.edu.url.compiladores.loop.interprete.loop.interprete.Tokens.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -262,8 +263,7 @@ int contador=0;
             } else if (toke == finLinea){
                 resultado += "Fin de línea" + lexico.lexeme + "\n";
             }       
-                
-                        
+     
             }//fin del while
 }
     
@@ -316,6 +316,7 @@ int contador=0;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
