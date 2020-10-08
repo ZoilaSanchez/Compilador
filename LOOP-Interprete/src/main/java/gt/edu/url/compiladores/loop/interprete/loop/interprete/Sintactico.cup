@@ -1,0 +1,364 @@
+package gt.edu.url.compiladores.loop.interprete.loop.interprete;
+import java_cup.runtime.Symbol;
+
+
+
+//Declaración de símbolos terminales;
+terminal Tokens PALCLAVCLASE;
+terminal Tokens IDENTIFICADOR;
+terminal Tokens PALCLAVPRINCIPAL;
+terminal Tokens PALCLAVFUNCION;
+terminal Tokens PALCLAVINCLUIR;
+terminal Tokens PALCLAVPROPIEDADES;
+terminal Tokens PALCLAVMETODOS;
+terminal Tokens PALCLAVARCHIVOS;
+terminal Tokens PALCLAVVARIABLES;
+terminal Tokens PALCLAVCODIGO;
+terminal Tokens PALCLAVSI;
+terminal Tokens PALCLAVENTONCES;
+terminal Tokens PALCLAVRETORNAR;
+terminal Tokens PALCLAVSINO;
+terminal Tokens PALCLAVESCRIBIR;
+terminal Tokens PALCLAVABRIR;
+terminal Tokens PALCLAVDESDE;
+terminal Tokens PALCLAVMIENTRAS;
+terminal Tokens PALCLAVINC;
+terminal Tokens PALCLAVITERAR;
+terminal Tokens PALCLAVPARACADA;
+terminal Tokens PALCLAVEN;
+
+terminal Tokens SUMA;
+terminal Tokens OPMATEMATICO;
+terminal Tokens PROPIEDADID;
+terminal Tokens IGUAL;
+terminal Tokens ARCHIVOEXCEL;
+terminal Tokens TIPODEDATO;
+terminal Tokens ARCHIVOLED;
+terminal Tokens TAB;
+terminal Tokens FINLINEA;
+terminal Tokens PARENABRE;
+terminal Tokens PARENCIERRA;
+terminal Tokens COMILLAS;
+terminal Tokens TABS;
+terminal Tokens DOSPUNTOS;
+terminal Tokens ESPBLANCO;
+terminal Tokens PCOMA;
+terminal Tokens COMA;
+terminal Tokens PUNTO;
+terminal Tokens NUMERO;
+terminal Tokens MENSAJE;
+terminal Tokens CORCHABRE;
+terminal Tokens CORCHCIERRA;
+terminal Tokens MENORQUE;
+
+//Declaración de símbolos no terminales;
+non terminal expresiones;
+non terminal expresion;
+non terminal DECCLASE;
+non terminal DECFUNCIONPRIN;
+non terminal IMPORTARARCHIVOS;
+non terminal DECLARPROPIEDADES;
+non terminal DECLARMETODOS;
+non terminal DECLARARCHIVOS;
+non terminal ABRIREXCEL;
+non terminal DECLARPALCLAVVARIABLES;
+non terminal DECLARARVARIABLES;
+non terminal DECFUNCION;
+non terminal DECCODIGO;
+non terminal ACCEDERPROPIEDAD;
+non terminal PARAMETRO;
+non terminal PARAMETROS;
+non terminal DECCONDICION;
+non terminal CONDICION;
+non terminal RETORNAR;
+non terminal DECSINO;
+non terminal ASIGNACION;
+non terminal ESCRIBIRTEXTO;
+non terminal ABRIENDOEXCEL;
+non terminal VARIABLEARCHIVO;
+non terminal OPERACIONARCHIVOS;
+non terminal CICLODESDE;
+non terminal CONCATENAR;
+non terminal CICLOPARACADA;
+//Declarando símbolo inicial
+start with expresiones;
+
+//Producciones
+expresiones ::= expresion expresiones | expresion ;
+expresion ::= DECCLASE:dc {:
+        System.out.println("Declaración de clase");
+    :} | DECFUNCIONPRIN {:
+        System.out.println("Declaración de función principal");
+    :} | IMPORTARARCHIVOS {:
+        System.out.println("Incluyendo archivos");
+    :} | DECLARPROPIEDADES {:
+        System.out.println("Declarando propiedades");
+    :} | DECLARMETODOS {:
+        System.out.println("Declarando métodos");
+    :} | DECLARARCHIVOS {:
+        System.out.println("Declarando archivos");
+    :} | ABRIREXCEL {:
+        System.out.println("Abriendo excel");
+    :} | DECLARPALCLAVVARIABLES {:
+        System.out.println("Abriendo inicio de declaración de variables");
+    :} | DECLARARVARIABLES {:
+        System.out.println("Declarando variables");
+    :} | DECFUNCION {:
+        System.out.println("Declarando funciones");
+    :} | DECCODIGO {:
+        System.out.println("Declarando inicio de código");
+    :} | DECCONDICION {:
+        System.out.println("Declarando condición");
+    :} | RETORNAR {:
+        System.out.println("Retorno");
+    :} | DECSINO {:
+        System.out.println("Sino");
+    :} | ASIGNACION {:
+        System.out.println("Asignación");
+    :} | ESCRIBIRTEXTO {:
+        System.out.println("Escribiendo mensaje");
+    :} | ABRIENDOEXCEL {:
+        System.out.println("Abrir excel");
+    :} | OPERACIONARCHIVOS {:
+        System.out.println("Trabajando con archivos");
+    :} | CICLODESDE {:
+        System.out.println("Ciclo desde");
+    :} | CONCATENAR {:
+        System.out.println("Concatenación");
+    :} | CICLOPARACADA {:
+        System.out.println("Ciclo paracada");
+    :} | ACCEDERPROPIEDAD {:
+        System.out.println("Accediendo a propiedad");
+    :};
+
+//Parámetro para una función
+PARAMETRO ::= TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id {:
+        //System.out.println(tdd.getLexema() + " " + id.getLexema());
+    :} | ESPBLANCO TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id {:
+        //System.out.println(tdd.getLexema() + " " + id.getLexema());
+    :};
+//Parámetros para una función
+PARAMETROS ::= PARAMETRO COMA PARAMETROS | PARAMETRO {:
+        //System.out.println("Varios parámetros" );
+    :};
+//Producción para reconocer una declaración de clase
+DECCLASE ::= PALCLAVCLASE:pcc ESPBLANCO IDENTIFICADOR:id DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcc.getLexema() + " " +id.getLexema() +dp.getLexema());
+    :} | PALCLAVCLASE:pcc ESPBLANCO IDENTIFICADOR:id DOSPUNTOS:dp {:
+        //System.out.println(pcc.getLexema() + " " +id.getLexema() +dp.getLexema());
+    :};
+
+//Producción para reconocer una declaración de método main
+DECFUNCIONPRIN ::= PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO PALCLAVPRINCIPAL:pcp PARENABRE:pa 
+               PARENCIERRA:pc DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + pcp.getLexema() +
+                //pa.getLexema() + pc.getLexema() + dp.getLexema());
+    :} | PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO PALCLAVPRINCIPAL:pcp PARENABRE:pa 
+               PARENCIERRA:pc DOSPUNTOS:dp  {: 
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + pcp.getLexema() +
+                //pa.getLexema() + pc.getLexema() + dp.getLexema());
+    :};
+
+//Producción para reconocer un importación de archivo
+IMPORTARARCHIVOS ::= PALCLAVINCLUIR:pci ESPBLANCO COMILLAS:c ARCHIVOLED:aled COMILLAS FINLINEA {:
+        //System.out.println(pci.getLexema() + " " + c.getLexema() + aled.getLexema() + c.getLexema());
+    :} | PALCLAVINCLUIR:pci ESPBLANCO COMILLAS:c ARCHIVOLED:aled COMILLAS {:
+        //System.out.println(pci.getLexema() + " " + c.getLexema() + aled.getLexema() + c.getLexema());
+    :};
+
+//Producción para reconocer una declaración de propiedades
+DECLARPROPIEDADES ::= TAB PALCLAVPROPIEDADES:pcp DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcp.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVPROPIEDADES:pcp DOSPUNTOS:dp {:
+        //System.out.println(pcp.getLexema() + dp.getLexema());
+    :};
+
+//Producción para reconocer una declaración de métodos
+DECLARMETODOS ::= TAB PALCLAVMETODOS:pcm DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcm.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVMETODOS:pcm DOSPUNTOS:dp {:
+        //System.out.println(pcm.getLexema() + dp.getLexema());
+    :};
+
+//Producción para reconocer una declaración de archivos
+DECLARARCHIVOS ::= TABS PALCLAVARCHIVOS:pca DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pca.getLexema() + dp.getLexema());
+    :} | TABS PALCLAVARCHIVOS:pca DOSPUNTOS:dp {:
+        //System.out.println(pca.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVARCHIVOS:pca DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pca.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVARCHIVOS:pca DOSPUNTOS:dp {:
+        //System.out.println(pca.getLexema() + dp.getLexema());
+    :};
+
+//Producción para reconocer la apertura de un excel
+ABRIREXCEL ::= TABS IDENTIFICADOR:id ESPBLANCO ARCHIVOEXCEL:ae PCOMA FINLINEA {:
+        //System.out.println(id.getLexema() + " " + ae.getLexema());
+    :} | TABS IDENTIFICADOR:id ESPBLANCO ARCHIVOEXCEL:ae PCOMA {:
+        //System.out.println(id.getLexema() + " " + ae.getLexema());
+    :} | TABS IDENTIFICADOR:id ESPBLANCO ARCHIVOEXCEL:ae COMA:c ABRIREXCEL {:
+        //System.out.println(id.getLexema() + " " +c.getLexema() + " " + ae.getLexema());
+    :} | ESPBLANCO ARCHIVOEXCEL:ae PCOMA:pc FINLINEA {:
+        //System.out.println(ae.getLexema() + pc.getLexema());
+    :} | ESPBLANCO ARCHIVOEXCEL:ae PCOMA:pc {:
+        //System.out.println(ae.getLexema() + pc.getLexema());
+    :};
+
+//Producción para reconocer un inicio de declaración de variables
+DECLARPALCLAVVARIABLES ::= TABS PALCLAVVARIABLES:pcv DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcv.getLexema() + dp.getLexema());
+    :} | TABS PALCLAVVARIABLES:pcv DOSPUNTOS:dp {:
+        //System.out.println(pcv.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVVARIABLES:pcv DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcv.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVVARIABLES:pcv DOSPUNTOS:dp {:
+        //System.out.println(pcv.getLexema() + dp.getLexema());
+    :};
+
+//Producción para reconocer declaración de variables
+DECLARARVARIABLES ::= TABS TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PCOMA:pc FINLINEA {:
+        //System.out.println("Una sola variable " + tdd.getLexema() + " " + id.getLexema() + pc.getLexema());
+    :} | TABS TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PCOMA:pc {:
+        //System.out.println(tdd.getLexema() + " " + id.getLexema() + pc.getLexema());
+    :} | TABS TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id COMA:c DECLARARVARIABLES {:
+        //System.out.println(tdd.getLexema() + " " + id.getLexema() + c.getLexema());
+    :} | ESPBLANCO IDENTIFICADOR:id PCOMA:pc FINLINEA {:
+        //System.out.println(id.getLexema() + pc.getLexema());
+    :} | ESPBLANCO IDENTIFICADOR:id PCOMA:pc {:
+        //System.out.println(id.getLexema() + pc.getLexema());
+    :} | ESPBLANCO IDENTIFICADOR:id COMA:c {:
+        //System.out.println(id.getLexema() + c.getLexema());
+    :};
+
+//Producción para reconocer declaración de funciones
+DECFUNCION ::= TABS PALCLAVFUNCION:pcf ESPBLANCO IDENTIFICADOR:id PARENABRE:pa PARENCIERRA:pc DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcf.getLexema() + " " + id.getLexema() + pa.getLexema() + pc.getLexema() + dp.getLexema());
+    :} | TABS PALCLAVFUNCION:pcf ESPBLANCO IDENTIFICADOR:id PARENABRE:pa PARENCIERRA:pc DOSPUNTOS:dp {:
+        //System.out.println(pcf.getLexema() + " " + id.getLexema() + pa.getLexema() + pc.getLexema() + dp.getLexema());
+    :} | PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PARENABRE:pa 
+            PARAMETROS PARENCIERRA:pc DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + id.getLexema() + pa.getLexema() + 
+            //pc.getLexema() + dp.getLexema());
+    :} | PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PARENABRE:pa 
+            PARAMETROS PARENCIERRA:pc DOSPUNTOS:dp {:
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + id.getLexema() + pa.getLexema() + 
+            //pc.getLexema() + dp.getLexema());
+    :}  | PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PARENABRE:pa 
+            PARENCIERRA:pc DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + id.getLexema() + pa.getLexema() + 
+            //pc.getLexema() + dp.getLexema());
+    :}  | PALCLAVFUNCION:pcf ESPBLANCO TIPODEDATO:tdd ESPBLANCO IDENTIFICADOR:id PARENABRE:pa 
+            PARENCIERRA:pc DOSPUNTOS:dp {:
+        //System.out.println(pcf.getLexema() + " " + tdd.getLexema() + " " + id.getLexema() + pa.getLexema() + 
+            //pc.getLexema() + dp.getLexema());
+    :};
+
+//Producción para iniciar sección de código
+DECCODIGO ::= TABS PALCLAVCODIGO:pcc DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcc.getLexema() + dp.getLexema());
+    :} | TABS PALCLAVCODIGO:pcc DOSPUNTOS:dp {:
+        //System.out.println(pcc.getLexema() + dp.getLexema());
+    :} | TAB PALCLAVCODIGO:pcc DOSPUNTOS:dp FINLINEA{:
+        //System.out.println(pcc.getLexema() + dp.getLexema());
+    :}  | TAB PALCLAVCODIGO:pcc DOSPUNTOS:dp {:
+        //System.out.println(pcc.getLexema() + dp.getLexema());
+    :};
+
+//Producción para condiciones
+CONDICION ::= PARENABRE IDENTIFICADOR ESPBLANCO OPMATEMATICO ESPBLANCO NUMERO PARENCIERRA {:
+        //System.out.println("Condición");
+    :};
+
+//Producción para reconocer condición
+DECCONDICION ::= TABS PALCLAVSI:pcs CONDICION ESPBLANCO PALCLAVENTONCES:pce DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcs.getLexema() + " condición " + pce.getLexema() + dp.getLexema());
+    :};
+
+//Producción para validar un retornar
+RETORNAR ::= TABS PALCLAVRETORNAR:pcr ESPBLANCO NUMERO:n PCOMA:pc FINLINEA {:
+        //System.out.println(pcr.getLexema()+ " " + n.getLexema() + pc.getLexema());
+    :} | TABS PALCLAVRETORNAR:pcr ESPBLANCO NUMERO:n PCOMA:pc {:
+        //System.out.println(pcr.getLexema()+ " " + n.getLexema() + pc.getLexema());
+    :};
+
+//Producción para declaración de un 'sino'
+DECSINO ::= TABS PALCLAVSINO:pcs DOSPUNTOS:dp FINLINEA {:
+        //System.out.println(pcs.getLexema() + dp.getLexema());
+    :} | TABS PALCLAVSINO:pcs DOSPUNTOS:dp {:
+        //System.out.println(pcs.getLexema() + dp.getLexema());
+    :};
+
+//Producción para validar una asignación
+ASIGNACION ::= TABS IDENTIFICADOR:id ESPBLANCO IGUAL:i ESPBLANCO NUMERO:n PCOMA:pc {:
+        //System.out.println(id.getLexema() + " " + i.getLexema() + " " + n.getLexema() + pc.getLexema());
+    :} | TABS IDENTIFICADOR:id ESPBLANCO IGUAL:i ESPBLANCO NUMERO:n PCOMA:pc FINLINEA {:
+        //System.out.println(id.getLexema() + " " + i.getLexema() + " " + n.getLexema() + pc.getLexema());
+    :} | TABS IDENTIFICADOR:id ESPBLANCO IGUAL:i ESPBLANCO MENSAJE:c PCOMA:pc FINLINEA {:
+        //System.out.println(id.getLexema() + " " + i.getLexema() + c.getLexema() + pc.getLexema());
+    :} | TABS IDENTIFICADOR:id ESPBLANCO IGUAL:i ESPBLANCO MENSAJE:m PCOMA:pc {:
+        //System.out.println(id.getLexema() + " " + i.getLexema() + " " + m.getLexema() + pc.getLexema());
+    :};
+
+//Producción para reconocer la escritura en pantalla de un texto
+ESCRIBIRTEXTO ::= TABS PALCLAVESCRIBIR:pce ESPBLANCO MENSAJE:m PCOMA:pc FINLINEA {:
+        //System.out.println(pce.getLexema() + " " + m.getLexema() + pc.getLexema());
+    :} | TABS PALCLAVESCRIBIR:pce ESPBLANCO MENSAJE:m PCOMA:pc {:
+        //System.out.println(pce.getLexema() + " " + m.getLexema() + pc.getLexema());
+    :} | TAB PALCLAVESCRIBIR:pce ESPBLANCO MENSAJE:m PCOMA:pc FINLINEA {:
+        //System.out.println(pce.getLexema() + " " + m.getLexema() + pc.getLexema());
+    :} | TAB PALCLAVESCRIBIR:pce ESPBLANCO MENSAJE:m PCOMA:pc {:
+        //System.out.println(pce.getLexema() + " " + m.getLexema() + pc.getLexema());
+    :};
+
+//Producción para concatenera mensajes
+CONCATENAR ::= TABS PALCLAVESCRIBIR ESPBLANCO MENSAJE COMA ESPBLANCO IDENTIFICADOR PCOMA FINLINEA {:
+        //System.out.println("Concatenación x2");
+    :} | TABS PALCLAVESCRIBIR ESPBLANCO MENSAJE COMA ESPBLANCO IDENTIFICADOR PCOMA {:
+        //System.out.println("Concatenación x2");
+    :};
+
+//Producción para reconocer la apertura de un archivo
+ABRIENDOEXCEL ::= TABS PALCLAVABRIR:pca ESPBLANCO IDENTIFICADOR:id PCOMA:pc FINLINEA {:
+        //System.out.println(pca.getLexema() + " " + id.getLexema() + pc.getLexema());
+    :} | TABS PALCLAVABRIR:pca ESPBLANCO IDENTIFICADOR:id PCOMA:pc {:
+        //System.out.println(pca.getLexema() + " " + id.getLexema() + pc.getLexema());
+    :};
+
+VARIABLEARCHIVO ::= NUMERO:n COMA:pc VARIABLEARCHIVO {:
+        //System.out.println("más de un dato" + n.getLexema() + pc.getLexema());
+    :} | NUMERO:n COMA:pc {:
+        //System.out.println("número, coma" + n.getLexema() + pc.getLexema());
+    :} | NUMERO:n {:
+        //System.out.println("número: " + n.getLexema());
+    :};
+
+//Producción para trabajar operaciones con los archivos
+OPERACIONARCHIVOS ::= TABS IDENTIFICADOR ESPBLANCO IGUAL ESPBLANCO IDENTIFICADOR 
+            CORCHABRE VARIABLEARCHIVO CORCHCIERRA PCOMA FINLINEA {:
+       //System.out.println("Operando archivos");
+    :} | TABS IDENTIFICADOR ESPBLANCO IGUAL ESPBLANCO IDENTIFICADOR 
+            CORCHABRE VARIABLEARCHIVO CORCHCIERRA PCOMA {:
+       //System.out.println("Operando archivos");
+    :};
+
+//Producción para encontrar un ciclo desde
+CICLODESDE ::= TABS PALCLAVDESDE PARENABRE IDENTIFICADOR IGUAL NUMERO ESPBLANCO PALCLAVMIENTRAS ESPBLANCO
+            IDENTIFICADOR MENORQUE NUMERO ESPBLANCO PALCLAVINC ESPBLANCO NUMERO PARENCIERRA ESPBLANCO 
+            PALCLAVITERAR DOSPUNTOS FINLINEA {:
+        //System.out.println("Ciclo desde desde");
+    :} | TABS PALCLAVDESDE PARENABRE IDENTIFICADOR IGUAL NUMERO ESPBLANCO PALCLAVMIENTRAS ESPBLANCO
+            IDENTIFICADOR MENORQUE NUMERO ESPBLANCO PALCLAVINC ESPBLANCO NUMERO PARENCIERRA ESPBLANCO 
+            PALCLAVITERAR DOSPUNTOS {:
+        //System.out.println("Ciclo desde desde");
+    :};
+
+//Producción para encontrar un ciclo paracada
+CICLOPARACADA ::= TABS PALCLAVPARACADA PARENABRE IDENTIFICADOR ESPBLANCO PALCLAVEN ESPBLANCO
+            IDENTIFICADOR PARENCIERRA ESPBLANCO PALCLAVITERAR DOSPUNTOS FINLINEA {:
+    :} | TABS PALCLAVPARACADA PARENABRE IDENTIFICADOR ESPBLANCO PALCLAVEN ESPBLANCO
+            IDENTIFICADOR PARENCIERRA ESPBLANCO PALCLAVITERAR DOSPUNTOS {:
+    :};
+
+ACCEDERPROPIEDAD ::= TABS PROPIEDADID ESPBLANCO IGUAL ESPBLANCO PROPIEDADID ESPBLANCO
+            SUMA ESPBLANCO NUMERO PCOMA FINLINEA {:
+    :};

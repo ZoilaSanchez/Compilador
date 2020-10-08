@@ -44,8 +44,12 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <className>MyParserClassName</className>
-                    <symbolsName>MySymbolsClassName</symbolsName>
+                    <!-- Estás son la configuraciones que agregué; lee el Sintactico.cup y genera las clases -->
+                    <cupDefinition>src\main\java\gt\edu\url\compiladores\loop\interprete\loop\interprete\Sintactico.cup</cupDefinition>
+                    <outputDirectory>src\main\java</outputDirectory>
+                    <className>AnalisisSintactico</className>
+                    <symbolsName>Simbolos</symbolsName>
+                    <!-- Fin de lo agregado -->
                 </configuration>
             </plugin>
         </plugins>
