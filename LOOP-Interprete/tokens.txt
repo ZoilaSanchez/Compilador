@@ -1,0 +1,7 @@
+Identificador 3
+Tipo 1
+Simbolo igual 2
+Tabuladores 0
+Tabulador 1
+Espacios 5
+Fin de linea 0

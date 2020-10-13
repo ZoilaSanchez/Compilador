@@ -1,1 +1,1 @@
-primero segundo  tercero   	cuarto   		quinto 
+entero cuando 	tabulaciones = = hola

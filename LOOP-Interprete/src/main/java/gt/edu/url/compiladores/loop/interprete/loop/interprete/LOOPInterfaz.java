@@ -27,6 +27,8 @@ public class LOOPInterfaz extends javax.swing.JFrame {
     /**
      * Creates new form LOOPInterfaz
      */
+    GenerarTXT txt=new GenerarTXT();
+    GenerarTXT Tok=new GenerarTXT();
     public LOOPInterfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -219,50 +221,85 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 public String saltos(String cadena) {
   return cadena.replaceAll("\n", " "); 
 }
-int contador=0;
- String resultado="";
-    public void leer() throws IOException{
-     File archivo=new File("archivo.txt");
-       PrintWriter escribir;
+
+String nombre_del_archivo="";
+    public void creartxt(String cuerpo,String nombreArchivo){
+        nombre_del_archivo="";
+        File archivo=new File(nombreArchivo);
+        nombre_del_archivo=nombreArchivo;
+        PrintWriter escribir;
         try {
             escribir=new PrintWriter(archivo);
-            escribir.print(saltos(txaCodigo.getText()));
+            escribir.print((cuerpo));
             escribir.close();
         } catch (Exception e) {
         }
-       
-           System.out.println("inicamos ");
-           Reader lector = new BufferedReader(new FileReader("archivo.txt"));
-            Lexico lexico= new Lexico(lector);
-           resultado="";
-            contador=0;
+        
+    }
+
+
+
+int contador=0;
+String resultado="";
+String generadortokens="";
+//contadores para escribir un nuevo txt
+int variable=0;
+int tipo_=0;
+int igual=0;
+int tab=0;
+int tabs=0;
+int espacio=0;
+int find=0;
+
+    public void leer(String nombre_archivo) throws IOException{
+        creartxt(saltos(txaCodigo.getText()), "archivo.txt");
+        Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
+        Lexico lexico= new Lexico(lector);
+        resultado="";
+        contador=0;
             while(true){
                 Tokens toke=lexico.yylex();
                 if(toke==null){
                     resultado+="----------------------------------";
                     txaSalida.setText(resultado);
+                    //se genera el documento para los tokens
+                    generadortokens+="Identificador "+variable+"\n";
+                    generadortokens+="Tipo "+tipo_+"\n";
+                    generadortokens+="Simbolo igual "+igual+"\n";
+                    generadortokens+="Tabuladores "+tabs+"\n";
+                    generadortokens+="Tabulador "+tab+"\n";
+                    generadortokens+="Espacios "+espacio+"\n";
+                    generadortokens+="Fin de linea "+find+"\n";
+                    
+                    creartxt(generadortokens, "tokens.txt");
+                    //--------------------------------------
                     return;
                 }
                 
                 if(toke==error){
-                    resultado+=lexico.lexeme+" incorrecto \n";
+                     resultado+=lexico.lexeme+" incorrecto \n";
                 }else if(toke==Identificador ){
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
-                     
-                }else if(toke==tipo)
-                {
+                     variable++;
+                }else if(toke==tipo){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
+                    tipo_++;
                 }else if(toke==Asignacion){
-                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";           
+                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";  
+                    igual++;
                 } else if (toke == tabulador){ //Agregue esto
-                resultado += "Tabulador :" + lexico.lexeme + "\n";
-            } else if (toke == tabuladores){
-                resultado += "Tabuladores ;" + lexico.lexeme + "\n";
-            } else if (toke == espacioBlanco){
-                resultado += "Espacio en Blanco" + lexico.lexeme + "\n";
-            } else if (toke == finLinea){
-                resultado += "Fin de línea" + lexico.lexeme + "\n";
-            }       
+                    resultado += "Tabulador :" + lexico.lexeme + "\n";
+                    tab++;
+                } else if (toke == tabuladores){
+                    resultado += "Tabuladores ;" + lexico.lexeme + "\n";
+                    tabs++;
+                } else if (toke == espacioBlanco){
+                    resultado += "Espacio en Blanco" + lexico.lexeme + "\n";
+                    espacio++;
+                } else if (toke == finLinea){
+                    resultado += "Fin de línea" + lexico.lexeme + "\n";
+                    find++;
+                }       
      
             }//fin del while
 }
@@ -270,7 +307,7 @@ int contador=0;
     
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
         try {
-            leer();
+            leer("archivo");
         } catch (IOException ex) {
             Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
