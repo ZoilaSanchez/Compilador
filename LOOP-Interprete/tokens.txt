@@ -1,9 +1,0 @@
-1	tipo	entero
-2	espacioBlanco	 
-3	espacioBlanco	 
-4	Identificador	variable
-5	espacioBlanco	 
-6	Identificador	numero
-7	espacioBlanco	 
-8	tabulador		
-9	Identificador	nuemero

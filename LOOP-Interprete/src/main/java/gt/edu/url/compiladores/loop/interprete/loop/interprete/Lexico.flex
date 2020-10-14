@@ -16,6 +16,11 @@ TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]
 ESPACIOENBLANCO = " "
 fin=";"
+entero = "-"?[0-9]+
+real = "-"?[0-9]+("." [0-9]+)?
+boleano = "verdadero"|"falso"
+nulo = "nulo"
+NoNum = [a-zA-Z0-9_.]+
 tipos=("entero"|"boolean"|"String"|"cadena")
 variables=({letrasmi}+{signo}*{num}*)({letrasma}|{letrasmi}+|{num})*
 nova={letrasma}+({letrasmi}|{letrasma}|{num})*|{num}+({letrasmi}|{letrasma}|{num})*
@@ -35,4 +40,9 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {TABULADORES}           {lexeme=yytext();return tabuladores;}
 {FINLINEA}              {lexeme=yytext();return finLinea;}
 {ESPACIOENBLANCO}       {lexeme=yytext();return espacioBlanco;}
+{entero}               {System.out.println("Num " + yytext());}
+{real}               {System.out.println("Flotante " + yytext());}
+{boleano}               {System.out.println("Booleano " + yytext());}
+{boleano}               {System.out.println("nulo " + yytext());}
+{NoNum}               {System.out.println("No Num " + yytext());}
 .                       {return error;}
