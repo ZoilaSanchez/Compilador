@@ -1,1 +1,1 @@
-entero cuando 	tabulaciones = = hola
+entero  variable numero 	nuemero

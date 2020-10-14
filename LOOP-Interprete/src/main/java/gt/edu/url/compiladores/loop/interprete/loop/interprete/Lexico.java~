@@ -695,7 +695,7 @@ class Lexico {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1:
             { lexeme=yytext();
-    return tabuladores;
+            return tabuladores;
             }
             // fall through
           case 11: break;
@@ -705,20 +705,17 @@ class Lexico {
             // fall through
           case 12: break;
           case 3:
-            { lexeme=yytext();
-    return tabulador;
+            { lexeme=yytext(); return tabulador;
             }
             // fall through
           case 13: break;
           case 4:
-            { lexeme=yytext();
-    return finLinea;
+            { lexeme=yytext();return finLinea;
             }
             // fall through
           case 14: break;
           case 5:
-            { lexeme=yytext();
-    return espacioBlanco;
+            { lexeme=yytext();return espacioBlanco;
             }
             // fall through
           case 15: break;
@@ -728,7 +725,7 @@ class Lexico {
             // fall through
           case 16: break;
           case 7:
-            { return No;
+            { lexeme=yytext();return No;
             }
             // fall through
           case 17: break;

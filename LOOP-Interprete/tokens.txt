@@ -1,7 +1,9 @@
-Identificador 3
-Tipo 1
-Simbolo igual 2
-Tabuladores 0
-Tabulador 1
-Espacios 5
-Fin de linea 0
+1	tipo	entero
+2	espacioBlanco	 
+3	espacioBlanco	 
+4	Identificador	variable
+5	espacioBlanco	 
+6	Identificador	numero
+7	espacioBlanco	 
+8	tabulador		
+9	Identificador	nuemero

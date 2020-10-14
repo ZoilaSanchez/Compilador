@@ -5,6 +5,7 @@
  */
 package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 
+import gt.edu.url.compiladores.loop.interprete.loop.interprete.Identificadores.ArrayListTokens;
 import static gt.edu.url.compiladores.loop.interprete.loop.interprete.Tokens.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -242,16 +244,15 @@ String nombre_del_archivo="";
 int contador=0;
 String resultado="";
 String generadortokens="";
-//contadores para escribir un nuevo txt
-int variable=0;
-int tipo_=0;
-int igual=0;
-int tab=0;
-int tabs=0;
-int espacio=0;
-int find=0;
+int cont=1;
+// ArrayListTokens comenzar
+
+ArrayList<ArrayListTokens> lista = new ArrayList();
+ArrayListTokens aux=new ArrayListTokens();
+// terminar ArrayListTokens
 
     public void leer(String nombre_archivo) throws IOException{
+        
         creartxt(saltos(txaCodigo.getText()), "archivo.txt");
         Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
         Lexico lexico= new Lexico(lector);
@@ -263,45 +264,69 @@ int find=0;
                     resultado+="----------------------------------";
                     txaSalida.setText(resultado);
                     //se genera el documento para los tokens
-                    generadortokens+="Identificador "+variable+"\n";
-                    generadortokens+="Tipo "+tipo_+"\n";
-                    generadortokens+="Simbolo igual "+igual+"\n";
-                    generadortokens+="Tabuladores "+tabs+"\n";
-                    generadortokens+="Tabulador "+tab+"\n";
-                    generadortokens+="Espacios "+espacio+"\n";
-                    generadortokens+="Fin de linea "+find+"\n";
                     
-                    creartxt(generadortokens, "tokens.txt");
+                    creartxt(mostrar(), "tokens.txt");
                     //--------------------------------------
                     return;
                 }
-                
+                aux = new ArrayListTokens();
+                aux.setId(cont++);
                 if(toke==error){
                      resultado+=lexico.lexeme+" incorrecto \n";
                 }else if(toke==Identificador ){
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
-                     variable++;
+                     
+                     aux.setTipo_token(toke.toString());
+                     aux.setNombre_token(lexico.lexeme);
+                     lista.add(aux);
                 }else if(toke==tipo){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
-                    tipo_++;
+                   
+                    aux.setTipo_token(toke.toString());
+                     aux.setNombre_token(lexico.lexeme);
+                     lista.add(aux);
                 }else if(toke==Asignacion){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";  
-                    igual++;
+                    
+                    aux.setTipo_token(toke.toString());
+                    aux.setNombre_token(lexico.lexeme);
+                    lista.add(aux);
                 } else if (toke == tabulador){ //Agregue esto
                     resultado += "Tabulador :" + lexico.lexeme + "\n";
-                    tab++;
+                    
+                    aux.setTipo_token(toke.toString());
+                    aux.setNombre_token(lexico.lexeme);
+                    lista.add(aux);
                 } else if (toke == tabuladores){
                     resultado += "Tabuladores ;" + lexico.lexeme + "\n";
-                    tabs++;
+                    
+                    aux.setTipo_token(toke.toString());
+                    aux.setNombre_token(lexico.lexeme);
+                    lista.add(aux);
                 } else if (toke == espacioBlanco){
                     resultado += "Espacio en Blanco" + lexico.lexeme + "\n";
-                    espacio++;
+                   
+                    aux.setTipo_token(toke.toString());
+                    aux.setNombre_token(lexico.lexeme);
+                    lista.add(aux);
                 } else if (toke == finLinea){
                     resultado += "Fin de línea" + lexico.lexeme + "\n";
-                    find++;
-                }       
+                     
+                     aux.setTipo_token(toke.toString());
+                     aux.setNombre_token(lexico.lexeme);
+                     lista.add(aux);
+                }else if(toke ==correcto){
+                    System.out.println("estructrua correcta");
+                }   
      
             }//fin del while
+}
+    
+public  String mostrar(){
+    for (int i = 0; i < lista.size(); i++) {
+        generadortokens+=lista.get(i).getId()+"\t"+lista.get(i).getTipo_token()+"\t"+lista.get(i).getNombre_token()+"\n";
+    }
+    return generadortokens;
 }
     
     

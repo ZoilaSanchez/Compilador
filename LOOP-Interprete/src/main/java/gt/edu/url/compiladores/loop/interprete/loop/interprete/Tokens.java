@@ -19,5 +19,6 @@ public enum Tokens {
     tabulador,
     tabuladores,
     espacioBlanco,
-    finLinea
+    finLinea,
+    correcto
 }
