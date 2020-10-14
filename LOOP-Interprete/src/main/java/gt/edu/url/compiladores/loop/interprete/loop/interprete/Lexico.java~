@@ -64,12 +64,12 @@ class Lexico {
 
   private static final String ZZ_CMAP_BLOCKS_PACKED_0 =
     "\11\0\1\1\1\2\2\3\1\2\22\0\1\4\13\0"+
-    "\1\5\3\0\12\6\1\0\1\7\1\0\1\10\3\0"+
-    "\22\11\1\12\7\11\4\0\1\11\1\0\1\13\1\14"+
-    "\1\15\1\16\1\17\1\20\1\21\1\20\1\22\2\20"+
-    "\1\23\1\20\1\24\1\25\2\20\1\26\1\20\1\27"+
-    "\6\20\1\0\1\2\10\0\1\3\u01a2\0\2\3\326\0"+
-    "\u0100\3";
+    "\1\5\1\6\1\7\1\0\12\10\1\0\1\11\1\0"+
+    "\1\12\3\0\22\13\1\14\7\13\4\0\1\13\1\0"+
+    "\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\22"+
+    "\1\24\2\22\1\25\1\22\1\26\1\27\2\22\1\30"+
+    "\1\22\1\31\6\22\1\0\1\2\10\0\1\3\u01a2\0"+
+    "\2\3\326\0\u0100\3";
 
   private static int [] zzUnpackcmap_blocks() {
     int [] result = new int[1024];
@@ -96,13 +96,14 @@ class Lexico {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10"+
-    "\1\7\4\11\1\1\1\7\3\11\1\7\3\11\1\7"+
-    "\3\11\1\7\3\11\1\12\1\11\1\12\1\7\1\11"+
-    "\1\13\3\0\1\13";
+    "\1\1\1\2\1\3\1\4\1\5\1\6\1\2\1\7"+
+    "\1\10\1\11\2\10\4\12\1\1\1\13\1\7\1\10"+
+    "\3\12\1\0\1\14\1\10\3\12\1\14\1\10\3\12"+
+    "\1\10\3\12\1\15\1\12\1\15\1\10\1\12\1\16"+
+    "\3\0\1\16";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[40];
+    int [] result = new int[48];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -127,14 +128,15 @@ class Lexico {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\30\0\60\0\30\0\30\0\30\0\110\0\30"+
-    "\0\140\0\170\0\220\0\250\0\300\0\60\0\330\0\360"+
-    "\0\u0108\0\u0120\0\u0138\0\u0150\0\u0168\0\u0180\0\u0198\0\u01b0"+
-    "\0\u01c8\0\u01e0\0\u01f8\0\u0210\0\u0228\0\u0240\0\u0258\0\u0270"+
-    "\0\u0288\0\u02a0\0\u02b8\0\30\0\u02d0\0\u02e8\0\u0300\0\u02e8";
+    "\0\0\0\32\0\64\0\32\0\32\0\32\0\116\0\150"+
+    "\0\202\0\32\0\234\0\266\0\320\0\352\0\u0104\0\u011e"+
+    "\0\64\0\u0138\0\u0152\0\u016c\0\u0186\0\u01a0\0\u01ba\0\u01d4"+
+    "\0\u0152\0\u01ee\0\u0208\0\u0222\0\u023c\0\u01d4\0\u0256\0\u0270"+
+    "\0\u028a\0\u02a4\0\u02be\0\u02d8\0\u02f2\0\u030c\0\u0326\0\u0340"+
+    "\0\u035a\0\u0374\0\u038e\0\32\0\u03a8\0\u03c2\0\u03dc\0\u03c2";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[40];
+    int [] result = new int[48];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -157,33 +159,39 @@ class Lexico {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\0\1\5\1\6\1\7\1\2"+
-    "\1\10\1\7\1\11\1\12\1\13\1\14\1\12\1\15"+
-    "\10\12\31\0\1\16\34\0\1\7\2\0\17\7\6\0"+
-    "\1\7\2\0\16\7\1\17\6\0\1\12\2\0\17\12"+
-    "\6\0\1\12\2\0\14\12\1\20\2\12\6\0\1\12"+
-    "\2\0\2\12\1\21\14\12\6\0\1\12\2\0\13\12"+
-    "\1\22\3\12\6\0\1\7\2\0\15\7\1\23\1\7"+
-    "\6\0\1\12\2\0\14\12\1\24\2\12\6\0\1\12"+
-    "\2\0\5\12\1\25\11\12\6\0\1\12\2\0\16\12"+
-    "\1\26\6\0\1\7\2\0\11\7\1\27\5\7\6\0"+
-    "\1\12\2\0\12\12\1\30\4\12\6\0\1\12\2\0"+
-    "\6\12\1\31\10\12\6\0\1\12\2\0\6\12\1\32"+
-    "\10\12\6\0\1\7\2\0\13\7\1\33\3\7\6\0"+
-    "\1\12\2\0\6\12\1\34\10\12\6\0\1\12\2\0"+
-    "\13\12\1\35\3\12\6\0\1\12\2\0\15\12\1\36"+
-    "\1\12\6\0\1\7\2\0\10\7\1\37\6\7\6\0"+
-    "\1\12\2\0\2\12\1\40\14\12\6\0\1\12\2\0"+
-    "\2\12\1\41\14\12\6\0\1\12\2\0\14\12\1\41"+
-    "\2\12\6\0\1\7\2\0\2\7\15\42\6\0\1\12"+
-    "\2\0\13\12\1\41\3\12\6\0\1\12\2\0\2\12"+
-    "\15\43\4\0\1\44\1\45\1\42\1\44\1\46\17\42"+
-    "\4\0\1\44\1\45\1\43\1\44\1\46\17\43\13\0"+
-    "\15\47\6\0\1\50\25\0\1\44\1\45\1\47\1\44"+
-    "\1\46\17\47";
+    "\1\2\1\3\1\4\1\0\1\5\1\6\1\7\1\10"+
+    "\1\11\1\2\1\12\1\13\1\14\1\15\1\16\1\17"+
+    "\1\15\1\20\10\15\33\0\1\21\40\0\1\22\30\0"+
+    "\2\10\2\0\17\10\7\0\1\23\1\11\2\0\17\13"+
+    "\7\0\1\10\1\13\2\0\17\13\7\0\1\10\1\13"+
+    "\2\0\16\13\1\24\7\0\1\10\1\15\2\0\17\15"+
+    "\7\0\1\10\1\15\2\0\14\15\1\25\2\15\7\0"+
+    "\1\10\1\15\2\0\2\15\1\26\14\15\7\0\1\10"+
+    "\1\15\2\0\13\15\1\27\3\15\7\0\1\30\1\22"+
+    "\30\0\1\10\1\31\2\0\17\10\7\0\1\10\1\13"+
+    "\2\0\15\13\1\32\1\13\7\0\1\10\1\15\2\0"+
+    "\14\15\1\33\2\15\7\0\1\10\1\15\2\0\5\15"+
+    "\1\34\11\15\7\0\1\10\1\15\2\0\16\15\1\35"+
+    "\10\0\1\36\30\0\1\10\1\13\2\0\11\13\1\37"+
+    "\5\13\7\0\1\10\1\15\2\0\12\15\1\40\4\15"+
+    "\7\0\1\10\1\15\2\0\6\15\1\41\10\15\7\0"+
+    "\1\10\1\15\2\0\6\15\1\42\10\15\7\0\1\10"+
+    "\1\13\2\0\13\13\1\43\3\13\7\0\1\10\1\15"+
+    "\2\0\6\15\1\44\10\15\7\0\1\10\1\15\2\0"+
+    "\13\15\1\45\3\15\7\0\1\10\1\15\2\0\15\15"+
+    "\1\46\1\15\7\0\1\10\1\13\2\0\10\13\1\47"+
+    "\6\13\7\0\1\10\1\15\2\0\2\15\1\50\14\15"+
+    "\7\0\1\10\1\15\2\0\2\15\1\51\14\15\7\0"+
+    "\1\10\1\15\2\0\14\15\1\51\2\15\7\0\1\10"+
+    "\1\13\2\0\2\13\15\52\7\0\1\10\1\15\2\0"+
+    "\13\15\1\51\3\15\7\0\1\10\1\15\2\0\2\15"+
+    "\15\53\4\0\1\54\1\55\1\0\1\10\1\52\1\54"+
+    "\1\56\17\52\4\0\1\54\1\55\1\0\1\10\1\53"+
+    "\1\54\1\56\17\53\15\0\15\57\10\0\1\60\25\0"+
+    "\1\54\1\55\2\0\1\57\1\54\1\56\17\57";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[792];
+    int [] result = new int[1014];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -226,11 +234,11 @@ class Lexico {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\1\1\3\11\1\1\1\11\33\1\1\11"+
-    "\3\0\1\1";
+    "\1\1\1\11\1\1\3\11\3\1\1\11\15\1\1\0"+
+    "\23\1\1\11\3\0\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[40];
+    int [] result = new int[48];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -705,57 +713,72 @@ class Lexico {
             { lexeme=yytext();return tabuladores;
             }
             // fall through
-          case 12: break;
+          case 15: break;
           case 2:
             { return error;
             }
             // fall through
-          case 13: break;
+          case 16: break;
           case 3:
             { lexeme=yytext(); return tabulador;
             }
             // fall through
-          case 14: break;
+          case 17: break;
           case 4:
             { lexeme=yytext();return finLinea;
             }
             // fall through
-          case 15: break;
+          case 18: break;
           case 5:
             { lexeme=yytext();return espacioBlanco;
             }
             // fall through
-          case 16: break;
+          case 19: break;
           case 6:
             { lexeme=yytext(); return opcional;
             }
             // fall through
-          case 17: break;
-          case 7:
-            { lexeme=yytext();return No;
-            }
-            // fall through
-          case 18: break;
-          case 8:
-            { lexeme=yytext(); return Asignacion;
-            }
-            // fall through
-          case 19: break;
-          case 9:
-            { lexeme=yytext(); return Identificador;
-            }
-            // fall through
           case 20: break;
-          case 10:
-            { lexeme=yytext(); linea= yyline; return tipo;
+          case 7:
+            { System.out.println("No Num " + yytext());
             }
             // fall through
           case 21: break;
-          case 11:
-            { lexeme=yytext(); linea= yyline; return correcto;
+          case 8:
+            { lexeme=yytext();return No;
             }
             // fall through
           case 22: break;
+          case 9:
+            { lexeme=yytext(); return Asignacion;
+            }
+            // fall through
+          case 23: break;
+          case 10:
+            { lexeme=yytext(); return Identificador;
+            }
+            // fall through
+          case 24: break;
+          case 11:
+            { System.out.println("Num " + yytext());
+            }
+            // fall through
+          case 25: break;
+          case 12:
+            { System.out.println("Flotante " + yytext());
+            }
+            // fall through
+          case 26: break;
+          case 13:
+            { lexeme=yytext(); linea= yyline; return tipo;
+            }
+            // fall through
+          case 27: break;
+          case 14:
+            { lexeme=yytext(); linea= yyline; return correcto;
+            }
+            // fall through
+          case 28: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
