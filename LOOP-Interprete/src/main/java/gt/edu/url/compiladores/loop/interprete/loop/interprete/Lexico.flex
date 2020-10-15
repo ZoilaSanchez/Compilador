@@ -16,6 +16,7 @@ TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]
 ESPACIOENBLANCO = " "
 fin=";"
+comentario = \\\\[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´\\\"]+(\r|\n|\r\n)
 entero = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleano = "verdadero"|"falso"
@@ -41,10 +42,11 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {TABULADORES}           {lexeme=yytext();return tabuladores;}
 {FINLINEA}              {lexeme=yytext();return finLinea;}
 {ESPACIOENBLANCO}       {lexeme=yytext();return espacioBlanco;}
+{comentario}          {System.out.println("comentario " + yytext());}
 {entero}               {System.out.println("Num " + yytext());}
 {real}               {System.out.println("Flotante " + yytext());}
 {boleano}               {System.out.println("Booleano " + yytext());}
-{boleano}               {System.out.println("nulo " + yytext());}
+{nulo}               {System.out.println("nulo " + yytext());}
 {Cadena}               {System.out.println("Cadena " + yytext());}
 {NoNum}               {System.out.println("No Num " + yytext());}
 .                       {return error;}
