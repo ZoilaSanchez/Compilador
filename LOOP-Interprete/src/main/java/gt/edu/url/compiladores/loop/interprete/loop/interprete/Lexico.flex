@@ -16,12 +16,13 @@ TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]
 ESPACIOENBLANCO = " "
 fin=";"
-comentario = \\\\[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´\\\"]+(\r|\n|\r\n)
+comentario = "//"[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´\\\"]*(\r|\n|\r\n)
+comentarios = "/"\*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´\\\"\r\n(\r\n)]*\*"/"
 entero = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleano = "verdadero"|"falso"
 nulo = "nulo"
-Cadena = \"[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]+\"
+Cadena = \"[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\"
 NoNum = [a-zA-Z0-9_.]+
 tipos=("entero"|"boolean"|"String"|"cadena")
 variables=({letrasmi}+{signo}*{num}*)({letrasma}|{letrasmi}+|{num})*
@@ -63,6 +64,7 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {ESPACIOENBLANCO}       {}
 
 {comentario}          {System.out.println("comentario " + yytext());}
+{comentarios}               {System.out.println("comentarios  " + yytext());}
 {entero}               {System.out.println("Num " + yytext());}
 {real}               {System.out.println("Flotante " + yytext());}
 {boleano}               {System.out.println("Booleano " + yytext());}
