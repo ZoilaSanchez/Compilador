@@ -32,16 +32,36 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
     public int linea;
 %}
 %%
-{estructura}            {lexeme=yytext(); linea= yyline; return correcto;}
-{tipos}                 {lexeme=yytext(); linea= yyline; return tipo;}
-{variables}             {lexeme=yytext(); return Identificador;}
-","                     {lexeme=yytext(); return opcional;}
-"="                     {lexeme=yytext(); return Asignacion;}
+{estructura}            {lexeme=yytext(); 
+                         linea= yyline;
+                         System.out.println("LEX:Correcto " + yytext());
+                         return correcto;}
+
+{tipos}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        System.out.println("LEX:Tipo " + yytext());
+                        return tipo;}
+
+{variables}             {lexeme=yytext(); 
+                        System.out.println("LEX:Identificador " + yytext());
+                        return Identificador;}
+
+","                     {lexeme=yytext(); 
+                        System.out.println("LEX:Opcional " + yytext());
+                        return opcional;}
+
+"="                     {lexeme=yytext(); 
+                        System.out.println("LEX:Asignacion " + yytext());
+                        return Asignacion;}
+
 {nova}                  {lexeme=yytext();return No;}
-{TABULADOR}             {lexeme=yytext(); return tabulador;}
-{TABULADORES}           {lexeme=yytext();return tabuladores;}
-{FINLINEA}              {lexeme=yytext();return finLinea;}
-{ESPACIOENBLANCO}       {lexeme=yytext();return espacioBlanco;}
+
+//Quité esto porque no debería ir en el archivo de tokens
+{TABULADOR}             {}
+{TABULADORES}           {}
+{FINLINEA}              {}
+{ESPACIOENBLANCO}       {}
+
 {comentario}          {System.out.println("comentario " + yytext());}
 {entero}               {System.out.println("Num " + yytext());}
 {real}               {System.out.println("Flotante " + yytext());}

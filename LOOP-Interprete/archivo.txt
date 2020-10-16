@@ -1,1 +1,4 @@
-123
+entero contador; 
+si(){ 	
+    "Hola mundo" 	
+//Comentario }
