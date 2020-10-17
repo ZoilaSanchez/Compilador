@@ -1,4 +1,1 @@
-entero contador; 
-si(){ 	
-    "Hola mundo" 	
-//Comentario }
+ma233:"___ maáma: ám mnum3

@@ -244,6 +244,7 @@ String nombre_del_archivo="";
 int contador=0;
 String resultado="";
 String generadortokens="";
+String errores="";
 int cont=1;
 // ArrayListTokens comenzar
 
@@ -261,7 +262,9 @@ ArrayListTokens aux=new ArrayListTokens();
             while(true){
                 Tokens toke=lexico.yylex();
                 if(toke==null){
-                    resultado+="----------------------------------";
+                    resultado+="----------------------------------\n";
+                    resultado+=errores;
+                    
                     txaSalida.setText(resultado);
                     //se genera el documento para los tokens
                     
@@ -270,56 +273,51 @@ ArrayListTokens aux=new ArrayListTokens();
                     return;
                 }
                 aux = new ArrayListTokens();
-                aux.setId(cont++);
+                String dd;
                 if(toke==error){
                      resultado+=lexico.lexeme+" incorrecto \n";
                 }else if(toke==Identificador ){
+                    
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
-                     
-                     aux.setTipo_token(toke.toString());
-                     aux.setNombre_token(lexico.lexeme);
-                     lista.add(aux);
+
                 }else if(toke==tipo){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
-                   
-                    aux.setTipo_token(toke.toString());
-                     aux.setNombre_token(lexico.lexeme);
-                     lista.add(aux);
+
                 }else if(toke==Asignacion){
                     resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";  
-                    
-                    aux.setTipo_token(toke.toString());
-                    aux.setNombre_token(lexico.lexeme);
-                    lista.add(aux);
+
                 } else if (toke == tabulador){ //Agregue esto
                     resultado += "Tabulador :" + lexico.lexeme + "\n";
-                    
-                    aux.setTipo_token(toke.toString());
-                    aux.setNombre_token(lexico.lexeme);
-                    lista.add(aux);
+
                 } else if (toke == tabuladores){
                     resultado += "Tabuladores ;" + lexico.lexeme + "\n";
-                    
-                    aux.setTipo_token(toke.toString());
-                    aux.setNombre_token(lexico.lexeme);
-                    lista.add(aux);
+
                 } else if (toke == espacioBlanco){
-                    resultado += "Espacio en Blanco" + lexico.lexeme + "\n";
-                   
-                    aux.setTipo_token(toke.toString());
-                    aux.setNombre_token(lexico.lexeme);
-                    lista.add(aux);
+                    resultado += "Espacio en Blanco " + lexico.lexeme + "\n";
+
                 } else if (toke == finLinea){
-                    resultado += "Fin de línea" + lexico.lexeme + "\n";
+                    resultado += "Fin de línea " + lexico.lexeme + "\n";
                      
-                     aux.setTipo_token(toke.toString());
+                }else if(toke ==entrada){
+                    resultado += "Entrada " + lexico.lexeme + "\n";
+                            
+                } else if(toke ==salida){
+                    resultado += "Salida " + lexico.lexeme + "\n";
+                } else if(toke ==No){
+                    System.out.println("Error porfavor revisar el nombre de la variable");
+                    errores+="Error porfavor revisar el nombre de la variable "+lexico.lexeme+ "\n";
+                }         
+                if(toke==No){
+                    
+                }else{
+                    aux.setId(cont++);
+                    aux.setTipo_token(toke.toString());
                      aux.setNombre_token(lexico.lexeme);
-                     lista.add(aux);
-                }else if(toke ==correcto){
-                    System.out.println("estructrua correcta");
-                }   
-     
+                     lista.add(aux); 
+                }
+                     
             }//fin del while
+            
 }
     
 public  String mostrar(){
@@ -331,6 +329,7 @@ public  String mostrar(){
     
     
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
+        errores="";
         try {
             leer("archivo");
         } catch (IOException ex) {
