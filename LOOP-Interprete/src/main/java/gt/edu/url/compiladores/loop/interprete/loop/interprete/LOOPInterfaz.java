@@ -369,9 +369,12 @@ public void limpiar() throws IOException{
         generadortokens="";
         try {
             limpiar();
-            leer(ruta);
+            
+            
+                leer(ruta);
+            
         } catch (IOException ex) {
-            System.out.println("el archivo no existe");
+           crear();
         }
     }//GEN-LAST:event_btnRunActionPerformed
 String ruta;
@@ -390,18 +393,21 @@ String ruta;
         }
     }//GEN-LAST:event_miAbrirArchivoActionPerformed
 String nm="";
-    private void miNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoArchivoActionPerformed
-        FileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+public void crear(){
+     FileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         
         byte decision = (byte) FileChooser.showOpenDialog(null);      
         if (decision == 0) {
-           nm = FileChooser.getSelectedFile().toString();
-            System.out.println(ruta+".txt");        
+           nm = FileChooser.getSelectedFile().toString();         
         try {
             creartxt((txaCodigo.getText()), (nm+".txt"));
         } catch (Exception e) {
         }
         }
+}
+    private void miNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoArchivoActionPerformed
+        crear();
     }//GEN-LAST:event_miNuevoArchivoActionPerformed
 
     private void miGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGuardarArchivoActionPerformed
