@@ -253,7 +253,6 @@ ArrayListTokens aux=new ArrayListTokens();
 // terminar ArrayListTokens
 
     public void leer(String nombre_archivo) throws IOException{
-        
         creartxt(saltos(txaCodigo.getText()), "archivo.txt");
         Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
         Lexico lexico= new Lexico(lector);

@@ -838,7 +838,8 @@ class Lexico {
             // fall through
           case 22: break;
           case 9:
-            { System.out.println("comentario " + yytext());
+            { lexeme=yytext();
+                        System.out.println("Lex: comentario " + yytext());
             }
             // fall through
           case 23: break;

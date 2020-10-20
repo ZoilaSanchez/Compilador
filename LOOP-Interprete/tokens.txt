@@ -1,1 +1,2 @@
-1	Identificador	mnum3
+1	Identificador	ma
+2	Asignacion	=

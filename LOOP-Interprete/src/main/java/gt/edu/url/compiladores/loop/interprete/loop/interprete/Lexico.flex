@@ -74,7 +74,10 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {FINLINEA}              {}
 {ESPACIOENBLANCO}       {}
 
-{comentario}          {System.out.println("comentario " + yytext());}
+{comentario}          { lexeme=yytext();
+                        System.out.println("Lex: comentario " + yytext());
+
+                        }
 {comentarios}               {System.out.println("comentarios  " + yytext());}
 {entero}               {System.out.println("Num " + yytext());}
 {real}               {System.out.println("Flotante " + yytext());}
