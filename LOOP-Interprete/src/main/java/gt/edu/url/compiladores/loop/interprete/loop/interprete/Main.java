@@ -54,7 +54,7 @@ public class Main {
                 return;
             }
             aux = new ArrayListTokens();
-            aux.setId(cont++);
+            aux.setId(String.valueOf(cont++));
             if (toke == error) {
                 resultado += lexico.lexeme + " incorrecto \n";
             } else if (toke == Identificador) {
@@ -99,8 +99,6 @@ public class Main {
                 aux.setTipo_token(toke.toString());
                 aux.setNombre_token(lexico.lexeme);
                 lista.add(aux);
-            } else if (toke == correcto) {
-                System.out.println("estructrua correcta");
             }
 
         }

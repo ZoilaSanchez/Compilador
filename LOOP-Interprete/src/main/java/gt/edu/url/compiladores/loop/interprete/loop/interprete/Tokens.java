@@ -20,8 +20,14 @@ public enum Tokens {
     tabuladores,
     espacioBlanco,
     finLinea,
-    correcto,
     entrada,
-    salida
+    salida,
+    entero,
+    comentario,
+    comentarios,
+    cadena,
+    real,
+    nonu
+    
     
 }

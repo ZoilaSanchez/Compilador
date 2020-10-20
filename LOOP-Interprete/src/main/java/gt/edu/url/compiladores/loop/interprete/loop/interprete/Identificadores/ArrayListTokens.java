@@ -12,13 +12,13 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete.Identificadores;
 public class ArrayListTokens implements Comparable<ArrayListTokens>{
     private String tipo_token="";
     private String nombre_token="";
-    private int id=0;
+    private String id;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

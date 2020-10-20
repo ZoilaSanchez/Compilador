@@ -8,9 +8,11 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 import gt.edu.url.compiladores.loop.interprete.loop.interprete.Identificadores.ArrayListTokens;
 import static gt.edu.url.compiladores.loop.interprete.loop.interprete.Tokens.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
@@ -189,10 +191,20 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 
         miNuevoArchivo.setFont(new java.awt.Font("FreeMono", 0, 15)); // NOI18N
         miNuevoArchivo.setText("Nuevo Archivo");
+        miNuevoArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miNuevoArchivoActionPerformed(evt);
+            }
+        });
         mArchivo.add(miNuevoArchivo);
 
         miGuardarArchivo.setFont(new java.awt.Font("FreeMono", 0, 15)); // NOI18N
         miGuardarArchivo.setText("Guardar");
+        miGuardarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miGuardarArchivoActionPerformed(evt);
+            }
+        });
         mArchivo.add(miGuardarArchivo);
 
         mbPrincipal.add(mArchivo);
@@ -220,9 +232,9 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public String saltos(String cadena) {
-  return cadena.replaceAll("\n", " "); 
-}
+//public String saltos(String cadena) {
+//  return cadena.replaceAll("\n", " "); 
+//}
 
 String nombre_del_archivo="";
     public void creartxt(String cuerpo,String nombreArchivo){
@@ -253,11 +265,14 @@ ArrayListTokens aux=new ArrayListTokens();
 // terminar ArrayListTokens
 
     public void leer(String nombre_archivo) throws IOException{
-        creartxt(saltos(txaCodigo.getText()), "archivo.txt");
+        
+//        creartxt(saltos(txaCodigo.getText()), "archivo.txt");
+        
         Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
         Lexico lexico= new Lexico(lector);
         resultado="";
         contador=0;
+
             while(true){
                 Tokens toke=lexico.yylex();
                 if(toke==null){
@@ -280,10 +295,10 @@ ArrayListTokens aux=new ArrayListTokens();
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
 
                 }else if(toke==tipo){
-                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
+                    resultado+=lexico.lexeme+" -- "+ toke+"\n";
 
                 }else if(toke==Asignacion){
-                    resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";  
+                    resultado+=lexico.lexeme+" -- "+ toke+"\n";  
 
                 } else if (toke == tabulador){ //Agregue esto
                     resultado += "Tabulador :" + lexico.lexeme + "\n";
@@ -302,14 +317,23 @@ ArrayListTokens aux=new ArrayListTokens();
                             
                 } else if(toke ==salida){
                     resultado += "Salida " + lexico.lexeme + "\n";
+                } else if(toke == entero|| toke==real ){
+                    resultado += "numero " + lexico.lexeme + "\n";
+                  
+                }else if(toke == comentario|| toke==comentarios){
+                    resultado += "cometario " + lexico.lexeme + "\n";
+                }else if(toke == cadena){
+                    resultado += "cadena " + lexico.lexeme + "\n";
+                }else if(toke==nonu){
+                    errores+="Error revisar : "+lexico.lexeme+ "\n";
                 } else if(toke ==No){
-                    System.out.println("Error porfavor revisar el nombre de la variable");
-                    errores+="Error porfavor revisar el nombre de la variable "+lexico.lexeme+ "\n";
+                  
+                    errores+="Error revisar : "+lexico.lexeme+ "\n";
                 }         
-                if(toke==No){
+                if(toke==No||toke == nonu){
                     
                 }else{
-                    aux.setId(cont++);
+                    aux.setId(String.valueOf(cont++));
                     aux.setTipo_token(toke.toString());
                      aux.setNombre_token(lexico.lexeme);
                      lista.add(aux); 
@@ -318,24 +342,39 @@ ArrayListTokens aux=new ArrayListTokens();
             }//fin del while
             
 }
-    
+
 public  String mostrar(){
+    generadortokens+=String.format("|------------------------------------------ LISTADO DE TOKENS ----------------------------------------|%n");
+    generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------|%n");
+    generadortokens+=String.format("|------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------|%n");
     for (int i = 0; i < lista.size(); i++) {
-        generadortokens+=lista.get(i).getId()+"\t"+lista.get(i).getTipo_token()+"\t"+lista.get(i).getNombre_token()+"\n";
+        String f1 = "| "+lista.get(i).getId();
+        String f2 = "| "+lista.get(i).getTipo_token();
+        String f3 = "| "+lista.get(i).getNombre_token();
+        String f5 = "|";
+        generadortokens+=String.format("%-17s %-29s %-30s %24s%n",f1,f2,f3,f5);
     }
-    return generadortokens;
+        generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------|%n");
+        System.out.println(generadortokens);
+        return generadortokens;
+}
+public void limpiar() throws IOException{
+    lista.clear();
+    cont=1;
 }
     
     
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
         errores="";
+        generadortokens="";
         try {
-            leer("archivo");
+            limpiar();
+            leer(ruta);
         } catch (IOException ex) {
-            Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("el archivo no existe");
         }
     }//GEN-LAST:event_btnRunActionPerformed
-
+String ruta;
     private void miAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirArchivoActionPerformed
         // Abrimos el archivo que querramos y lo seteamos al editor de LOOP
         String resultado = "";
@@ -344,12 +383,30 @@ public  String mostrar(){
 
         byte decision = (byte) FileChooser.showOpenDialog(null);      
         if (decision == 0) {
-            String ruta = FileChooser.getSelectedFile().toString();
+           ruta = FileChooser.getSelectedFile().toString();
             System.out.println(ruta);
 
             leerArchivo(ruta);
         }
     }//GEN-LAST:event_miAbrirArchivoActionPerformed
+String nm="";
+    private void miNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoArchivoActionPerformed
+        FileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        
+        byte decision = (byte) FileChooser.showOpenDialog(null);      
+        if (decision == 0) {
+           nm = FileChooser.getSelectedFile().toString();
+            System.out.println(ruta+".txt");        
+        try {
+            creartxt((txaCodigo.getText()), (nm+".txt"));
+        } catch (Exception e) {
+        }
+        }
+    }//GEN-LAST:event_miNuevoArchivoActionPerformed
+
+    private void miGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGuardarArchivoActionPerformed
+       creartxt((txaCodigo.getText()), (nm+".txt"));
+    }//GEN-LAST:event_miGuardarArchivoActionPerformed
 
     /**
      * @param args the command line arguments
