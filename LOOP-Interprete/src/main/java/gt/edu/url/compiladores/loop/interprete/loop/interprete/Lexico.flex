@@ -26,14 +26,15 @@ comentario = [\u002F][\u002F]({num}*|{ace}|{letrasma}*|{letrasmi}*|{noace}|{diag
 comn=[\u002A]({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}
+comentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}{comfin}*
+nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
 nocome=[\u002F]
 entero = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleano = "verdadero"|"falso"
 nulo = "nulo"
 Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
-NoNum = [a-zA-Z0-9_.]+
+NoNum = [a-zA-Z0-9_.]+{simbolos}*
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables=({letrasmi}+{signo}*{num}*)({ace}|{letrasma}|{letrasmi}+|{num})*
 nova={num}*{noace2}{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
@@ -70,18 +71,25 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {FINLINEA}              {}
 {ESPACIOENBLANCO}       {}
 
-{comentario}          {lexeme=yytext();  return comentario;}
-{comentarios}               {lexeme=yytext();  return comentarios;}
+{comentario}           {lexeme=yytext();  return comentario;}
+{comentarios}          {lexeme=yytext();  return comentarios;}
 {entero}               {lexeme=yytext();  return entero;}
-{real}               {lexeme=yytext();  return real;}
-{boleano}               {lexeme=yytext();  return boleano;}
-{nulo}               {}
+{real}                 {lexeme=yytext();  return real;}
+{boleano}              {lexeme=yytext();  return boleano;}
+{nulo}                 {}
 {Cadena}               {lexeme=yytext();  return cadena;}
 
 
 //Estos son los errores que consideramos
-{NoNum}               {lexeme=yytext();  return nonu;}
+{NoNum}                 {lexeme=yytext();  
+                        System.out.println("Error verificar "+yytext());
+                        return nonu;}
 
-{nova}                  {lexeme=yytext();return No;}
-
-.                       {return error;}
+{nova}                  {lexeme=yytext();
+                        System.out.println("Error verificar "+yytext());
+                        return No;}
+{nocomentarios}         {lexeme=yytext();
+                        System.out.println("Error verificar "+yytext());
+                        return nocom;}
+.                       {System.out.println("Error verificar "+yytext());
+                        return error;}

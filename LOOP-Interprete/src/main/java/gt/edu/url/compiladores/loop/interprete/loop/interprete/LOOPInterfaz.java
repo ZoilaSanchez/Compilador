@@ -295,15 +295,19 @@ ArrayListTokens aux=new ArrayListTokens();
                     
                     txaSalida.setText(resultado);
                     //se genera el documento para los tokens
+                    if(errores.length()>0){
+                        System.out.println("Verificar para contruir los tokens");
+                    }else{
+                       token(mostrar(), "tokens.txt");
+                    }
                     
-                    token(mostrar(), "tokens.txt");
                     //--------------------------------------
                     return;
                 }
                 aux = new ArrayListTokens();
                 String dd;
                 if(toke==error){
-                     resultado+=lexico.lexeme+" incorrecto \n";
+                     errores+=lexico.lexeme+" incorrecto \n";
                 }else if(toke==Identificador ){
                     
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
@@ -340,11 +344,14 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "cadena " + lexico.lexeme + "\n";
                 }else if(toke==nonu){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
-                } else if(toke ==No){
+                }else if(toke ==No){
                   
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
-                }         
-                if(toke==No||toke == nonu){
+                }else if(toke ==nocom){
+                  
+                    errores+="Error revisar : "+lexico.lexeme+ "\n";
+                }           
+                if(toke==No||toke == nonu||toke ==nocom|| toke==error){
                     
                 }else{
                     aux.setId(String.valueOf(cont++));
@@ -356,7 +363,7 @@ ArrayListTokens aux=new ArrayListTokens();
             }//fin del while
             
 }
-
+    
 public  String mostrar(){
     generadortokens+=String.format("|------------------------------------------ LISTADO DE TOKENS ----------------------------------------|%n");
     generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------|%n");

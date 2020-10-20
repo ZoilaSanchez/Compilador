@@ -27,7 +27,8 @@ public enum Tokens {
     comentarios,
     cadena,
     real,
-    nonu
+    nonu,
+    nocom
     
     
 }
