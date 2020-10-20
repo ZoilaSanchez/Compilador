@@ -10,10 +10,10 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
  * @author Lopez
  */
 public enum Tokens {
-    Identificador,
+    identificador,
     error,
     tipo,
-    Asignacion,
+    operadores,
     opcional,
     No,
     tabulador,
@@ -28,7 +28,11 @@ public enum Tokens {
     cadena,
     real,
     nonu,
-    nocom
+    nocom,
+    clases,
+    noclas,
+    operador_Logico,
+    funcion
     
     
 }

@@ -3,9 +3,10 @@
 |------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------|
 | 1               | comentario                  | // los valores                                      |
 | 2               | entero                      | 12321                                               |
-| 3               | entero                      | 321                                                 |
-| 4               | Identificador               | mamp33332                                           |
-| 5               | comentarios                 | /*xfghdgf*/                                         |
-| 6               | cadena                      | "esto es una caden averific"                        |
-| 7               | entero                      | 32423                                               |
+| 3               | clases                      | CASA                                                |
+| 4               | clases                      | Lenguaje                                            |
+| 5               | clases                      | Impresion                                           |
+| 6               | identificador               | cass                                                |
+| 7               | identificador               | mm                                                  |
+| 8               | operadores                  | +                                                   |
 |-----------------+-----------------------------+-----------------------------------------------------|

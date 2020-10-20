@@ -26,11 +26,19 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         if(args.length!=1) {
-            System.out.println("ATENCION: AGREGAR EL TXT DEL CODIGO");
+            String inicio="";
+            inicio+=String.format("|-----------------------------------------------------------------------------------------------------|%n");
+            inicio+=String.format("|---------------------------------- ATENCION: PARAMETROS NO CORRECTOS --------------------------------|%n");
+            inicio+=String.format("|-----------------------------------------------------------------------------------------------------|%n");
+            System.out.println(inicio);
             System.exit(0);
         }  
          String nombre = (args[0]);
-         System.out.println(nombre);
+         String inicio="";
+         inicio+=String.format("|-----------------------------------------------------------------------------------------------------|%n");
+         inicio+=String.format("|------------------------------------------ BIENVENIDOS A LOOP ---------------------------------------|%n");
+         inicio+=String.format("|-----------------------------------------------------------------------------------------------------|%n");
+         System.out.println(inicio);
          new LOOPInterfaz(nombre).setVisible(true);
     }
 

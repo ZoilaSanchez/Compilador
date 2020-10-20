@@ -308,14 +308,14 @@ ArrayListTokens aux=new ArrayListTokens();
                 String dd;
                 if(toke==error){
                      errores+=lexico.lexeme+" incorrecto \n";
-                }else if(toke==Identificador ){
+                }else if(toke==identificador ){
                     
                      resultado+=lexico.lexeme+"-- es -- "+ toke+"\n";
 
                 }else if(toke==tipo){
                     resultado+=lexico.lexeme+" -- "+ toke+"\n";
 
-                }else if(toke==Asignacion){
+                }else if(toke==operadores|| toke ==operador_Logico){
                     resultado+=lexico.lexeme+" -- "+ toke+"\n";  
 
                 } else if (toke == tabulador){ //Agregue esto
@@ -340,18 +340,16 @@ ArrayListTokens aux=new ArrayListTokens();
                   
                 }else if(toke == comentario|| toke==comentarios){
                     resultado += "cometario " + lexico.lexeme + "\n";
+                }else if(toke == clases){
+                    resultado += "clases " + lexico.lexeme + "\n";
                 }else if(toke == cadena){
                     resultado += "cadena " + lexico.lexeme + "\n";
-                }else if(toke==nonu){
+                }else if(toke == funcion){
+                    resultado += "funcion " + lexico.lexeme + "\n";
+                }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
-                }else if(toke ==No){
-                  
-                    errores+="Error revisar : "+lexico.lexeme+ "\n";
-                }else if(toke ==nocom){
-                  
-                    errores+="Error revisar : "+lexico.lexeme+ "\n";
-                }           
-                if(toke==No||toke == nonu||toke ==nocom|| toke==error){
+                }         
+                if(toke==No||toke == nonu||toke ==nocom|| toke==error|| toke==noclas){
                     
                 }else{
                     aux.setId(String.valueOf(cont++));
@@ -389,8 +387,10 @@ public void limpiar() throws IOException{
         try {
             errores="";
             generadortokens="";
+            txaCodigo.setText("");
             limpiar();
 //            creartxt(txaCodigo.getText(), nombre_del_archivo);
+            leerArchivo(archivo_txt);
             leer(archivo_txt);
         } catch (IOException ex) {
             Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
