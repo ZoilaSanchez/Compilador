@@ -34,8 +34,10 @@ public class LOOPInterfaz extends javax.swing.JFrame {
      */
     GenerarTXT txt=new GenerarTXT();
     GenerarTXT Tok=new GenerarTXT();
-    public LOOPInterfaz() {
+    public LOOPInterfaz(String nombre) {
         initComponents();
+        leerArchivo(nombre);
+        this.archivo_txt=nombre;
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -237,8 +239,22 @@ public class LOOPInterfaz extends javax.swing.JFrame {
 //  return cadena.replaceAll("\n", " "); 
 //}
 
-String nombre_del_archivo="";
+String archivo_txt="";
     public void creartxt(String cuerpo,String nombreArchivo){
+        archivo_txt="";
+        File archivo=new File(nombreArchivo);
+        archivo_txt=nombreArchivo;
+        PrintWriter escribir;
+        try {
+            escribir=new PrintWriter(archivo);
+            escribir.print((cuerpo));
+            escribir.close();
+        } catch (Exception e) {
+        }
+        
+    }
+    String nombre_del_archivo="";
+public void token(String cuerpo,String nombreArchivo){
         nombre_del_archivo="";
         File archivo=new File(nombreArchivo);
         nombre_del_archivo=nombreArchivo;
@@ -251,7 +267,6 @@ String nombre_del_archivo="";
         }
         
     }
-
 
 
 int contador=0;
@@ -267,7 +282,7 @@ ArrayListTokens aux=new ArrayListTokens();
 
     public void leer(String nombre_archivo) throws IOException{
                
-        Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
+        Reader lector = new BufferedReader(new FileReader(archivo_txt));
         Lexico lexico= new Lexico(lector);
         resultado="";
         contador=0;
@@ -281,7 +296,7 @@ ArrayListTokens aux=new ArrayListTokens();
                     txaSalida.setText(resultado);
                     //se genera el documento para los tokens
                     
-                    creartxt(mostrar(), "tokens.txt");
+                    token(mostrar(), "tokens.txt");
                     //--------------------------------------
                     return;
                 }
@@ -367,10 +382,9 @@ public void limpiar() throws IOException{
         try {
             errores="";
             generadortokens="";
-            
             limpiar();
-            creartxt(txaCodigo.getText(), "archivo.txt");
-            leer(nombre_del_archivo);
+//            creartxt(txaCodigo.getText(), nombre_del_archivo);
+            leer(archivo_txt);
         } catch (IOException ex) {
             Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -416,38 +430,40 @@ public void crear(){
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LOOPInterfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(LOOPInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//              
+//                new LOOPInterfaz((args[0])).setVisible(true);
+//               
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser FileChooser;

@@ -46,27 +46,21 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
-                        System.out.println("LEX:Tipo " + yytext());
                         return tipo;}
 
 "escribir"              {lexeme=yytext(); 
-                        System.out.println("LEX:entrada " + yytext());
                         return entrada;}
 
 "leer"                  {lexeme=yytext(); 
-                        System.out.println("LEX:salida " + yytext());
                         return salida;}
 
 {variables}             {lexeme=yytext(); 
-                        System.out.println("LEX:Identificador " + yytext());
                         return Identificador;}
 
 ","                     {lexeme=yytext(); 
-                        System.out.println("LEX:Opcional " + yytext());
                         return opcional;}
 
 "="                     {lexeme=yytext(); 
-                        System.out.println("LEX:Asignacion " + yytext());
                         return Asignacion;}
 
 
@@ -76,17 +70,17 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {FINLINEA}              {}
 {ESPACIOENBLANCO}       {}
 
-{comentario}          {System.out.println("comentario " + yytext());lexeme=yytext();  return comentario;}
-{comentarios}               {System.out.println("comentarios  " + yytext());lexeme=yytext();  return comentarios;}
-{entero}               {System.out.println("Num " + yytext());lexeme=yytext();  return entero;}
-{real}               {System.out.println("Flotante " + yytext());lexeme=yytext();  return real;}
-{boleano}               {System.out.println("Booleano " + yytext());lexeme=yytext();  return boleano;}
+{comentario}          {lexeme=yytext();  return comentario;}
+{comentarios}               {lexeme=yytext();  return comentarios;}
+{entero}               {lexeme=yytext();  return entero;}
+{real}               {lexeme=yytext();  return real;}
+{boleano}               {lexeme=yytext();  return boleano;}
 {nulo}               {}
-{Cadena}               {System.out.println("Cadena " + yytext());lexeme=yytext();  return cadena;}
+{Cadena}               {lexeme=yytext();  return cadena;}
 
 
 //Estos son los errores que consideramos
-{NoNum}               {System.out.println("No Num " + yytext());lexeme=yytext();  return nonu;}
+{NoNum}               {lexeme=yytext();  return nonu;}
 
 {nova}                  {lexeme=yytext();return No;}
 

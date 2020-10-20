@@ -1,2 +1,7 @@
-324234
-dsfasd
+// los valores
+12321
+vamo_a_ver
+12
+1.2
+321
+mamp

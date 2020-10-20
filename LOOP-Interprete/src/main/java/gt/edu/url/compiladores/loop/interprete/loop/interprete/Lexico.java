@@ -834,58 +834,54 @@ class Lexico {
           case 18: break;
           case 4:
             { lexeme=yytext(); 
-                        System.out.println("LEX:Opcional " + yytext());
                         return opcional;
             }
             // fall through
           case 19: break;
           case 5:
-            { System.out.println("No Num " + yytext());lexeme=yytext();  return nonu;
+            { lexeme=yytext();  return nonu;
             }
             // fall through
           case 20: break;
           case 6:
-            { System.out.println("Num " + yytext());lexeme=yytext();  return entero;
+            { lexeme=yytext();  return entero;
             }
             // fall through
           case 21: break;
           case 7:
             { lexeme=yytext(); 
-                        System.out.println("LEX:Asignacion " + yytext());
                         return Asignacion;
             }
             // fall through
           case 22: break;
           case 8:
             { lexeme=yytext(); 
-                        System.out.println("LEX:Identificador " + yytext());
                         return Identificador;
             }
             // fall through
           case 23: break;
           case 9:
-            { System.out.println("Cadena " + yytext());lexeme=yytext();  return cadena;
+            { lexeme=yytext();  return cadena;
             }
             // fall through
           case 24: break;
           case 10:
-            { System.out.println("comentario " + yytext());lexeme=yytext();  return comentario;
+            { lexeme=yytext();  return comentario;
             }
             // fall through
           case 25: break;
           case 11:
-            { System.out.println("Flotante " + yytext());lexeme=yytext();  return real;
+            { lexeme=yytext();  return real;
             }
             // fall through
           case 26: break;
           case 12:
-            { System.out.println("comentarios  " + yytext());lexeme=yytext();  return comentarios;
+            { lexeme=yytext();  return comentarios;
             }
             // fall through
           case 27: break;
           case 13:
             { lexeme=yytext(); 
-                        System.out.println("LEX:salida " + yytext());
                         return salida;
             }
             // fall through
@@ -893,14 +889,12 @@ class Lexico {
           case 14:
             { lexeme=yytext(); 
                         linea= yyline; 
-                        System.out.println("LEX:Tipo " + yytext());
                         return tipo;
             }
             // fall through
           case 29: break;
           case 15:
             { lexeme=yytext(); 
-                        System.out.println("LEX:entrada " + yytext());
                         return entrada;
             }
             // fall through
