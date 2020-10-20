@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -124,7 +125,7 @@ public class LOOPInterfaz extends javax.swing.JFrame {
         pnlControlLayout.setVerticalGroup(
             pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlLayout.createSequentialGroup()
-                .addContainerGap(382, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRun)
                 .addGap(91, 91, 91))
         );
@@ -152,7 +153,7 @@ public class LOOPInterfaz extends javax.swing.JFrame {
             pnlCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCodigoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(spCodigo)
+                .addComponent(spCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -265,9 +266,7 @@ ArrayListTokens aux=new ArrayListTokens();
 // terminar ArrayListTokens
 
     public void leer(String nombre_archivo) throws IOException{
-        
-//        creartxt(saltos(txaCodigo.getText()), "archivo.txt");
-        
+               
         Reader lector = new BufferedReader(new FileReader(nombre_del_archivo));
         Lexico lexico= new Lexico(lector);
         resultado="";
@@ -365,17 +364,18 @@ public void limpiar() throws IOException{
     
     
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
-        errores="";
-        generadortokens="";
         try {
+            errores="";
+            generadortokens="";
+            
             limpiar();
-            
-            
-                leer(ruta);
-            
+            creartxt(txaCodigo.getText(), "archivo.txt");
+            leer(nombre_del_archivo);
         } catch (IOException ex) {
-           crear();
+            Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+           
     }//GEN-LAST:event_btnRunActionPerformed
 String ruta;
     private void miAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirArchivoActionPerformed
@@ -388,7 +388,6 @@ String ruta;
         if (decision == 0) {
            ruta = FileChooser.getSelectedFile().toString();
             System.out.println(ruta);
-
             leerArchivo(ruta);
         }
     }//GEN-LAST:event_miAbrirArchivoActionPerformed
@@ -407,11 +406,11 @@ public void crear(){
         }
 }
     private void miNuevoArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoArchivoActionPerformed
-        crear();
+       
     }//GEN-LAST:event_miNuevoArchivoActionPerformed
 
     private void miGuardarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGuardarArchivoActionPerformed
-       creartxt((txaCodigo.getText()), (nm+".txt"));
+      
     }//GEN-LAST:event_miGuardarArchivoActionPerformed
 
     /**
@@ -472,6 +471,7 @@ public void crear(){
 
 private void leerArchivo(String archivo)
     {
+        
         FileReader file = null;
         try {
             String cadena;
