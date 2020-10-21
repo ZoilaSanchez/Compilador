@@ -41,8 +41,8 @@ variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
 clases="clase"[\u0020]{may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("({num}*|{variables}*)*")")*
 menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
 insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
-noclases=clases={num}*{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
-nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
+noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
+nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("({tipos}[\u0020]+{variables})(","[\u0020]+{tipos}[\u0020]+{variables})*")"|"("")")
