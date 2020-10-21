@@ -34,7 +34,9 @@ public enum Tokens {
     operador_Logico,
     funcion,
     boleano,
-    fin_de_linea
+    fin_de_linea,
+    retornar,
+    instancias
     
     
 }

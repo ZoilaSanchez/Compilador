@@ -335,7 +335,12 @@ ArrayListTokens aux=new ArrayListTokens();
                             
                 } else if(toke ==salida){
                     resultado += "Salida " + lexico.lexeme + "\n";
-                } else if(toke == inte|| toke==real ){
+                }else if(toke ==retornar){
+                    resultado += "retronar " + lexico.lexeme + "\n";
+                } else if(toke ==instancias){
+                    resultado += "instancias " + lexico.lexeme + "\n";
+                }
+                else if(toke == inte|| toke==real ){
                     resultado += "numero " + lexico.lexeme + "\n";
                   
                 }else if(toke == comentario|| toke==comentarios){
@@ -348,10 +353,10 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "funcion " + lexico.lexeme + "\n";
                 }else if(toke == boleano){
                     resultado += "boleano " + lexico.lexeme + "\n";
-                }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas){
+                }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas||toke==nocom){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
                 }         
-                if(toke==No||toke == nonu||toke ==nocom|| toke==error|| toke==noclas){
+                if(toke==No||toke == nonu||toke ==nocom|| toke==error|| toke==noclas|| toke==nocom){
                     
                 }else{
                     aux.setId(String.valueOf(cont++));

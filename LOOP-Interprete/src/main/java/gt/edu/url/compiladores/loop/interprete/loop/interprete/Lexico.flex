@@ -22,27 +22,29 @@ TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]
 ESPACIOENBLANCO = " "
 fin=";"
-comentario = [\u002F][\u002F]({num}*|{ace}|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
+comentario = [\u002F][\u002F]([\u0020]*|{num}*|{ace}|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
 comn=[\u002A]({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}{comfin}*
+comentarios = {comini}([\u0020]*|{num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}{comfin}*
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
+retu="devolver"[\u0020]*{num}
 nocome=[\u002F]
 enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
-Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
+Cadena ="cadena"[\u0020]\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
 NoNum = [a-zA-Z0-9_.]+{simbolos}*
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables=({letrasmi}+{signo}*{num}*)({ace}|{letrasma}|{letrasmi}+|{num})*
-clases={may}+{letrasmi}*
+clases="clase"[\u0020]{may}+{letrasmi}*
+insta= {letrasmi}+"."{letrasmi}+
 noclases=clases={num}*{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}*{noace2}{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
-fun={tipos}[\u0020]+{letrasmi}+
+fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("({tipos}[\u0020]+{variables})(","[\u0020]+{tipos}[\u0020]+{variables})*")"|"("")")
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
 %{
     public String lexeme;
@@ -53,7 +55,12 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return tipo;}
-
+{retu}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return retornar;}
+{insta}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return instancias;}
 "escribir"              {lexeme=yytext(); 
                         return entrada;}
 

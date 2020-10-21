@@ -16,4 +16,5 @@
 | 13              | boleano                     | falso                                               |
 | 14              | cadena                      | "Solo se que no se nada "                           |
 | 15              | fin_de_linea                | ;                                                   |
+| 16              | comentarios                 | /* esto es un comentario */                         |
 |-----------------+-----------------------------+-----------------------------------------------------|
