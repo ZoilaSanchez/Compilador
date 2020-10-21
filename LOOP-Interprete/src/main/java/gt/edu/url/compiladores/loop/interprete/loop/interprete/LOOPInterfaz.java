@@ -339,6 +339,10 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "retronar " + lexico.lexeme + "\n";
                 } else if(toke ==instancias){
                     resultado += "instancias " + lexico.lexeme + "\n";
+                }else if(toke ==propiedades){
+                    resultado += "propiedades " + lexico.lexeme + "\n";
+                }else if(toke ==metodos){
+                    resultado += "metodos " + lexico.lexeme + "\n";
                 }
                 else if(toke == inte|| toke==real ){
                     resultado += "numero " + lexico.lexeme + "\n";

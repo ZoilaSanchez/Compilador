@@ -39,13 +39,16 @@ NoNum = [a-zA-Z0-9_.]+{simbolos}*
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables=({letrasmi}+{signo}*{num}*)({ace}|{letrasma}|{letrasmi}+|{num})*
 clases="clase"[\u0020]{may}+{letrasmi}*
-insta= {letrasmi}+"."{letrasmi}+
+insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)
 noclases=clases={num}*{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}*{noace2}{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("({tipos}[\u0020]+{variables})(","[\u0020]+{tipos}[\u0020]+{variables})*")"|"("")")
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
+pro="propiedades"[\u0020]("privadas:"|"publicas:")
+me="metodos"[\u0020]("privados:"|"publicos:")
+tipovar={tipos}[\u0020]{variables}
 %{
     public String lexeme;
     public int linea;
@@ -55,6 +58,12 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return tipo;}
+{pro}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return propiedades;}
+{me}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return metodos;}
 {retu}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return retornar;}

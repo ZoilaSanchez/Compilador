@@ -36,7 +36,9 @@ public enum Tokens {
     boleano,
     fin_de_linea,
     retornar,
-    instancias
+    instancias,
+    propiedades,
+    metodos
     
     
 }
