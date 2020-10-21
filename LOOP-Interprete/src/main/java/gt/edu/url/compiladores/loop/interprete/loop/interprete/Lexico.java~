@@ -1204,7 +1204,7 @@ class Lexico {
             // fall through
           case 33: break;
           case 7:
-            { lexeme=yytext();  return inte;
+            { lexeme=yytext();  return entero;
             }
             // fall through
           case 34: break;

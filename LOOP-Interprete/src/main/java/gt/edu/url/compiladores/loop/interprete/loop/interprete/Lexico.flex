@@ -50,12 +50,19 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 pro="propiedades"[\u0020]("privadas:"|"publicas:")
 me="metodos"[\u0020]("privados:"|"publicos:")
 tipovar={tipos}[\u0020]{variables}
+palabrasReservadas = ("clase"|"propiedades"|"metodos"|"cadena"|"publicos"|"entero"
+    |"si"|"entonces"|"sino"|"devolver"|"privadas"|"constructor"|"escribir"|"leer"
+    |"devolver"|"real"|"boleano"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
+    |"eliminar"|"extiende"|"incluir")
+
 %{
     public String lexeme;
     public int linea;
 %}
 %%
 
+
+{palabrasReservadas}  {System.out.println("palabra reservada " + yytext());}
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return tipo;}
