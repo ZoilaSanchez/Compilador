@@ -35,7 +35,7 @@ real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
 Cadena =("cadena")*[\u0020]\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
-NoNum = [a-zA-Z0-9_.]+{simbolos}*
+NoNum = [a-zA-Z0-9_.]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
 clases="clase"[\u0020]{may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("({num}*|{variables}*)*")")*
@@ -128,4 +128,4 @@ tipovar={tipos}[\u0020]{variables}
 {nocomentarios}         {lexeme=yytext();
                         System.out.println("Error verificar "+yytext());
                         return nocom;}
-.                       {}
+.                       { System.out.println("Error verificar"+yytext());}

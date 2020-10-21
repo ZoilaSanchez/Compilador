@@ -1,20 +1,73 @@
 |------------------------------------------ LISTADO DE TOKENS ----------------------------------------|
 |-----------------+-----------------------------+-----------------------------------------------------|
 |------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------|
-| 1               | comentario                  | // los valores                                      |
-| 2               | inte                        | 12321                                               |
-| 3               | clases                      | CASA                                                |
-| 4               | clases                      | Lenguaje                                            |
-| 5               | clases                      | Impresion                                           |
-| 6               | identificador               | cass                                                |
-| 7               | identificador               | mm                                                  |
-| 8               | operadores                  | ++                                                  |
-| 9               | operadores                  | --                                                  |
-| 10              | funcion                     | entero lenguaje                                     |
-| 11              | real                        | 12.3342                                             |
-| 12              | boleano                     | verdadero                                           |
-| 13              | boleano                     | falso                                               |
-| 14              | cadena                      | "Solo se que no se nada "                           |
-| 15              | fin_de_linea                | ;                                                   |
-| 16              | comentarios                 | /* esto es un comentario */                         |
+| 1               | comentarios                 | /* area de inclusion de bibliotecas externas */                        |
+| 2               | comentario                  | // ninguna libreria que cargar                        |
+| 3               | comentarios                 | /* area de declaracion de clases */                        |
+| 4               | clases                      | clase Impar                                         |
+| 5               | propiedades                 | propiedades privadas:                               |
+| 6               | propiedades                 | propiedades publicas:                               |
+| 7               | cadena                      | cadena "hola"                                       |
+| 8               | metodos                     | metodos publicos:                                   |
+| 9               | funcion                     | entero esImpar(entero numero)                        |
+| 10              | identificador               | si                                                  |
+| 11              | identificador               | numero                                              |
+| 12              | operadores                  | %                                                   |
+| 13              | inte                        | 2                                                   |
+| 14              | identificador               | entonces                                            |
+| 15              | retornar                    | devolver 1                                          |
+| 16              | fin_de_linea                | ;                                                   |
+| 17              | identificador               | sino                                                |
+| 18              | retornar                    | devolver 0                                          |
+| 19              | fin_de_linea                | ;                                                   |
+| 20              | metodos                     | metodos privados:                                   |
+| 21              | clases                      | clase HolaMundo                                     |
+| 22              | propiedades                 | propiedades privadas:                               |
+| 23              | tipo                        | entero                                              |
+| 24              | identificador               | a                                                   |
+| 25              | cadena                      | cadena "nombre"                                     |
+| 26              | clases                      | Impar                                               |
+| 27              | identificador               | i                                                   |
+| 28              | metodos                     | metodos publicos:                                   |
+| 29              | identificador               | constructor                                         |
+| 30              | identificador               | i                                                   |
+| 31              | operadores                  | =                                                   |
+| 32              | identificador               | nuevo                                               |
+| 33              | clases                      | Impar()                                             |
+| 34              | identificador               | a                                                   |
+| 35              | operadores                  | =                                                   |
+| 36              | inte                        | 0                                                   |
+| 37              | identificador               | nombre                                              |
+| 38              | operadores                  | =                                                   |
+| 39              | cadena                      |  ""                                                 |
+| 40              | comentarios                 | /* area de declaracion de funcion de carga inicial */                        |
+| 41              | tipo                        | entero                                              |
+| 42              | clases                      | Principal()                                         |
+| 43              | clases                      | HolaMundo                                           |
+| 44              | identificador               | hola                                                |
+| 45              | operadores                  | =                                                   |
+| 46              | instancias                  | instanciar HolaMundo()                              |
+| 47              | instancias                  | hola.inicio()                                       |
+| 48              | retornar                    | devolver 0                                          |
+| 49              | identificador               | desde                                               |
+| 50              | identificador               | i                                                   |
+| 51              | identificador               | mientras                                            |
+| 52              | identificador               | i                                                   |
+| 53              | operadores                  | >                                                   |
+| 54              | inte                        | 5                                                   |
+| 55              | identificador               | decrementar                                         |
+| 56              | inte                        | 2                                                   |
+| 57              | identificador               | hacer                                               |
+| 58              | entrada                     | escribir                                            |
+| 59              | identificador               | i                                                   |
+| 60              | identificador               | hacer                                               |
+| 61              | identificador               | a                                                   |
+| 62              | operadores                  | =                                                   |
+| 63              | inte                        | 5                                                   |
+| 64              | operadores                  | +                                                   |
+| 65              | identificador               | b                                                   |
+| 66              | identificador               | mientras                                            |
+| 67              | identificador               | a                                                   |
+| 68              | operadores                  | <                                                   |
+| 69              | inte                        | 10                                                  |
 |-----------------+-----------------------------+-----------------------------------------------------|
