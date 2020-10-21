@@ -10,18 +10,21 @@ import static gt.edu.url.compiladores.loop.interprete.loop.interprete.Tokens.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static org.apache.tools.ant.util.FileUtils.close;
 
 /**
  *
@@ -34,7 +37,7 @@ public class LOOPInterfaz extends javax.swing.JFrame {
      */
     GenerarTXT txt=new GenerarTXT();
     GenerarTXT Tok=new GenerarTXT();
-    public LOOPInterfaz(String nombre) {
+    public LOOPInterfaz(String nombre) throws IOException {
         initComponents();
         leerArchivo(nombre);
         this.archivo_txt=nombre;
@@ -282,7 +285,8 @@ ArrayListTokens aux=new ArrayListTokens();
 
     public void leer(String nombre_archivo) throws IOException{
                
-        Reader lector = new BufferedReader(new FileReader(archivo_txt));
+        Reader lector = new BufferedReader(new FileReader(archivo_txt,Charset.forName("UTF-8")));
+        
         Lexico lexico= new Lexico(lector);
         resultado="";
         contador=0;
@@ -423,9 +427,13 @@ String ruta;
 
         byte decision = (byte) FileChooser.showOpenDialog(null);      
         if (decision == 0) {
-           ruta = FileChooser.getSelectedFile().toString();
-            System.out.println(ruta);
-            leerArchivo(ruta);
+            try {
+                ruta = FileChooser.getSelectedFile().toString();
+                System.out.println(ruta);
+                leerArchivo(ruta);
+            } catch (IOException ex) {
+                Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_miAbrirArchivoActionPerformed
 String nm="";
@@ -508,13 +516,13 @@ public void crear(){
     private javax.swing.JTextArea txaSalida;
     // End of variables declaration//GEN-END:variables
 
-private void leerArchivo(String archivo)
+private void leerArchivo(String archivo) throws IOException
     {
         
         FileReader file = null;
         try {
             String cadena;
-            file = new FileReader(archivo);
+            file = new FileReader(archivo,Charset.forName("UTF-8"));
             BufferedReader breader = new BufferedReader(file);
             try {
                 while((cadena = breader.readLine())!= null)
