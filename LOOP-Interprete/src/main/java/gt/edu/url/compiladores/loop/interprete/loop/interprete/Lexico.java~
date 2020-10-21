@@ -1173,13 +1173,13 @@ class Lexico {
             // fall through
           case 28: break;
           case 2:
-            { System.out.println("Error verificar gernera "+yytext());
+            { System.out.println("Error verificar"+yytext());
             }
             // fall through
           case 29: break;
           case 3:
             { lexeme=yytext();
-                        System.out.println("Error verificar varia "+yytext());
+                        System.out.println("Error verificar "+yytext());
                         return No;
             }
             // fall through
@@ -1198,7 +1198,7 @@ class Lexico {
           case 32: break;
           case 6:
             { lexeme=yytext();  
-                        System.out.println("Error verificar numero "+yytext());
+                        System.out.println("Error verificar "+yytext());
                         return nonu;
             }
             // fall through
@@ -1228,7 +1228,7 @@ class Lexico {
           case 37: break;
           case 11:
             { lexeme=yytext();
-                        System.out.println("Error verificar comentario "+yytext());
+                        System.out.println("Error verificar "+yytext());
                         return nocom;
             }
             // fall through
@@ -1256,7 +1256,7 @@ class Lexico {
           case 42: break;
           case 16:
             { lexeme=yytext();  
-                        System.out.println("Error verificar clases "+yytext());
+                        System.out.println("Error verificar "+yytext());
                         return noclas;
             }
             // fall through

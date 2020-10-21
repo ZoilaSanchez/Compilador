@@ -22,7 +22,7 @@ public enum Tokens {
     finLinea,
     entrada,
     salida,
-    inte,
+    entero,
     comentario,
     comentarios,
     cadena,

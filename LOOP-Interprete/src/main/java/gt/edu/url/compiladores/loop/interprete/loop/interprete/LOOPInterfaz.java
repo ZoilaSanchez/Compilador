@@ -347,7 +347,7 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "funcion main " + lexico.lexeme + "\n";
                 }
                 
-                else if(toke == inte|| toke==real ){
+                else if(toke == entero|| toke==real ){
                     resultado += "numero " + lexico.lexeme + "\n";
                   
                 }else if(toke == comentario|| toke==comentarios){
@@ -377,17 +377,17 @@ ArrayListTokens aux=new ArrayListTokens();
 }
     
 public  String mostrar(){
-    generadortokens+=String.format("|------------------------------------------ LISTADO DE TOKENS ----------------------------------------|%n");
-    generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------|%n");
-    generadortokens+=String.format("|------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------|%n");
+    generadortokens+=String.format("|------------------------------------------ LISTADO DE TOKENS ----------------------------------------------------------------------------|%n");
+    generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------------------------------------------|%n");
+    generadortokens+=String.format("|------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------------------------------------------|%n");
     for (int i = 0; i < lista.size(); i++) {
-        String f1 = "| "+lista.get(i).getId();
+        String f1 = " "+lista.get(i).getId();
         String f2 = "| "+lista.get(i).getTipo_token();
         String f3 = "| "+lista.get(i).getNombre_token();
-        String f5 = "|";
-        generadortokens+=String.format("%-17s %-29s %-30s %24s%n",f1,f2,f3,f5);
+        generadortokens+=String.format("%-17s %-29s %-30s%n",f1,f2,f3);
+        generadortokens+=String.format("-------------------------------------------------------------------------------------------------------------------------------------------%n");
     }
-        generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------|%n");
+    generadortokens+=String.format("|-----------------+-----------------------------+-----------------------------------------------------------------------------------------|%n");
         System.out.println(generadortokens);
         return generadortokens;
 }

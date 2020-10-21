@@ -108,7 +108,7 @@ tipovar={tipos}[\u0020]{variables}
 
 {comentario}           {lexeme=yytext();  return comentario;}
 {comentarios}          {lexeme=yytext();  return comentarios;}
-{enter}               {lexeme=yytext();  return inte;}
+{enter}               {lexeme=yytext();  return entero;}
 {real}                 {lexeme=yytext();  return real;}
 {nulo}                 {}
 {Cadena}               {lexeme=yytext();  return cadena;}
