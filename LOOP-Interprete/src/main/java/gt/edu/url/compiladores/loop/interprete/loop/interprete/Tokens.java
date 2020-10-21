@@ -38,7 +38,8 @@ public enum Tokens {
     retornar,
     instancias,
     propiedades,
-    metodos
+    metodos,
+    principal
     
     
 }

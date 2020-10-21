@@ -343,7 +343,10 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "propiedades " + lexico.lexeme + "\n";
                 }else if(toke ==metodos){
                     resultado += "metodos " + lexico.lexeme + "\n";
+                }else if(toke ==principal){
+                    resultado += "funcion main " + lexico.lexeme + "\n";
                 }
+                
                 else if(toke == inte|| toke==real ){
                     resultado += "numero " + lexico.lexeme + "\n";
                   

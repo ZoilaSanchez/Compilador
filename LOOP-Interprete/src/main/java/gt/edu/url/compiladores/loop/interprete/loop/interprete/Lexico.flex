@@ -26,7 +26,7 @@ comentario = [\u002F][\u002F]([\u0020]*|{num}*|{ace}|{letrasma}*|{letrasmi}*|{no
 comn=[\u002A]({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}([\u0020]*|{num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}{comfin}*
+comentarios = {comini}([\u0020]*|{num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*[\u0020]*{comfin}{comfin}*
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
 retu="devolver"[\u0020]*{num}
 nocome=[\u002F]
@@ -34,14 +34,15 @@ enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
-Cadena ="cadena"[\u0020]\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
+Cadena =("cadena")*[\u0020]\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
 NoNum = [a-zA-Z0-9_.]+{simbolos}*
 tipos=("entero"|"boolean"|"real"|"cadena")
-variables=({letrasmi}+{signo}*{num}*)({ace}|{letrasma}|{letrasmi}+|{num})*
-clases="clase"[\u0020]{may}+{letrasmi}*
-insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)
+variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
+clases="clase"[\u0020]{may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("({num}*|{variables}*)*")")*
+menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
+insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
 noclases=clases={num}*{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
-nova={num}*{noace2}{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
+nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("({tipos}[\u0020]+{variables})(","[\u0020]+{tipos}[\u0020]+{variables})*")"|"("")")
@@ -58,6 +59,9 @@ tipovar={tipos}[\u0020]{variables}
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return tipo;}
+{menin}                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return principal;}
 {pro}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return propiedades;}
@@ -124,5 +128,4 @@ tipovar={tipos}[\u0020]{variables}
 {nocomentarios}         {lexeme=yytext();
                         System.out.println("Error verificar "+yytext());
                         return nocom;}
-.                       {System.out.println("Error verificar "+yytext());
-                        return error;}
+.                       {}
