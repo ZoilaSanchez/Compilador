@@ -28,31 +28,31 @@ comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
 comentarios = {comini}([\u0020]*|{num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*[\u0020]*{comfin}{comfin}*
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
-retu="devolver"[\u0020]*{num}
+retu="devolver"[\u0020]*
 nocome=[\u002F]
 enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
-Cadena =("cadena")*[\u0020]\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
+Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
 NoNum = [a-zA-Z0-9_.]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
-clases="clase"[\u0020]{may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("({num}*|{variables}*)*")")*
+clases={may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("")")*
 menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
 insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
 noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
-fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("({tipos}[\u0020]+{variables})(","[\u0020]+{tipos}[\u0020]+{variables})*")"|"("")")
+fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
-pro="propiedades"[\u0020]("privadas:"|"publicas:")
-me="metodos"[\u0020]("privados:"|"publicos:")
-tipovar={tipos}[\u0020]{variables}
-palabrasReservadas = ("clase"|"propiedades"|"metodos"|"cadena"|"publicos"|"entero"
-    |"si"|"entonces"|"sino"|"devolver"|"privadas"|"constructor"|"escribir"|"leer"
-    |"devolver"|"real"|"boleano"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
+pro=("privadas:"|"publicas:")
+me=("privados:"|"publicos:")
+
+palabrasReservadas = ("clase"|"propiedades"|"metodos"|"entero"
+    |"si"|"entonces"|"sino"|"devolver"|"constructor"|"escribir"|"leer"
+    |"devolver"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
     |"eliminar"|"extiende"|"incluir")
 
 %{
@@ -62,7 +62,10 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"|"cadena"|"publicos"|"enter
 %%
 
 
-{palabrasReservadas}  {System.out.println("palabra reservada " + yytext());}
+{palabrasReservadas}    {System.out.println("palabra reservada " + yytext());
+                        lexeme=yytext(); 
+                        return palabras_reservadas;}
+
 {tipos}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return tipo;}

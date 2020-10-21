@@ -39,7 +39,8 @@ public enum Tokens {
     instancias,
     propiedades,
     metodos,
-    principal
+    principal,
+    palabras_reservadas
     
     
 }
