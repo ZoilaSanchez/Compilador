@@ -2,11 +2,18 @@
 |-----------------+-----------------------------+-----------------------------------------------------|
 |------- No. -----+------------ Tipo -----------+------------------------ Valor ----------------------|
 | 1               | comentario                  | // los valores                                      |
-| 2               | entero                      | 12321                                               |
+| 2               | inte                        | 12321                                               |
 | 3               | clases                      | CASA                                                |
 | 4               | clases                      | Lenguaje                                            |
 | 5               | clases                      | Impresion                                           |
 | 6               | identificador               | cass                                                |
 | 7               | identificador               | mm                                                  |
-| 8               | operadores                  | +                                                   |
+| 8               | operadores                  | ++                                                  |
+| 9               | operadores                  | --                                                  |
+| 10              | funcion                     | entero lenguaje                                     |
+| 11              | real                        | 12.3342                                             |
+| 12              | boleano                     | verdadero                                           |
+| 13              | boleano                     | falso                                               |
+| 14              | cadena                      | "Solo se que no se nada "                           |
+| 15              | fin_de_linea                | ;                                                   |
 |-----------------+-----------------------------+-----------------------------------------------------|

@@ -327,7 +327,7 @@ ArrayListTokens aux=new ArrayListTokens();
                 } else if (toke == espacioBlanco){
                     resultado += "Espacio en Blanco " + lexico.lexeme + "\n";
 
-                } else if (toke == finLinea){
+                } else if (toke == finLinea|| toke==fin_de_linea){
                     resultado += "Fin de línea " + lexico.lexeme + "\n";
                      
                 }else if(toke ==entrada){
@@ -335,7 +335,7 @@ ArrayListTokens aux=new ArrayListTokens();
                             
                 } else if(toke ==salida){
                     resultado += "Salida " + lexico.lexeme + "\n";
-                } else if(toke == entero|| toke==real ){
+                } else if(toke == inte|| toke==real ){
                     resultado += "numero " + lexico.lexeme + "\n";
                   
                 }else if(toke == comentario|| toke==comentarios){
@@ -346,6 +346,8 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "cadena " + lexico.lexeme + "\n";
                 }else if(toke == funcion){
                     resultado += "funcion " + lexico.lexeme + "\n";
+                }else if(toke == boleano){
+                    resultado += "boleano " + lexico.lexeme + "\n";
                 }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
                 }         

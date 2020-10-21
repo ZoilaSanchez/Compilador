@@ -22,7 +22,7 @@ public enum Tokens {
     finLinea,
     entrada,
     salida,
-    entero,
+    inte,
     comentario,
     comentarios,
     cadena,
@@ -32,7 +32,9 @@ public enum Tokens {
     clases,
     noclas,
     operador_Logico,
-    funcion
+    funcion,
+    boleano,
+    fin_de_linea
     
     
 }

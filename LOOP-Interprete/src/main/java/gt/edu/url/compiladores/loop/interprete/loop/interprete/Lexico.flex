@@ -29,9 +29,9 @@ comfin=[\u002A][\u002F]
 comentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*{comfin}{comfin}*
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
 nocome=[\u002F]
-entero = "-"?[0-9]+
+enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
-boleano = "verdadero"|"falso"
+boleanos = "verdadero"|"falso"
 nulo = "nulo"
 Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
 NoNum = [a-zA-Z0-9_.]+{simbolos}*
@@ -60,12 +60,16 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 "leer"                  {lexeme=yytext(); 
                         return salida;}
 
+{boleanos}              {lexeme=yytext();  
+                       return boleano;}
+
 {variables}             {lexeme=yytext(); 
                         return identificador;}
 
 ","                     {lexeme=yytext(); 
                         return opcional;}
-
+";"                     {lexeme=yytext(); 
+                        return fin_de_linea;}
 {opera}                  {lexeme=yytext(); 
                          return operadores;}
 {operalo}                {lexeme=yytext(); 
@@ -84,9 +88,8 @@ estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}
 
 {comentario}           {lexeme=yytext();  return comentario;}
 {comentarios}          {lexeme=yytext();  return comentarios;}
-{entero}               {lexeme=yytext();  return entero;}
+{enter}               {lexeme=yytext();  return inte;}
 {real}                 {lexeme=yytext();  return real;}
-{boleano}              {lexeme=yytext();  return boleano;}
 {nulo}                 {}
 {Cadena}               {lexeme=yytext();  return cadena;}
 

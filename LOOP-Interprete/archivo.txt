@@ -5,4 +5,11 @@ Lenguaje
 Impresion
 cass
 mm
-+
+++
+--
+entero lenguaje
+12.3342
+verdadero
+falso
+"Solo se que no se nada "
+;
