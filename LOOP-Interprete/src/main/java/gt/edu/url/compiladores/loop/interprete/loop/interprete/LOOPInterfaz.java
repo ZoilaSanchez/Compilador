@@ -349,6 +349,8 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "metodos " + lexico.lexeme + "\n";
                 }else if(toke ==principal){
                     resultado += "funcion main " + lexico.lexeme + "\n";
+                }else if(toke ==palabras_reservadas){
+                    resultado += "palabras_reservadas " + lexico.lexeme + "\n";
                 }
                 
                 else if(toke == entero|| toke==real ){
@@ -364,8 +366,6 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "funcion " + lexico.lexeme + "\n";
                 }else if(toke == boleano){
                     resultado += "boleano " + lexico.lexeme + "\n";
-                }else if(toke == palabras_reservadas){
-                    resultado += "palabras_reservadas " + lexico.lexeme + "\n";
                 }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas||toke==nocom){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
                 }         

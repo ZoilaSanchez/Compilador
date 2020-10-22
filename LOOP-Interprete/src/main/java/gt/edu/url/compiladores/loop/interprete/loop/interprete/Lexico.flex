@@ -64,8 +64,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 %%
 
 
-{palabrasReservadas}    {System.out.println("palabra reservada " + yytext());
-                        lexeme=yytext(); 
+{palabrasReservadas}    {lexeme=yytext(); 
                         return palabras_reservadas;}
 
 {tipos}                 {lexeme=yytext(); 
@@ -117,6 +116,8 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {TABULADORES}           {}
 {FINLINEA}              {}
 {ESPACIOENBLANCO}       {}
+{parena}       {}
+{parenb}       {}
 
 {comentario}           {lexeme=yytext();  return comentario;}
 {comentarios}          {lexeme=yytext();  return comentarios;}
