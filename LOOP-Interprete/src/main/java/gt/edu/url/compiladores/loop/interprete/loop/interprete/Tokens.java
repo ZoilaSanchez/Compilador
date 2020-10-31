@@ -40,7 +40,12 @@ public enum Tokens {
     propiedades,
     metodos,
     principal,
-    palabras_reservadas
-    
+    palabras_reservadas,
+
+
+coma,
+
+para,
+parb,
     
 }

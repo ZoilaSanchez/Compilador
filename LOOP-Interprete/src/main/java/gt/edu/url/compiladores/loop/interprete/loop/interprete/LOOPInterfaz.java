@@ -21,6 +21,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java_cup.runtime.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -282,12 +283,12 @@ int cont=1;
 ArrayList<ArrayListTokens> lista = new ArrayList();
 ArrayListTokens aux=new ArrayListTokens();
 // terminar ArrayListTokens
-
+ Lexico lexico;
     public void leer(String nombre_archivo) throws IOException{
                
         Reader lector = new BufferedReader(new FileReader(archivo_txt,Charset.forName("UTF-8")));
         
-        Lexico lexico= new Lexico(lector);
+        lexico= new Lexico(lector);
         resultado="";
         contador=0;
 
@@ -402,7 +403,6 @@ public void limpiar() throws IOException{
     cont=1;
 }
     
-    
     private void btnRunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunActionPerformed
         try {
             errores="";
@@ -412,7 +412,15 @@ public void limpiar() throws IOException{
 //            creartxt(txaCodigo.getText(), nombre_del_archivo);
             leerArchivo(archivo_txt);
             leer(archivo_txt);
+        intermedio lex = new intermedio(new FileReader(archivo_txt));// le enviamos el archvio
+        Sintactico sintactico = new Sintactico(lex);
+        sintactico.parse();
+            
+
+    
         } catch (IOException ex) {
+            Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
             Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
        
