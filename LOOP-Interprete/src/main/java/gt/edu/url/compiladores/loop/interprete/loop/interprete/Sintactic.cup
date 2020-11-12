@@ -63,10 +63,10 @@ Msalida::= salida libre identificador finales;
 /**
  * Funciones 
  **/
-FUNCIONESS::= tipo_ent libre identificador  para PARAMETROSE parb salto CUERPOF finales
-            |  tipo_cadena  libre identificador  para PARAMETROSC salto CUERPOF 
-            | tipo_bol libre identificador  para PARAMETROSB parb salto CUERPOF 
-            | tipo_real libre identificador  para PARAMETROSR parb salto CUERPOF ;
+FUNCIONESS::= tipo_ent libre identificador  para PARAMETROSE parb CUERPOF finales
+            |  tipo_cadena  libre identificador  para PARAMETROSC  CUERPOF finales
+            | tipo_bol libre identificador  para PARAMETROSB parb  CUERPOF finales
+            | tipo_real libre identificador  para PARAMETROSR parb  CUERPOF finales ;
  
 PARAMETROSE::= tipo_ent libre identificador coma PARAMETROSE
                 | tipo_ent libre identificador;
@@ -80,7 +80,7 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= retornar libre identificador ;
+CUERPOF::= finales retornar libre identificador ;
 
 
 

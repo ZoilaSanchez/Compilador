@@ -105,15 +105,15 @@ class intermedio implements java_cup.runtime.Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\1\2\1\1\1\3\1\4\1\5\3\6\1\7"+
-    "\1\10\1\11\2\7\1\12\1\7\1\13\1\7\1\14"+
-    "\1\15\1\16\4\13\10\17\1\3\1\6\1\4\1\6"+
-    "\1\0\1\20\2\6\1\14\1\13\1\21\1\22\1\6"+
-    "\2\13\1\6\2\13\1\23\1\13\14\17\1\20\2\6"+
-    "\3\0\1\6\1\13\1\24\2\13\13\17\1\24\1\25"+
-    "\1\21\1\6\1\13\5\17\1\26\1\27\1\17\1\25"+
-    "\1\13\4\17\1\30\1\17\1\13\1\17\1\31\1\32"+
-    "\2\17\1\13\1\33\2\17\1\13\1\34\1\35";
+    "\1\1\1\2\1\1\2\3\1\4\3\5\1\6\1\7"+
+    "\1\10\2\6\1\11\1\6\1\12\1\6\1\13\1\14"+
+    "\1\15\4\12\10\16\1\3\1\5\1\17\1\5\1\0"+
+    "\1\20\2\5\1\13\1\12\1\21\1\22\1\5\2\12"+
+    "\1\5\2\12\1\23\1\12\14\16\1\20\2\5\3\0"+
+    "\1\5\1\12\1\24\2\12\13\16\1\24\1\25\1\21"+
+    "\1\5\1\12\5\16\1\26\1\27\1\16\1\25\1\12"+
+    "\4\16\1\30\1\16\1\12\1\16\1\31\1\32\2\16"+
+    "\1\12\1\33\2\16\1\12\1\34\1\35";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[121];
@@ -947,70 +947,70 @@ class intermedio implements java_cup.runtime.Scanner {
             // fall through
           case 32: break;
           case 4:
-            { return new Symbol(sym.newline,yytext());
+            { return new Symbol(sym.libre,yytext());
             }
             // fall through
           case 33: break;
           case 5:
-            { return new Symbol(sym.libre,yytext());
-            }
-            // fall through
-          case 34: break;
-          case 6:
             { lexeme=yytext();
                         return new Symbol(sym.error);
             }
             // fall through
-          case 35: break;
-          case 7:
+          case 34: break;
+          case 6:
             { lexeme=yytext(); 
                           return new Symbol(sym.operadores,yytext());
             }
             // fall through
+          case 35: break;
+          case 7:
+            { return new Symbol(sym.para,yytext());
+            }
+            // fall through
           case 36: break;
           case 8:
-            { return new Symbol(sym.para,yytext());
+            { return new Symbol(sym.parb,yytext());
             }
             // fall through
           case 37: break;
           case 9:
-            { return new Symbol(sym.parb,yytext());
-            }
-            // fall through
-          case 38: break;
-          case 10:
             { lexeme=yytext(); 
                         return new Symbol(sym.coma,yytext());
             }
             // fall through
-          case 39: break;
-          case 11:
+          case 38: break;
+          case 10:
             { lexeme=yytext();  
                         System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);
             }
             // fall through
+          case 39: break;
+          case 11:
+            { lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));
+            }
+            // fall through
           case 40: break;
           case 12:
-            { lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));
+            { lexeme=yytext(); 
+                         return  new Symbol(sym.fin_de_linea,yytext());
             }
             // fall through
           case 41: break;
           case 13:
             { lexeme=yytext(); 
-                         return  new Symbol(sym.fin_de_linea,yytext());
+                        return new Symbol(sym.asignacion,yytext());
             }
             // fall through
           case 42: break;
           case 14:
             { lexeme=yytext(); 
-                        return new Symbol(sym.asignacion,yytext());
+                         return new Symbol(sym.identificador,yytext());
             }
             // fall through
           case 43: break;
           case 15:
-            { lexeme=yytext(); 
-                         return new Symbol(sym.identificador,yytext());
+            { return new Symbol(sym.newline,yytext());
             }
             // fall through
           case 44: break;

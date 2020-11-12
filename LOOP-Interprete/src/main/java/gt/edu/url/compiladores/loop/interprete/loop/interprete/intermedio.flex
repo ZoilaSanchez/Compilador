@@ -31,7 +31,7 @@ comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
 comentarios = {comini}[\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos}|{simbolos})*[\u0020]*{comfin}+
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
-retu="devolver"[\u0020]*
+retu="devolver "[\u0020]*
 nocome=[\u002F]
 enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
@@ -101,7 +101,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "metodos"                   {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.metodos,yytext());}
-"devolver"                {lexeme=yytext(); 
+"devolver "                {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.retornar,yytext());}
 

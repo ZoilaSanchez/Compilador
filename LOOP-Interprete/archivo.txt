@@ -23,4 +23,4 @@ leer ds
 
 
 entero sumar(entero a,entero b)
-    devolver a
+devolver  a
