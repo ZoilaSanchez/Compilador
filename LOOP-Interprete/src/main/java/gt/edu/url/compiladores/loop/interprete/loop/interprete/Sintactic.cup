@@ -4,10 +4,12 @@ import java_cup.runtime.Symbol;
 
 terminal Integer entero;
 terminal Double real;
-terminal principal,propiedades,
-retornar,entrada,salida,boleano,identificador,coma,fin_de_linea,operadores,operador_Logico,clases,
-funcion,para,parb,comentario,comentarios,cadena,instancias,metodos,asignacion,libre,tipo_ent,tipo_bol,
-tipo_real,tipo_cadena,newline;
+terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
+libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb;
+
+terminal principal,propiedades,metodos,retornar,operadores,operador_Logico,clases,ifs,entoncess,
+els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
+comentarios;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri;

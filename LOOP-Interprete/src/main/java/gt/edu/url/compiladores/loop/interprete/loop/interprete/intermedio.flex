@@ -71,21 +71,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
 
-{menin}                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.principal,yytext());}
-{pro}                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.propiedades,yytext());}
-{me}                    {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.metodos,yytext());}
-{retu}                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.retornar,yytext());}
-{insta}                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.instancias,yytext());}
+
 "escribir"              {lexeme=yytext(); 
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
@@ -101,14 +87,64 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                         return new Symbol(sym.asignacion,yytext());}
 ";"                     {lexeme=yytext(); 
                          return  new Symbol(sym.fin_de_linea,yytext());}
+
+//metodos funciones y palabras reservadas, comentarios
+
+
+"Principal"                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.principal,yytext());}
+"propiedades"                {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.propiedades,yytext());}
+"metodos"                   {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.metodos,yytext());}
+"devolver"                {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.retornar,yytext());}
+
 {opera}                  {lexeme=yytext(); 
                           return new Symbol(sym.operadores,yytext());}
 {operalo}                {lexeme=yytext(); 
                          return new Symbol(sym.operador_Logico,yytext());}
-{clases}                 {lexeme=yytext(); 
+"clase"                {lexeme=yytext(); 
                          return new Symbol(sym.clases,yytext());}
-{fun}                    {lexeme=yytext(); 
-                         return new Symbol(sym.funcion,yytext());}
+
+// estructura del If
+"si"                {lexeme=yytext(); 
+                         return new Symbol(sym.ifs,yytext());}
+"entonces"                {lexeme=yytext(); 
+                         return new Symbol(sym.entoncess,yytext());}
+"sino"                {lexeme=yytext(); 
+                         return new Symbol(sym.els,yytext());}
+"constructor"                {lexeme=yytext(); 
+                         return new Symbol(sym.constru,yytext());}
+// estructura de for
+
+"desde"                {lexeme=yytext(); 
+                         return new Symbol(sym.desdes,yytext());}
+"mientras"                {lexeme=yytext(); 
+                         return new Symbol(sym.whiles,yytext());}
+"incrementar"                {lexeme=yytext(); 
+                         return new Symbol(sym.sumarr,yytext());}
+"decrementar"                {lexeme=yytext(); 
+                         return new Symbol(sym.restarr,yytext());}
+"hacer"                {lexeme=yytext(); 
+                         return new Symbol(sym.haccer,yytext());}
+
+"destructor"                {lexeme=yytext(); 
+                         return new Symbol(sym.destruir,yytext());}
+"eliminar"                {lexeme=yytext(); 
+                         return new Symbol(sym.borrar,yytext());}
+"incluir"                {lexeme=yytext(); 
+                         return new Symbol(sym.paquetes,yytext());}
+//comernarios
+"*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
+{comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
+{comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
+
+
 
 
 //Quité esto porque no debería ir en el archivo de tokens
@@ -119,11 +155,9 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {parena}       {return new Symbol(sym.para,yytext());}
 {parenb}       {return new Symbol(sym.parb,yytext());}
 
-{comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
-{comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
+
 {enter}               {lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));}
 {real}                 {lexeme=yytext();  return new Symbol(sym.real,Double.parseDouble(yytext()));}
-{nulo}                 {}
 {Cadena}               {lexeme=yytext();  return new Symbol(sym.cadena,yytext());}
 
 
@@ -144,4 +178,3 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 .                       { System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);}
 <<EOF>> {return new Symbol(sym.EOF ); }
-
