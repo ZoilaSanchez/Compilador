@@ -21,7 +21,7 @@ igual="="
 coma=","
 TABULADOR = [\t]
 TABULADORES = {TABULADOR}*
-FINLINEA = [\r|\n|\r\n]
+FINLINEA = \r|\n|\r\n
 ESPACIOENBLANCO = " "
 fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
@@ -118,7 +118,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 //Quité esto porque no debería ir en el archivo de tokens
 {TABULADOR}             {}
 {TABULADORES}           {}
-{FINLINEA}              {}
+{FINLINEA}              {return new Symbol(sym.newline,yytext());}
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}
 {parena}       {return new Symbol(sym.para,yytext());}
 {parenb}       {return new Symbol(sym.parb,yytext());}
@@ -147,4 +147,5 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                         return new Symbol(sym.error);}
 .                       { System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);}
+<<EOF>> {return new Symbol(sym.EOF ); }
 

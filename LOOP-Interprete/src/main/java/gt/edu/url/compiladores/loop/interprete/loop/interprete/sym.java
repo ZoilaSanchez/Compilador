@@ -27,6 +27,7 @@ public interface sym {
   public static final int real = 3;
   public static final int EOF = 0;
   public static final int retornar = 7;
+  public static final int newline = 31;
   public static final int error = 1;
   public static final int clases = 16;
   public static final int comentario = 20;
@@ -70,7 +71,8 @@ public interface sym {
   "tipo_ent",
   "tipo_bol",
   "tipo_real",
-  "tipo_cadena"
+  "tipo_cadena",
+  "newline"
   };
 }
 

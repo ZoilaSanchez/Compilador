@@ -1,20 +1,25 @@
 package gt.edu.url.compiladores.loop.interprete.loop.interprete;
+import java_cup.runtime.Symbol;
+
 
 terminal Integer entero,real;
 terminal palabras_reservadas,principal,propiedades,
 retornar,entrada,salida,boleano,identificador,coma,fin_de_linea,operadores,operador_Logico,clases,
 funcion,para,parb,comentario,comentarios,cadena,instancias,metodos,asignacion,libre,tipo_ent,tipo_bol,
-tipo_real,tipo_cadena;
+tipo_real,tipo_cadena,newline;
 
 non terminal S,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE;
 
-S ::=DECENTERO;
+S ::=   DECLARACION S|DECLARACION
+        ;
+DECLARACION ::= DECENTERO|DECCADENA |   DECBOLEAN | DECLAREAL ;
 
-DECENTERO ::= tipo_ent libre VARSECUE ;
-DECCADENA ::= tipo_cadena libre VARSECUE ;
-DECBOLEAN ::= tipo_bol libre VARSECUE ;
-DECLAREAL ::= tipo_real libre VARSECUE ;
+DECENTERO ::= tipo_ent libre VARSECUE newline;
+DECCADENA ::= tipo_cadena libre VARSECUE newline;
+DECBOLEAN ::= tipo_bol libre VARSECUE newline;
+DECLAREAL ::= tipo_real libre VARSECUE newline ;
 VARSECUE  ::= identificador coma VARSECUE | identificador;
+
 
 
 

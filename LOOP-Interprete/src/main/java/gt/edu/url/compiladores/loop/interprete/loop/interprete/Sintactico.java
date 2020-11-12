@@ -5,6 +5,7 @@
 
 package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 
+import java_cup.runtime.Symbol;
 import java_cup.runtime.XMLElement;
 
 /** CUP v0.11b 20160615 (GIT 4ac7450) generated parser.
@@ -30,9 +31,11 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\010\000\002\002\003\000\002\002\004\000\002\004" +
-    "\005\000\002\005\005\000\002\006\005\000\002\007\005" +
-    "\000\002\010\005\000\002\010\003" });
+    "\000\015\000\002\002\004\000\002\002\004\000\002\002" +
+    "\003\000\002\003\003\000\002\003\003\000\002\003\003" +
+    "\000\002\003\003\000\002\004\006\000\002\005\006\000" +
+    "\002\006\006\000\002\007\006\000\002\010\005\000\002" +
+    "\010\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -40,11 +43,26 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\012\000\004\035\005\001\002\000\004\002\014\001" +
-    "\002\000\004\034\007\001\002\000\004\002\001\001\002" +
-    "\000\004\015\010\001\002\000\006\002\ufffa\016\012\001" +
-    "\002\000\004\002\uffff\001\002\000\004\015\010\001\002" +
-    "\000\004\002\ufffb\001\002\000\004\002\000\001\002" });
+    "\000\034\000\012\035\013\036\005\037\012\040\004\001" +
+    "\002\000\004\034\034\001\002\000\004\034\031\001\002" +
+    "\000\014\002\uffff\035\013\036\005\037\012\040\004\001" +
+    "\002\000\004\002\027\001\002\000\014\002\ufffd\035\ufffd" +
+    "\036\ufffd\037\ufffd\040\ufffd\001\002\000\014\002\ufffb\035" +
+    "\ufffb\036\ufffb\037\ufffb\040\ufffb\001\002\000\004\034\024" +
+    "\001\002\000\004\034\016\001\002\000\014\002\ufffe\035" +
+    "\ufffe\036\ufffe\037\ufffe\040\ufffe\001\002\000\014\002\ufffc" +
+    "\035\ufffc\036\ufffc\037\ufffc\040\ufffc\001\002\000\004\015" +
+    "\017\001\002\000\006\016\022\041\ufff5\001\002\000\004" +
+    "\041\021\001\002\000\014\002\ufffa\035\ufffa\036\ufffa\037" +
+    "\ufffa\040\ufffa\001\002\000\004\015\017\001\002\000\004" +
+    "\041\ufff6\001\002\000\004\015\017\001\002\000\004\041" +
+    "\026\001\002\000\014\002\ufff7\035\ufff7\036\ufff7\037\ufff7" +
+    "\040\ufff7\001\002\000\004\002\000\001\002\000\004\002" +
+    "\001\001\002\000\004\015\017\001\002\000\004\041\033" +
+    "\001\002\000\014\002\ufff8\035\ufff8\036\ufff8\037\ufff8\040" +
+    "\ufff8\001\002\000\004\015\017\001\002\000\004\041\036" +
+    "\001\002\000\014\002\ufff9\035\ufff9\036\ufff9\037\ufff9\040" +
+    "\ufff9\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -52,10 +70,18 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\012\000\006\002\003\004\005\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\004\010\010" +
+    "\000\034\000\016\002\006\003\005\004\013\005\007\006" +
+    "\014\007\010\001\001\000\002\001\001\000\002\001\001" +
+    "\000\016\002\027\003\005\004\013\005\007\006\014\007" +
+    "\010\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\010\017\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\004\010" +
-    "\012\001\001\000\002\001\001\000\002\001\001" });
+    "\022\001\001\000\002\001\001\000\004\010\024\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\002\001\001\000\004\010\031\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\010\034\001\001\000\002\001" +
+    "\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -118,11 +144,11 @@ class CUP$Sintactico$actions {
       switch (CUP$Sintactico$act_num)
         {
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 0: // S ::= DECENTERO 
+          case 0: // S ::= DECLARACION S 
             {
               Object RESULT =null;
 
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("S",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("S",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
@@ -141,43 +167,88 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // DECENTERO ::= tipo_ent libre VARSECUE 
+          case 2: // S ::= DECLARACION 
             {
               Object RESULT =null;
 
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECENTERO",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("S",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // DECCADENA ::= tipo_cadena libre VARSECUE 
+          case 3: // DECLARACION ::= DECENTERO 
             {
               Object RESULT =null;
 
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECCADENA",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // DECBOLEAN ::= tipo_bol libre VARSECUE 
+          case 4: // DECLARACION ::= DECCADENA 
             {
               Object RESULT =null;
 
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECBOLEAN",4, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // DECLAREAL ::= tipo_real libre VARSECUE 
+          case 5: // DECLARACION ::= DECBOLEAN 
             {
               Object RESULT =null;
 
-              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLAREAL",5, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // VARSECUE ::= identificador coma VARSECUE 
+          case 6: // DECLARACION ::= DECLAREAL 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLARACION",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // DECENTERO ::= tipo_ent libre VARSECUE newline 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECENTERO",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // DECCADENA ::= tipo_cadena libre VARSECUE newline 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECCADENA",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // DECBOLEAN ::= tipo_bol libre VARSECUE newline 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECBOLEAN",4, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 10: // DECLAREAL ::= tipo_real libre VARSECUE newline 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLAREAL",5, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // VARSECUE ::= identificador coma VARSECUE 
             {
               Object RESULT =null;
 
@@ -186,7 +257,7 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // VARSECUE ::= identificador 
+          case 12: // VARSECUE ::= identificador 
             {
               Object RESULT =null;
 

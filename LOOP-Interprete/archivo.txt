@@ -1,1 +1,4 @@
-entero var,de,as 
+entero da,var,ss
+cadena vad
+boolean de,er,as
+real eds
