@@ -22,7 +22,7 @@ coma=","
 TABULADOR = "    "
 TABULADORES = {TABULADOR}*
 FINLINEA = \r|\n|\r\n
-saltar=[\t]
+saltar="\t"
 ESPACIOENBLANCO = " "
 fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
@@ -151,7 +151,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 //Quité esto porque no debería ir en el archivo de tokens
 {TABULADOR}             {return new Symbol(sym.tabu,yytext());}
 {TABULADORES}           {}
-{saltar}       {return new Symbol(sym.salto,yytext());}
+{saltar}                {return new Symbol(sym.salto,yytext());}
 {FINLINEA}              {return new Symbol(sym.newline,yytext());}
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}
 {parena}       {return new Symbol(sym.para,yytext());}
