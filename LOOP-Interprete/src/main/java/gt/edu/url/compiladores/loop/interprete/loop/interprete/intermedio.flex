@@ -21,7 +21,7 @@ igual="="
 coma=","
 TABULADOR = "    "
 TABULADORES = {TABULADOR}*
-FINLINEA = \r|\n|\r\n
+FINLINEA = [\r|\n|\r\n]+
 saltar="\t"
 ESPACIOENBLANCO = " "
 fin=";"

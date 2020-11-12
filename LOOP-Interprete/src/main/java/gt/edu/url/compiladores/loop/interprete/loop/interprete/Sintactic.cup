@@ -80,7 +80,7 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= nuevaslineas TABULA retornar libre identificador ;
+CUERPOF::= newline TABULA retornar libre identificador |DECLARACION;
 
 
 
@@ -91,9 +91,7 @@ CUERPOF::= nuevaslineas TABULA retornar libre identificador ;
 
 VARSECUE  ::= identificador coma VARSECUE | identificador;
 
-finales::= fin_de_linea nuevaslineas| nuevaslineas;
-
-nuevaslineas::= newline nuevaslineas | newline;
+finales::= fin_de_linea newline| newline;
 
 
 TABULA::=salto TABULA|salto;
