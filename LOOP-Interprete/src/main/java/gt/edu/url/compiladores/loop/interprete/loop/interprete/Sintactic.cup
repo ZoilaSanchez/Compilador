@@ -13,7 +13,7 @@ comentarios;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
-PARAMETROSR;
+PARAMETROSR,TABULA;
 
 S ::=   codigoli | codigoli S
         ;
@@ -80,7 +80,7 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= finales libre retornar libre identificador ;
+CUERPOF::= finales TABULA retornar libre identificador ;
 
 
 
@@ -95,3 +95,4 @@ finales::= fin_de_linea nuevaslineas| nuevaslineas;
 nuevaslineas::= newline nuevaslineas | newline;
 
 
+TABULA::=tabu TABULA|tabu;

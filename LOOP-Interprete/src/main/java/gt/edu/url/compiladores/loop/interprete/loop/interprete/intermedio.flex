@@ -19,7 +19,7 @@ signo="_"
 num=[0-9]
 igual="="
 coma=","
-TABULADOR = \u0009
+TABULADOR = "    "
 TABULADORES = {TABULADOR}*
 FINLINEA = \r|\n|\r\n
 saltar=[\r\n|\n\t]
