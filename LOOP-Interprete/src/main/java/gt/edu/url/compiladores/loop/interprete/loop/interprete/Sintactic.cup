@@ -80,7 +80,8 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= newline TABULA retornar libre identificador |DECLARACION;
+CUERPOF::= newline TABULA retornar libre identificador libre operadores libre identificador
+            |DECLARACION;
 
 
 
