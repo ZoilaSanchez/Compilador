@@ -5,18 +5,19 @@ import java_cup.runtime.Symbol;
 terminal Integer entero;
 terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
-libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb;
+libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto;
 
 terminal principal,propiedades,metodos,retornar,operadores,operador_Logico,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
 comentarios;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
-nuevaslineas,MES,Mentrada,Msalida,TIP,escri;
+nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
+PARAMETROSR;
 
 S ::=   codigoli | codigoli S
         ;
-codigoli::= DECLARACION | MES ;
+codigoli::= DECLARACION | MES |FUNCIONESS ;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -57,6 +58,31 @@ TIP::=  cadena coma libre TIP
 
 
 Msalida::= salida libre identificador finales;
+
+
+/**
+ * Funciones 
+ **/
+FUNCIONESS::= tipo_ent libre identificador  para PARAMETROSE parb salto CUERPOF finales
+            |  tipo_cadena  libre identificador  para PARAMETROSC salto CUERPOF 
+            | tipo_bol libre identificador  para PARAMETROSB parb salto CUERPOF 
+            | tipo_real libre identificador  para PARAMETROSR parb salto CUERPOF ;
+ 
+PARAMETROSE::= tipo_ent libre identificador coma PARAMETROSE
+                | tipo_ent libre identificador;
+PARAMETROSC::= tipo_cadena  libre identificador coma PARAMETROSC
+                | tipo_cadena  libre identificador;
+PARAMETROSB::=tipo_bol  libre identificador coma PARAMETROSB
+                | tipo_bol  libre identificador;
+PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
+                | tipo_real libre identificador;
+
+/**
+ * el cuerpo de las funciones aun falta agreagar parametros
+ **/
+CUERPOF::= retornar libre identificador ;
+
+
 
 /**
  * Suencias de variables y finales de lines, incluye nueva linea 

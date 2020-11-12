@@ -20,3 +20,7 @@ leer ds
 
 escribir a, b, 23, 2.5, "hola mundo";
 leer ds
+
+
+entero sumar(entero a,entero b)
+    devolver a
