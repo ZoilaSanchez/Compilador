@@ -4,15 +4,21 @@ import java_cup.runtime.Symbol;
 
 terminal Integer entero;
 terminal Double real;
-terminal palabras_reservadas,principal,propiedades,
+terminal principal,propiedades,
 retornar,entrada,salida,boleano,identificador,coma,fin_de_linea,operadores,operador_Logico,clases,
 funcion,para,parb,comentario,comentarios,cadena,instancias,metodos,asignacion,libre,tipo_ent,tipo_bol,
 tipo_real,tipo_cadena,newline;
 
-non terminal S,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,nuevaslineas;
+non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
+nuevaslineas,MES,Mentrada,Msalida,TIP,escri;
 
-S ::=   DECLARACION S|DECLARACION
+S ::=   codigoli | codigoli S
         ;
+codigoli::= DECLARACION | MES ;
+
+/**
+ * Declaracion de variables y asignacion de las mismas
+ **/
 DECLARACION ::= DECENTERO
                 | DECCADENA 
                 | DECBOLEAN 
@@ -29,6 +35,30 @@ DECBOLEAN ::= tipo_bol libre VARSECUE finales
 
 DECLAREAL ::= tipo_real libre VARSECUE finales
              | tipo_real libre VARSECUE libre asignacion libre real finales;
+
+/**
+ * Metodos de entrada y salida
+ **/
+MES::= Mentrada 
+       | Msalida ;
+
+Mentrada::= entrada libre TIP finales ;
+
+TIP::=  cadena coma libre TIP
+      |entero coma libre TIP
+      | real coma libre TIP
+      |identificador coma libre TIP
+      |cadena 
+      |entero
+      | real
+      |identificador;
+
+
+Msalida::= salida libre identificador finales;
+
+/**
+ * Suencias de variables y finales de lines, incluye nueva linea 
+ **/
 
 VARSECUE  ::= identificador coma VARSECUE | identificador;
 

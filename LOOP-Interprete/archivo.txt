@@ -7,3 +7,16 @@ entero da,var,ss = 1
 cadena vad = "hola"
 boolean de,er,as = verdadero
 real eds = 1.2
+escribir "Cadena"
+leer ds
+
+escribir 12.23123123
+leer ds
+
+
+
+
+
+
+escribir a, b, 23, 2.5, "hola mundo";
+leer ds

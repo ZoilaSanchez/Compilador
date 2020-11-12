@@ -8,44 +8,42 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int parb = 19;
-  public static final int cadena = 22;
-  public static final int para = 18;
-  public static final int salida = 9;
-  public static final int libre = 26;
-  public static final int entrada = 8;
-  public static final int boleano = 10;
-  public static final int coma = 12;
-  public static final int tipo_bol = 28;
-  public static final int palabras_reservadas = 4;
-  public static final int tipo_real = 29;
-  public static final int tipo_ent = 27;
-  public static final int propiedades = 6;
-  public static final int asignacion = 25;
-  public static final int operador_Logico = 15;
-  public static final int metodos = 24;
+  public static final int parb = 18;
+  public static final int cadena = 21;
+  public static final int para = 17;
+  public static final int salida = 8;
+  public static final int libre = 25;
+  public static final int entrada = 7;
+  public static final int boleano = 9;
+  public static final int coma = 11;
+  public static final int tipo_bol = 27;
+  public static final int tipo_real = 28;
+  public static final int tipo_ent = 26;
+  public static final int propiedades = 5;
+  public static final int asignacion = 24;
+  public static final int operador_Logico = 14;
+  public static final int metodos = 23;
   public static final int real = 3;
   public static final int EOF = 0;
-  public static final int retornar = 7;
-  public static final int newline = 31;
+  public static final int retornar = 6;
+  public static final int newline = 30;
   public static final int error = 1;
-  public static final int clases = 16;
-  public static final int comentario = 20;
-  public static final int comentarios = 21;
+  public static final int clases = 15;
+  public static final int comentario = 19;
+  public static final int comentarios = 20;
   public static final int entero = 2;
-  public static final int fin_de_linea = 13;
-  public static final int principal = 5;
-  public static final int instancias = 23;
-  public static final int tipo_cadena = 30;
-  public static final int funcion = 17;
-  public static final int operadores = 14;
-  public static final int identificador = 11;
+  public static final int fin_de_linea = 12;
+  public static final int principal = 4;
+  public static final int instancias = 22;
+  public static final int tipo_cadena = 29;
+  public static final int operadores = 13;
+  public static final int funcion = 16;
+  public static final int identificador = 10;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
   "entero",
   "real",
-  "palabras_reservadas",
   "principal",
   "propiedades",
   "retornar",

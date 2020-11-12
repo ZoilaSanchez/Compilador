@@ -1377,7 +1377,7 @@ class intermedio implements java_cup.runtime.Scanner {
             // fall through
           case 43: break;
           case 11:
-            { lexeme=yytext();   return new Symbol(sym.entero,Double.parseDouble(yytext()));
+            { lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));
             }
             // fall through
           case 44: break;
@@ -1435,7 +1435,7 @@ class intermedio implements java_cup.runtime.Scanner {
             // fall through
           case 53: break;
           case 21:
-            { lexeme=yytext();  return new Symbol(sym.real,Integer.parseInt(yytext()));
+            { lexeme=yytext();  return new Symbol(sym.real,Double.parseDouble(yytext()));
             }
             // fall through
           case 54: break;

@@ -66,10 +66,6 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 %%
 
 
-{palabrasReservadas}    {lexeme=yytext(); 
-                        return new Symbol(sym.palabras_reservadas,yytext());
-                        }
-
 "entero"                 {lexeme=yytext(); return new Symbol(sym.tipo_ent,yytext());}
 "boolean"                 {lexeme=yytext(); return new Symbol(sym.tipo_bol,yytext());}
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
