@@ -19,7 +19,7 @@ signo="_"
 num=[0-9]
 igual="="
 coma=","
-TABULADOR = [\t]
+TABULADOR = \u0009
 TABULADORES = {TABULADOR}*
 FINLINEA = \r|\n|\r\n
 saltar=[\r\n|\n\t]
@@ -149,7 +149,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 
 
 //Quité esto porque no debería ir en el archivo de tokens
-{TABULADOR}             {}
+{TABULADOR}             {return new Symbol(sym.tabu,yytext());}
 {TABULADORES}           {}
 {saltar}       {return new Symbol(sym.salto,yytext());}
 {FINLINEA}              {return new Symbol(sym.newline,yytext());}

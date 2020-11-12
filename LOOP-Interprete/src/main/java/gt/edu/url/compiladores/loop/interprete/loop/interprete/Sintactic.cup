@@ -5,7 +5,7 @@ import java_cup.runtime.Symbol;
 terminal Integer entero;
 terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
-libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto;
+libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu;
 
 terminal principal,propiedades,metodos,retornar,operadores,operador_Logico,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
@@ -80,7 +80,7 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= finales retornar libre identificador ;
+CUERPOF::= finales libre retornar libre identificador ;
 
 
 
