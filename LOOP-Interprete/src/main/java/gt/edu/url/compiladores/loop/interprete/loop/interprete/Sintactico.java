@@ -31,11 +31,13 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\015\000\002\002\004\000\002\002\004\000\002\002" +
+    "\000\025\000\002\002\004\000\002\002\004\000\002\002" +
     "\003\000\002\003\003\000\002\003\003\000\002\003\003" +
-    "\000\002\003\003\000\002\004\006\000\002\005\006\000" +
-    "\002\006\006\000\002\007\006\000\002\010\005\000\002" +
-    "\010\003" });
+    "\000\002\003\003\000\002\004\006\000\002\004\012\000" +
+    "\002\005\006\000\002\005\012\000\002\006\006\000\002" +
+    "\006\012\000\002\007\006\000\002\007\012\000\002\010" +
+    "\005\000\002\010\003\000\002\011\004\000\002\011\003" +
+    "\000\002\012\004\000\002\012\003" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -43,26 +45,45 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\034\000\012\035\013\036\005\037\012\040\004\001" +
-    "\002\000\004\034\034\001\002\000\004\034\031\001\002" +
+    "\000\065\000\012\035\013\036\005\037\012\040\004\001" +
+    "\002\000\004\034\060\001\002\000\004\034\050\001\002" +
     "\000\014\002\uffff\035\013\036\005\037\012\040\004\001" +
-    "\002\000\004\002\027\001\002\000\014\002\ufffd\035\ufffd" +
+    "\002\000\004\002\046\001\002\000\014\002\ufffd\035\ufffd" +
     "\036\ufffd\037\ufffd\040\ufffd\001\002\000\014\002\ufffb\035" +
-    "\ufffb\036\ufffb\037\ufffb\040\ufffb\001\002\000\004\034\024" +
+    "\ufffb\036\ufffb\037\ufffb\040\ufffb\001\002\000\004\034\036" +
     "\001\002\000\004\034\016\001\002\000\014\002\ufffe\035" +
     "\ufffe\036\ufffe\037\ufffe\040\ufffe\001\002\000\014\002\ufffc" +
     "\035\ufffc\036\ufffc\037\ufffc\040\ufffc\001\002\000\004\015" +
-    "\017\001\002\000\006\016\022\041\ufff5\001\002\000\004" +
-    "\041\021\001\002\000\014\002\ufffa\035\ufffa\036\ufffa\037" +
-    "\ufffa\040\ufffa\001\002\000\004\015\017\001\002\000\004" +
-    "\041\ufff6\001\002\000\004\015\017\001\002\000\004\041" +
-    "\026\001\002\000\014\002\ufff7\035\ufff7\036\ufff7\037\ufff7" +
-    "\040\ufff7\001\002\000\004\002\000\001\002\000\004\002" +
-    "\001\001\002\000\004\015\017\001\002\000\004\041\033" +
-    "\001\002\000\014\002\ufff8\035\ufff8\036\ufff8\037\ufff8\040" +
-    "\ufff8\001\002\000\004\015\017\001\002\000\004\041\036" +
-    "\001\002\000\014\002\ufff9\035\ufff9\036\ufff9\037\ufff9\040" +
-    "\ufff9\001\002" });
+    "\017\001\002\000\012\016\034\017\ufff1\034\ufff1\041\ufff1" +
+    "\001\002\000\010\017\021\034\022\041\023\001\002\000" +
+    "\004\041\023\001\002\000\004\033\027\001\002\000\016" +
+    "\002\uffed\035\uffed\036\uffed\037\uffed\040\uffed\041\023\001" +
+    "\002\000\014\002\uffef\035\uffef\036\uffef\037\uffef\040\uffef" +
+    "\001\002\000\014\002\ufffa\035\ufffa\036\ufffa\037\ufffa\040" +
+    "\ufffa\001\002\000\014\002\uffee\035\uffee\036\uffee\037\uffee" +
+    "\040\uffee\001\002\000\004\034\030\001\002\000\004\004" +
+    "\031\001\002\000\006\017\021\041\023\001\002\000\014" +
+    "\002\ufff9\035\ufff9\036\ufff9\037\ufff9\040\ufff9\001\002\000" +
+    "\014\002\ufff0\035\ufff0\036\ufff0\037\ufff0\040\ufff0\001\002" +
+    "\000\004\015\017\001\002\000\010\017\ufff2\034\ufff2\041" +
+    "\ufff2\001\002\000\004\015\017\001\002\000\010\017\021" +
+    "\034\040\041\023\001\002\000\004\033\042\001\002\000" +
+    "\014\002\ufff4\035\ufff4\036\ufff4\037\ufff4\040\ufff4\001\002" +
+    "\000\004\034\043\001\002\000\004\005\044\001\002\000" +
+    "\006\017\021\041\023\001\002\000\014\002\ufff3\035\ufff3" +
+    "\036\ufff3\037\ufff3\040\ufff3\001\002\000\004\002\000\001" +
+    "\002\000\004\002\001\001\002\000\004\015\017\001\002" +
+    "\000\010\017\021\034\052\041\023\001\002\000\004\033" +
+    "\054\001\002\000\014\002\ufff6\035\ufff6\036\ufff6\037\ufff6" +
+    "\040\ufff6\001\002\000\004\034\055\001\002\000\004\014" +
+    "\056\001\002\000\006\017\021\041\023\001\002\000\014" +
+    "\002\ufff5\035\ufff5\036\ufff5\037\ufff5\040\ufff5\001\002\000" +
+    "\004\015\017\001\002\000\010\017\021\034\062\041\023" +
+    "\001\002\000\004\033\064\001\002\000\014\002\ufff8\035" +
+    "\ufff8\036\ufff8\037\ufff8\040\ufff8\001\002\000\004\034\065" +
+    "\001\002\000\004\030\066\001\002\000\006\017\021\041" +
+    "\023\001\002\000\014\002\ufff7\035\ufff7\036\ufff7\037\ufff7" +
+    "\040\ufff7\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -70,18 +91,28 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\034\000\016\002\006\003\005\004\013\005\007\006" +
+    "\000\065\000\016\002\006\003\005\004\013\005\007\006" +
     "\014\007\010\001\001\000\002\001\001\000\002\001\001" +
-    "\000\016\002\027\003\005\004\013\005\007\006\014\007" +
+    "\000\016\002\046\003\005\004\013\005\007\006\014\007" +
     "\010\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\004\010\017\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\010" +
-    "\022\001\001\000\002\001\001\000\004\010\024\001\001" +
+    "\001\001\000\006\011\024\012\023\001\001\000\004\012" +
+    "\032\001\001\000\002\001\001\000\004\012\025\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\002\001\001\000\004\010\031\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\010\034\001\001\000\002\001" +
-    "\001\000\002\001\001" });
+    "\002\001\001\000\002\001\001\000\006\011\031\012\023" +
+    "\001\001\000\002\001\001\000\002\001\001\000\004\010" +
+    "\034\001\001\000\002\001\001\000\004\010\036\001\001" +
+    "\000\006\011\040\012\023\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\006" +
+    "\011\044\012\023\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\010\050\001\001\000\006" +
+    "\011\052\012\023\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\006\011\056" +
+    "\012\023\001\001\000\002\001\001\000\004\010\060\001" +
+    "\001\000\006\011\062\012\023\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
+    "\006\011\066\012\023\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -212,7 +243,7 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // DECENTERO ::= tipo_ent libre VARSECUE newline 
+          case 7: // DECENTERO ::= tipo_ent libre VARSECUE finales 
             {
               Object RESULT =null;
 
@@ -221,7 +252,16 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // DECCADENA ::= tipo_cadena libre VARSECUE newline 
+          case 8: // DECENTERO ::= tipo_ent libre VARSECUE libre asignacion libre entero finales 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECENTERO",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // DECCADENA ::= tipo_cadena libre VARSECUE finales 
             {
               Object RESULT =null;
 
@@ -230,7 +270,16 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // DECBOLEAN ::= tipo_bol libre VARSECUE newline 
+          case 10: // DECCADENA ::= tipo_cadena libre VARSECUE libre asignacion libre cadena finales 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECCADENA",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // DECBOLEAN ::= tipo_bol libre VARSECUE finales 
             {
               Object RESULT =null;
 
@@ -239,7 +288,16 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // DECLAREAL ::= tipo_real libre VARSECUE newline 
+          case 12: // DECBOLEAN ::= tipo_bol libre VARSECUE libre asignacion libre boleano finales 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECBOLEAN",4, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 13: // DECLAREAL ::= tipo_real libre VARSECUE finales 
             {
               Object RESULT =null;
 
@@ -248,7 +306,16 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // VARSECUE ::= identificador coma VARSECUE 
+          case 14: // DECLAREAL ::= tipo_real libre VARSECUE libre asignacion libre real finales 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("DECLAREAL",5, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 15: // VARSECUE ::= identificador coma VARSECUE 
             {
               Object RESULT =null;
 
@@ -257,11 +324,47 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // VARSECUE ::= identificador 
+          case 16: // VARSECUE ::= identificador 
             {
               Object RESULT =null;
 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("VARSECUE",6, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 17: // finales ::= fin_de_linea nuevaslineas 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("finales",7, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 18: // finales ::= nuevaslineas 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("finales",7, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 19: // nuevaslineas ::= newline nuevaslineas 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("nuevaslineas",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // nuevaslineas ::= newline 
+            {
+              Object RESULT =null;
+
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("nuevaslineas",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 

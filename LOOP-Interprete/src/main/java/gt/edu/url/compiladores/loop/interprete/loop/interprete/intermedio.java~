@@ -1315,7 +1315,7 @@ class intermedio implements java_cup.runtime.Scanner {
         zzAtEOF = true;
             zzDoEOF();
               {
-                return token( sym.EOF );
+                return new Symbol(sym.EOF );
               }
       }
       else {
@@ -1377,7 +1377,7 @@ class intermedio implements java_cup.runtime.Scanner {
             // fall through
           case 43: break;
           case 11:
-            { lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));
+            { lexeme=yytext();   return new Symbol(sym.entero,Double.parseDouble(yytext()));
             }
             // fall through
           case 44: break;

@@ -2,24 +2,38 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 import java_cup.runtime.Symbol;
 
 
-terminal Integer entero,real;
+terminal Integer entero;
+terminal Double real;
 terminal palabras_reservadas,principal,propiedades,
 retornar,entrada,salida,boleano,identificador,coma,fin_de_linea,operadores,operador_Logico,clases,
 funcion,para,parb,comentario,comentarios,cadena,instancias,metodos,asignacion,libre,tipo_ent,tipo_bol,
 tipo_real,tipo_cadena,newline;
 
-non terminal S,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE;
+non terminal S,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,nuevaslineas;
 
 S ::=   DECLARACION S|DECLARACION
         ;
-DECLARACION ::= DECENTERO|DECCADENA |   DECBOLEAN | DECLAREAL ;
+DECLARACION ::= DECENTERO
+                | DECCADENA 
+                | DECBOLEAN 
+                | DECLAREAL ;
 
-DECENTERO ::= tipo_ent libre VARSECUE newline;
-DECCADENA ::= tipo_cadena libre VARSECUE newline;
-DECBOLEAN ::= tipo_bol libre VARSECUE newline;
-DECLAREAL ::= tipo_real libre VARSECUE newline ;
+DECENTERO ::= tipo_ent libre VARSECUE finales 
+            | tipo_ent libre VARSECUE libre asignacion libre entero finales;
+
+DECCADENA ::= tipo_cadena libre VARSECUE finales
+             | tipo_cadena libre VARSECUE libre asignacion libre cadena finales;
+
+DECBOLEAN ::= tipo_bol libre VARSECUE finales
+             | tipo_bol libre VARSECUE libre asignacion libre boleano finales;
+
+DECLAREAL ::= tipo_real libre VARSECUE finales
+             | tipo_real libre VARSECUE libre asignacion libre real finales;
+
 VARSECUE  ::= identificador coma VARSECUE | identificador;
 
+finales::= fin_de_linea nuevaslineas| nuevaslineas;
 
+nuevaslineas::= newline nuevaslineas | newline;
 
 

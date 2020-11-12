@@ -126,7 +126,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
 {comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
 {enter}               {lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));}
-{real}                 {lexeme=yytext();  return new Symbol(sym.real,Integer.parseInt(yytext()));}
+{real}                 {lexeme=yytext();  return new Symbol(sym.real,Double.parseDouble(yytext()));}
 {nulo}                 {}
 {Cadena}               {lexeme=yytext();  return new Symbol(sym.cadena,yytext());}
 

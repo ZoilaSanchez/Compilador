@@ -1,4 +1,9 @@
 entero da,var,ss
 cadena vad
 boolean de,er,as
-real eds
+real eds;
+
+entero da,var,ss = 1
+cadena vad = "hola"
+boolean de,er,as = verdadero
+real eds = 1.2
