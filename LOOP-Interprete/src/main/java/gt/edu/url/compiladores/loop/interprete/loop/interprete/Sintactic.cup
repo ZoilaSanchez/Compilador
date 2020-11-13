@@ -5,19 +5,19 @@ import java_cup.runtime.Symbol;
 terminal Integer entero;
 terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
-libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu;
+libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,IDmayu;
 
 terminal principal,propiedades,metodos,retornar,operadores,operador_Logico,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
-comentarios;
+comentarios,insta,punto;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
-PARAMETROSR,TABULA;
+PARAMETROSR,TABULA,Linstancias;
 
 S ::=   codigoli | codigoli S
         ;
-codigoli::= DECLARACION | MES |FUNCIONESS ;
+codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -82,6 +82,18 @@ PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
  **/
 CUERPOF::= newline TABULA retornar libre identificador libre operadores libre identificador
             |DECLARACION;
+
+
+
+/**
+ * instancias 
+ **/
+
+
+Linstancias::=  IDmayu libre identificador libre asignacion libre insta libre IDmayu  para parb finales;
+
+
+
 
 
 

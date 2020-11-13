@@ -11,9 +11,9 @@ letrasma=[A-Z_\u00D1\u00C1\u00C9\u00CD\u00D3\u00DA\u00DC]
 may=[A-Z]+
 letrasmi=[a-z]+
 ace=[\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC]
-noace=[0-9\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002E\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
-noace2=[A-Z\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002E\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
-simbolos=[\u0020\u0028\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u0028\u0029\u002A\u002B\u002C\u002D\u002E\u003A\u003B\u003C\u002D\u002E\u002F\u0040\u005B\u005C\u005D\u005E\u0022\u005F\u007B\u007C\u007D\u007E\u00A1\u02B9\u00C3]
+noace=[0-9\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
+noace2=[A-Z\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
+simbolos=[\u0020\u0028\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u0028\u0029\u002A\u002B\u002C\u002D\u003A\u003B\u003C\u002D\u002F\u0040\u005B\u005C\u005D\u005E\u0022\u005F\u007B\u007C\u007D\u007E\u00A1\u02B9\u00C3]
 diago=[\u002F]
 signo="_"
 num=[0-9]
@@ -48,6 +48,7 @@ noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{di
 nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
+aplica= {variables}"."{variables}
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
 pro=("privadas:"|"publicas:")
@@ -71,8 +72,8 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "boolean"                 {lexeme=yytext(); return new Symbol(sym.tipo_bol,yytext());}
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
-
-
+{clases}                  {lexeme=yytext(); return new Symbol(sym.IDmayu,yytext());}  
+{aplica}                {lexeme=yytext();}
 "escribir"              {lexeme=yytext(); 
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
@@ -84,6 +85,8 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                          return new Symbol(sym.identificador,yytext());}
 ","                     {lexeme=yytext(); 
                         return new Symbol(sym.coma,yytext());}
+"."                     {lexeme=yytext(); 
+                        return new Symbol(sym.punto,yytext());}
 "="                     {lexeme=yytext(); 
                         return new Symbol(sym.asignacion,yytext());}
 ";"                     {lexeme=yytext(); 
@@ -140,6 +143,9 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                          return new Symbol(sym.borrar,yytext());}
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}
+
+"instanciar"                {lexeme=yytext(); 
+                         return new Symbol(sym.insta,yytext());}
 //comernarios
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
@@ -167,9 +173,6 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {NoNum}                 {lexeme=yytext();  
                         System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);}
-{noclases}              {lexeme=yytext();  
-                        System.out.println("Error verificar "+yytext());
-                        return new Symbol(sym.error);}
 
 {nova}                  {lexeme=yytext();
                         return new Symbol(sym.error);}
@@ -177,6 +180,6 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {nocomentarios}         {lexeme=yytext();
                         System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);}
-.                       { System.out.println("Error verificar "+yytext());
+.                       { System.out.println("Error verificar . "+yytext());
                         return new Symbol(sym.error);}
 <<EOF>> {return new Symbol(sym.EOF ); }
