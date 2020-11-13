@@ -1,3 +1,5 @@
-Rectangulo r = instanciar  Rectangulo()
+Rectangulo r = instanciar Rectangulo()
 escribir r.r
+r = instanciar Rectangulo()
+eliminar r
 

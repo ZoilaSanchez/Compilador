@@ -137,7 +137,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 
 "destructor"                {lexeme=yytext(); 
                          return new Symbol(sym.destruir,yytext());}
-"eliminar"                {lexeme=yytext(); 
+"eliminar "                {lexeme=yytext(); 
                          return new Symbol(sym.borrar,yytext());}
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}

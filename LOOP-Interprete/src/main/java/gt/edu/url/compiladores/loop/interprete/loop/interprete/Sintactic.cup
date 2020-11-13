@@ -55,7 +55,7 @@ TIP::=  cadena coma libre TIP
       | entero
       | real
       | identificador
-      | identificador pun identificador  ;
+      | identificador pun identificador;
 
 
 Msalida::= salida libre identificador finales;
@@ -90,7 +90,9 @@ CUERPOF::= newline TABULA retornar libre identificador libre operadores libre id
  **/
 
 
-Linstancias::=  IDmayu libre identificador libre asignacion libre insta libre IDmayu para parb finales;
+Linstancias::=  IDmayu libre identificador libre asignacion libre insta  IDmayu para parb finales
+               |identificador libre asignacion libre insta  IDmayu para parb finales 
+               |borrar  identificador finales;
 
 
 
