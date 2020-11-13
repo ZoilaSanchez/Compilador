@@ -36,7 +36,7 @@ real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
 Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
-NoNum = [a-zA-Z0-9_.]+
+NoNum = [a-zA-Z0-9_..]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
 clases={may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("")")*
@@ -83,9 +83,9 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {retu}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return retornar;}
-{insta}                 {lexeme=yytext(); 
+".."                 {lexeme=yytext(); 
                         linea= yyline; 
-                        return instancias;}
+                        return opcional2;}
 "escribir"              {lexeme=yytext(); 
                         return entrada;}
 

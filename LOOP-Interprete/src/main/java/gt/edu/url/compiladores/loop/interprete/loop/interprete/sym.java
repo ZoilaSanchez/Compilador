@@ -29,6 +29,7 @@ public interface sym {
   public static final int desdes = 34;
   public static final int comentarios = 44;
   public static final int sumarr = 36;
+  public static final int instafr = 48;
   public static final int destruir = 39;
   public static final int EOF = 0;
   public static final int parb = 19;
@@ -36,7 +37,8 @@ public interface sym {
   public static final int para = 18;
   public static final int error = 1;
   public static final int entero = 2;
-  public static final int punto = 46;
+  public static final int Parainstancias = 47;
+  public static final int pun = 46;
   public static final int propiedades = 24;
   public static final int constru = 33;
   public static final int salto = 20;
@@ -102,7 +104,9 @@ public interface sym {
   "comentario",
   "comentarios",
   "insta",
-  "punto"
+  "pun",
+  "Parainstancias",
+  "instafr"
   };
 }
 

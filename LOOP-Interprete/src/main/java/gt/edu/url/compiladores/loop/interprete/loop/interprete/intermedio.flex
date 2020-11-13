@@ -38,17 +38,16 @@ real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
 Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
-NoNum = [a-zA-Z0-9_.]+
+NoNum = [a-zA-Z0-9_]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
 clases={may}+({letrasmi}|{may})*
 menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
-insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
 noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
 opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
 operalo="AND"|"OR"
-aplica= {variables}"."{variables}
+Instanciars= {variables}"."{variables}
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
 pro=("privadas:"|"publicas:")
@@ -73,7 +72,6 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
 {clases}                  {lexeme=yytext(); return new Symbol(sym.IDmayu,yytext());}  
-{aplica}                {lexeme=yytext();}
 "escribir"              {lexeme=yytext(); 
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
@@ -86,7 +84,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 ","                     {lexeme=yytext(); 
                         return new Symbol(sym.coma,yytext());}
 "."                     {lexeme=yytext(); 
-                        return new Symbol(sym.punto,yytext());}
+                        return new Symbol(sym.pun,yytext());}
 "="                     {lexeme=yytext(); 
                         return new Symbol(sym.asignacion,yytext());}
 ";"                     {lexeme=yytext(); 
@@ -146,6 +144,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 
 "instanciar "                {lexeme=yytext(); 
                          return new Symbol(sym.insta,yytext());}
+
 //comernarios
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}

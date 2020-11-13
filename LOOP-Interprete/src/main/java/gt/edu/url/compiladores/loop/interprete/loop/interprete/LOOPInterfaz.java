@@ -342,7 +342,7 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "Salida " + lexico.lexeme + "\n";
                 }else if(toke ==retornar){
                     resultado += "retronar " + lexico.lexeme + "\n";
-                } else if(toke ==instancias){
+                } else if(toke ==opcional2){
                     resultado += "instancias " + lexico.lexeme + "\n";
                 }else if(toke ==propiedades){
                     resultado += "propiedades " + lexico.lexeme + "\n";

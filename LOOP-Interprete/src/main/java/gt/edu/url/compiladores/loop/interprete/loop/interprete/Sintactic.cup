@@ -9,7 +9,7 @@ libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,IDma
 
 terminal principal,propiedades,metodos,retornar,operadores,operador_Logico,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
-comentarios,insta,punto;
+comentarios,insta,pun,Parainstancias,instafr;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -45,16 +45,17 @@ DECLAREAL ::= tipo_real libre VARSECUE finales
 MES::= Mentrada 
        | Msalida ;
 
-Mentrada::= entrada libre TIP finales ;
+Mentrada::= entrada libre TIP finales;
 
 TIP::=  cadena coma libre TIP
-      |entero coma libre TIP
+      | entero coma libre TIP
       | real coma libre TIP
-      |identificador coma libre TIP
-      |cadena 
-      |entero
+      | identificador coma libre TIP
+      | cadena 
+      | entero
       | real
-      |identificador;
+      | identificador
+      | identificador pun identificador  ;
 
 
 Msalida::= salida libre identificador finales;
@@ -89,9 +90,7 @@ CUERPOF::= newline TABULA retornar libre identificador libre operadores libre id
  **/
 
 
-Linstancias::=  IDmayu libre identificador libre asignacion libre insta libre IDmayu para parb newline;
-
-
+Linstancias::=  IDmayu libre identificador libre asignacion libre insta libre IDmayu para parb finales;
 
 
 
