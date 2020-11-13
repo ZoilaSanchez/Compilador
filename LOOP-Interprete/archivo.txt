@@ -26,5 +26,5 @@ entero sumar(entero a,entero b)
 	devolver  a + b
 
 
-ide.id
+Rectangulo r = instanciar  Rectangulo()
 

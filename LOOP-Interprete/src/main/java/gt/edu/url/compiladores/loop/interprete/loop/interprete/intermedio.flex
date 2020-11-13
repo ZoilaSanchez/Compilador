@@ -41,7 +41,7 @@ Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u00
 NoNum = [a-zA-Z0-9_.]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
-clases={may}+({letrasmi}|{may})*|{may}+({letrasmi}*|{may}*)*("("")")*
+clases={may}+({letrasmi}|{may})*
 menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
 insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
 noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
@@ -144,7 +144,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}
 
-"instanciar"                {lexeme=yytext(); 
+"instanciar "                {lexeme=yytext(); 
                          return new Symbol(sym.insta,yytext());}
 //comernarios
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
