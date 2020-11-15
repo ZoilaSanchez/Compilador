@@ -20,7 +20,8 @@ PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos
 
 non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
 
-non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol;
+non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
+Compaentero,Compcadena,Compboo,Compreal;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 
@@ -38,6 +39,7 @@ lineas::=est
 
 /**
  * Declaracion de variables y asignacion de las mismas
+* compatbilidad
  **/
 DECLARACION ::= DECENTERO
                 | DECCADENA 
@@ -45,16 +47,21 @@ DECLARACION ::= DECENTERO
                 | DECLAREAL ;
 
 DECENTERO ::= reducciondetipoente VARSECUE finales 
-            | reducciondetipoente VARSECUE libre asignacion libre entero finales;
+            | reducciondetipoente VARSECUE libre asignacion libre Compaentero finales;
+            
+Compaentero::=entero | real | cadena |boleano;
+
 
 DECCADENA ::= reducciondetipocadena VARSECUE finales
              | reducciondetipocadena VARSECUE libre asignacion libre cadena finales;
 
 DECBOLEAN ::= reducciondetipobol VARSECUE finales
-             | reducciondetipobol VARSECUE libre asignacion libre boleano finales;
-
+             | reducciondetipobol VARSECUE libre asignacion libre Compboo finales;
+Compboo::=entero | real | boleano;
 DECLAREAL ::= reducciondetiporeal VARSECUE finales
-             | reducciondetiporeal VARSECUE libre asignacion libre real finales;
+             | reducciondetiporeal VARSECUE libre asignacion libre Compreal finales;
+
+Compreal::=entero | real | cadena |boleano;
 
 /**
  * Metodos de entrada y salida

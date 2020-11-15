@@ -24,8 +24,26 @@ entero a[3] ={ 1, 2, 3 }
 real a[3] ={ 1.2, 2.2, 23.1 }
 cadena a[3] ={ "hola", "como", "estan" }
 boolean a[3] ={ verdadero, falso }
+
+
+
 cadena b[]
+
+
+
+
 b[0] = 1
 b = instanciar entero[2]
+
+
+
+
+
+
+
+
+
+
+
 
 
