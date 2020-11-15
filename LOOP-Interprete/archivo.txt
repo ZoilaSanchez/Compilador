@@ -10,8 +10,11 @@ sino numero % 3 entonces
 sino numero % 3 entonces 
 	devolver 3
 
-
-
-
-
-
+entero cadenaAEntero(cadena e)
+entero cadenaAReal(cadena e)
+entero cadenaABoleano(cadena e)
+real seno(real e)
+real coseno(real e)
+real tangente(real e)
+real logaritmo(real e)
+real raiz(real e)

@@ -41,7 +41,7 @@ public enum Tokens {
     metodos,
     principal,
     palabras_reservadas,
-
+funcionespecial,
 
 coma,
 

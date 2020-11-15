@@ -11,8 +11,16 @@ public interface sym {
   public static final int newline = 17;
   public static final int condicionales = 51;
   public static final int fin_de_linea = 9;
+  public static final int tipo_ca = 60;
+  public static final int tipo_ca8 = 58;
   public static final int tipo_bol = 14;
+  public static final int tipo_ca7 = 57;
   public static final int tipo_cadena = 16;
+  public static final int tipo_ca6 = 56;
+  public static final int tipo_ca5 = 55;
+  public static final int tipo_ca4 = 54;
+  public static final int tipo_ca3 = 53;
+  public static final int tipo_ca2 = 52;
   public static final int haccer = 37;
   public static final int boleano = 6;
   public static final int paquetes = 40;
@@ -32,6 +40,7 @@ public interface sym {
   public static final int sumarr = 35;
   public static final int instafr = 47;
   public static final int destruir = 38;
+  public static final int cs = 59;
   public static final int opcadnum = 50;
   public static final int aumento = 48;
   public static final int EOF = 0;
@@ -112,7 +121,16 @@ public interface sym {
   "aumento",
   "opnum",
   "opcadnum",
-  "condicionales"
+  "condicionales",
+  "tipo_ca2",
+  "tipo_ca3",
+  "tipo_ca4",
+  "tipo_ca5",
+  "tipo_ca6",
+  "tipo_ca7",
+  "tipo_ca8",
+  "cs",
+  "tipo_ca"
   };
 }
 

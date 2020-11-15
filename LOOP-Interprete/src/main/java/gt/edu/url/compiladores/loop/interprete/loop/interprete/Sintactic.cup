@@ -11,13 +11,15 @@ terminal principal,propiedades,metodos,retornar,operador_Logico,clases,ifs,enton
 els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum,condicionales;
 
+terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca;
+
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
-PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento;
+PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun;
 
 S ::=   codigoli | codigoli S
         ;
-codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias| est;
+codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias| est|FunE;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -110,6 +112,19 @@ cond::= entero libre opnum libre entero
         |identificador libre opnum libre entero
         |entero libre opnum libre identificador
         |identificador libre opnum libre identificador;
+
+
+/**
+ * Funciones Especiales
+ **/
+
+FunE::= tipo_ent libre tipo_ca para tipo_cadena libre identificador parb finales
+        | tipo_ent libre tipo_ca2 para tipo_cadena libre identificador parb finales
+        | tipo_ent libre tipo_ca3 para tipo_cadena libre identificador parb finales
+        | tipo_real libre Tipofun para tipo_real libre identificador parb finales;
+
+Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
+
 
 /**
  * Suencias de variables y finales de lines, incluye nueva linea 
