@@ -15,11 +15,12 @@ terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
-PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun;
+PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos,CUERPOD,contructoDes;
+non terminal tipodatosnombre,CUERPOFD,CUERPODES;
 
 S ::=   codigoli | codigoli S
         ;
-codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias| est|FunE;
+codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias| est|FunE|contructoDes;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -94,8 +95,10 @@ CUERPOF::= newline TABULA retornar libre identificador libre opnum libre identif
 
 
 Linstancias::=  IDmayu libre identificador libre asignacion libre insta  IDmayu para parb finales
+                |IDmayu libre identificador libre asignacion libre insta  IDmayu para datos parb finales
                |identificador libre asignacion libre insta  IDmayu para parb finales 
                |borrar  identificador finales;
+datos::= tipodatos coma libre tipodatos;
 
 /**
  * Estructuras Selectivas
@@ -125,7 +128,16 @@ FunE::= tipo_ent libre tipo_ca para tipo_cadena libre identificador parb finales
 
 Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
 
+/**
+ * Construcotres y destructores
+ **/
 
+contructoDes::= constru para tipodatosnombre libre identificador coma libre tipodatosnombre libre identificador parb newline CUERPOD 
+                |   destruir para parb newline CUERPODES;
+CUERPOD::=  TABULA identificador libre asignacion libre identificador finales
+            |TABULA identificador libre asignacion libre identificador finales CUERPOD;
+
+CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
 /**
  * Suencias de variables y finales de lines, incluye nueva linea 
  * para finales lleva incluido el ; y new linew solo salto
@@ -137,3 +149,11 @@ finales::= fin_de_linea newline| newline;
 
 
 TABULA::=salto TABULA|salto;
+tipodatos::=entero 
+            | cadena   
+            |boleano
+            | real;
+tipodatosnombre::=tipo_ent 
+            |tipo_cadena   
+            |tipo_bol 
+            | tipo_real;

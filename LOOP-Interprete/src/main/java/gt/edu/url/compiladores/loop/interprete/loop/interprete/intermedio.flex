@@ -81,8 +81,9 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "tangente"                       {lexeme=yytext(); return new Symbol(sym.tipo_ca6,yytext());}
 "logaritmo"                      {lexeme=yytext(); return new Symbol(sym.tipo_ca7,yytext());}
 "raiz"                           {lexeme=yytext(); return new Symbol(sym.tipo_ca8,yytext());}
-
-
+"constructor"                   {lexeme=yytext(); return new Symbol(sym.constru,yytext());}
+"destructor"                {lexeme=yytext();       return new Symbol(sym.destruir,yytext());}
+"eliminar "                {lexeme=yytext();                return new Symbol(sym.borrar,yytext());}
 "boolean"                 {lexeme=yytext(); return new Symbol(sym.tipo_bol,yytext());}
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
@@ -142,8 +143,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                          return new Symbol(sym.entoncess,yytext());}
 "sino "                {lexeme=yytext(); 
                          return new Symbol(sym.els,yytext());}
-"constructor"                {lexeme=yytext(); 
-                         return new Symbol(sym.constru,yytext());}
+
 // estructura de for
 
 "desde"                {lexeme=yytext(); 
@@ -157,10 +157,8 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "hacer"                {lexeme=yytext(); 
                          return new Symbol(sym.haccer,yytext());}
 
-"destructor"                {lexeme=yytext(); 
-                         return new Symbol(sym.destruir,yytext());}
-"eliminar "                {lexeme=yytext(); 
-                         return new Symbol(sym.borrar,yytext());}
+
+
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}
 

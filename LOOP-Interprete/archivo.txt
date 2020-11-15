@@ -1,4 +1,5 @@
 Rectangulo r = instanciar Rectangulo()
+
 escribir r.r
 r = instanciar Rectangulo()
 eliminar r
@@ -12,9 +13,10 @@ sino numero % 3 entonces
 
 entero cadenaAEntero(cadena e)
 entero cadenaAReal(cadena e)
-entero cadenaABoleano(cadena e)
-real seno(real e)
-real coseno(real e)
-real tangente(real e)
-real logaritmo(real e)
-real raiz(real e)
+
+
+constructor(entero a, entero l)
+	ancho = a
+	largo = b
+destructor()
+	eliminar anc
