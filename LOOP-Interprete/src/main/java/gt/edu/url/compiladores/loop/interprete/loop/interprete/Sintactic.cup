@@ -5,22 +5,36 @@ import java_cup.runtime.Symbol;
 terminal Integer entero;
 terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
-libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,IDmayu;
+libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,condicionales,IDmayu;
 
 terminal principal,propiedades,metodos,retornar,operador_Logico,clases,ifs,entoncess,
-els,constru,desdes,whiles,sumarr,restarr,haccer,destruir,borrar,paquetes,porc,comentario,
-comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum,condicionales;
+els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentario,
+comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
-terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca;
+terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
+corcheteb,llava,llavb;
 
 non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
-PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos,CUERPOD,contructoDes;
-non terminal tipodatosnombre,CUERPOFD,CUERPODES;
+PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatoss,CUERPOD,contructoDes;
 
-S ::=   codigoli | codigoli S
-        ;
-codigoli::= DECLARACION | MES |FUNCIONESS |Linstancias| est|FunE|contructoDes;
+non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
+
+non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol;
+
+S ::=   codigoli |lineas|lineas S| codigoli S;
+
+codigoli::= DECLARACION 
+            | MES 
+            |FUNCIONESS 
+            |Linstancias;
+
+
+lineas::=est
+            |FunE
+            |contructoDes
+            |Arrays
+            |TiposArr;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -30,17 +44,17 @@ DECLARACION ::= DECENTERO
                 | DECBOLEAN 
                 | DECLAREAL ;
 
-DECENTERO ::= tipo_ent libre VARSECUE finales 
-            | tipo_ent libre VARSECUE libre asignacion libre entero finales;
+DECENTERO ::= reducciondetipoente VARSECUE finales 
+            | reducciondetipoente VARSECUE libre asignacion libre entero finales;
 
-DECCADENA ::= tipo_cadena libre VARSECUE finales
-             | tipo_cadena libre VARSECUE libre asignacion libre cadena finales;
+DECCADENA ::= reducciondetipocadena VARSECUE finales
+             | reducciondetipocadena VARSECUE libre asignacion libre cadena finales;
 
-DECBOLEAN ::= tipo_bol libre VARSECUE finales
-             | tipo_bol libre VARSECUE libre asignacion libre boleano finales;
+DECBOLEAN ::= reducciondetipobol VARSECUE finales
+             | reducciondetipobol VARSECUE libre asignacion libre boleano finales;
 
-DECLAREAL ::= tipo_real libre VARSECUE finales
-             | tipo_real libre VARSECUE libre asignacion libre real finales;
+DECLAREAL ::= reducciondetiporeal VARSECUE finales
+             | reducciondetiporeal VARSECUE libre asignacion libre real finales;
 
 /**
  * Metodos de entrada y salida
@@ -67,19 +81,19 @@ Msalida::= salida libre identificador finales;
 /**
  * Funciones 
  **/
-FUNCIONESS::= tipo_ent libre identificador  para PARAMETROSE parb  CUERPOF finales
-            |  tipo_cadena  libre identificador  para PARAMETROSC  CUERPOF finales
-            | tipo_bol libre identificador  para PARAMETROSB parb  CUERPOF finales
-            | tipo_real libre identificador  para PARAMETROSR parb  CUERPOF finales;
+FUNCIONESS::= reducciondetipoente identificador  para PARAMETROSE parb  CUERPOF finales
+            | reducciondetipocadena identificador  para PARAMETROSC  CUERPOF finales
+            | reducciondetipobol identificador  para PARAMETROSB parb  CUERPOF finales
+            | reducciondetiporeal identificador  para PARAMETROSR parb  CUERPOF finales;
  
-PARAMETROSE::= tipo_ent libre identificador coma PARAMETROSE
-                | tipo_ent libre identificador;
+PARAMETROSE::= reducciondetipoente identificador coma PARAMETROSE
+                | reducciondetipoente identificador;
 PARAMETROSC::= tipo_cadena  libre identificador coma PARAMETROSC
                 | tipo_cadena  libre identificador;
 PARAMETROSB::=tipo_bol  libre identificador coma PARAMETROSB
                 | tipo_bol  libre identificador;
-PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
-                | tipo_real libre identificador;
+PARAMETROSR::=reducciondetiporeal identificador coma PARAMETROSR
+                | reducciondetiporeal identificador;
 
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
@@ -98,7 +112,7 @@ Linstancias::=  IDmayu libre identificador libre asignacion libre insta  IDmayu 
                 |IDmayu libre identificador libre asignacion libre insta  IDmayu para datos parb finales
                |identificador libre asignacion libre insta  IDmayu para parb finales 
                |borrar  identificador finales;
-datos::= tipodatos coma libre tipodatos;
+datos::= tipodatoss coma libre tipodatoss;
 
 /**
  * Estructuras Selectivas
@@ -121,10 +135,10 @@ cond::= entero libre opnum libre entero
  * Funciones Especiales
  **/
 
-FunE::= tipo_ent libre tipo_ca para tipo_cadena libre identificador parb finales
-        | tipo_ent libre tipo_ca2 para tipo_cadena libre identificador parb finales
-        | tipo_ent libre tipo_ca3 para tipo_cadena libre identificador parb finales
-        | tipo_real libre Tipofun para tipo_real libre identificador parb finales;
+FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador parb finales
+        | reducciondetipoente tipo_ca2 para reducciondetipocadena identificador parb finales
+        | reducciondetipoente tipo_ca3 para reducciondetipocadena identificador parb finales
+        | reducciondetiporeal Tipofun para reducciondetiporeal identificador parb finales;
 
 Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
 
@@ -138,6 +152,43 @@ CUERPOD::=  TABULA identificador libre asignacion libre identificador finales
             |TABULA identificador libre asignacion libre identificador finales CUERPOD;
 
 CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
+
+
+/**
+ * Arreglos
+ **/
+
+
+
+Arrays::= reducciondetipoente identificador corchetea entero corcheteb libre asignacion llava libre Numeros llavb finales
+          |reducciondetiporeal identificador corchetea entero corcheteb libre asignacion llava libre NumerosRe llavb finales
+          |reducciondetipocadena identificador corchetea entero corcheteb libre asignacion llava libre CadenasA llavb finales  
+          |reducciondetipobol identificador corchetea entero corcheteb libre asignacion llava libre CadenaBO llavb finales;
+
+// arreglos con inicializacion de valores
+Numeros::= entero libre| entero coma libre Numeros;
+NumerosRe::= real libre| real coma libre NumerosRe;
+CadenasA::= cadena libre| cadena coma libre CadenasA;
+CadenaBO::= boleano libre| boleano coma libre CadenaBO;
+/**
+ * Asignacion de arreglos
+ **/
+
+TiposArr::= reducciondetipoente identificador corchetea corcheteb finales
+        |reducciondetiporeal  identificador corchetea corcheteb finales
+        |reducciondetipobol  identificador corchetea corcheteb finales
+        |reducciondetipocadena  identificador corchetea corcheteb finales
+        | identificador corchetea entero corcheteb libre asignacion libre tipodatoss finales
+        | identificador libre asignacion libre insta tipodatosnombre corchetea entero corcheteb finales;
+
+/**
+ * Reduccion tipo entero
+ **/
+
+reducciondetipoente::= tipo_ent libre;
+reducciondetiporeal::= tipo_real libre;
+reducciondetipobol::=tipo_bol libre;
+reducciondetipocadena::= tipo_cadena libre;
 /**
  * Suencias de variables y finales de lines, incluye nueva linea 
  * para finales lleva incluido el ; y new linew solo salto
@@ -149,7 +200,7 @@ finales::= fin_de_linea newline| newline;
 
 
 TABULA::=salto TABULA|salto;
-tipodatos::=entero 
+tipodatoss::=entero 
             | cadena   
             |boleano
             | real;
@@ -157,3 +208,4 @@ tipodatosnombre::=tipo_ent
             |tipo_cadena   
             |tipo_bol 
             | tipo_real;
+

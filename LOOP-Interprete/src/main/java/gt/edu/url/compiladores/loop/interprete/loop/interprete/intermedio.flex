@@ -11,9 +11,9 @@ letrasma=[A-Z_\u00D1\u00C1\u00C9\u00CD\u00D3\u00DA\u00DC]
 may=[A-Z]+
 letrasmi=[a-z]+
 ace=[\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC]
-noace=[0-9\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
-noace2=[A-Z\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005B\u005C\u005D\u005E\u0060\u007B\u007C\u007D\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
-simbolos=[\u0020\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u002A\u002B\u002C\u002D\u003A\u003B\u003C\u002D\u002F\u0040\u005B\u005C\u005D\u005E\u0022\u005F\u007B\u007C\u007D\u007E\u00A1\u02B9\u00C3]
+noace=[0-9\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005C\u005E\u0060\u007C\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
+noace2=[A-Z\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005C\u005E\u0060\u007C\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
+simbolos=[\u0020\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u002A\u002B\u002C\u002D\u003A\u003B\u003C\u002D\u002F\u0040\u005C\u005E\u0022\u005F\u007C\u007E\u00A1\u02B9\u00C3]
 diago=[\u002F]
 signo="_"
 num=[0-9]
@@ -51,7 +51,10 @@ Solonum="+"|"*"|"-"|"/"|"%"|"^"
 condi="<"|">"|"%"
 ambos="=="|"!="
 
-
+CORa="["
+CORb="]"
+LLa="{"
+LLb="}"
 operalo="AND"|"OR"
 Instanciars= {variables}"."{variables}
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
@@ -182,8 +185,10 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}
 {parena}       {return new Symbol(sym.para,yytext());}
 {parenb}       {return new Symbol(sym.parb,yytext());}
-
-
+{CORa}       {return new Symbol(sym.corchetea,yytext());}
+{CORb}       {return new Symbol(sym.corcheteb,yytext());}
+{LLa}       {return new Symbol(sym.llava,yytext());}
+{LLb}       {return new Symbol(sym.llavb,yytext());}
 {enter}               {lexeme=yytext();   return new Symbol(sym.entero,Integer.parseInt(yytext()));}
 {real}                 {lexeme=yytext();  return new Symbol(sym.real,Double.parseDouble(yytext()));}
 {Cadena}               {lexeme=yytext();  return new Symbol(sym.cadena,yytext());}
