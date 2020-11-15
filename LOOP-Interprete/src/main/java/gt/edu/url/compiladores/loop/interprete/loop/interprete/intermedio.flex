@@ -45,7 +45,13 @@ clases={may}+({letrasmi}|{may})*
 menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
 noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
-opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
+aumentos="++"|"--"
+Solonum="+"|"*"|"-"|"/"|"%"|"^"
+// para estructuras de if
+condi="<"|">"|"%"
+ambos="=="|"!="
+
+
 operalo="AND"|"OR"
 Instanciars= {variables}"."{variables}
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
@@ -106,19 +112,26 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                         linea= yyline; 
                         return new Symbol(sym.retornar,yytext());}
 
-{opera}                  {lexeme=yytext(); 
-                          return new Symbol(sym.operadores,yytext());}
+{aumentos}                  {lexeme=yytext(); 
+                          return new Symbol(sym.aumento,yytext());}
+{Solonum}                  {lexeme=yytext(); 
+                          return new Symbol(sym.opnum,yytext());}
+{ambos}                  {lexeme=yytext(); 
+                          return new Symbol(sym.opcadnum,yytext());}
+
+{condi}                  {lexeme=yytext(); 
+                          return new Symbol(sym.condicionales,yytext());}
 {operalo}                {lexeme=yytext(); 
                          return new Symbol(sym.operador_Logico,yytext());}
 "clase"                {lexeme=yytext(); 
                          return new Symbol(sym.clases,yytext());}
 
 // estructura del If
-"si"                {lexeme=yytext(); 
+"si "                {lexeme=yytext(); 
                          return new Symbol(sym.ifs,yytext());}
-"entonces"                {lexeme=yytext(); 
+"entonces "                {lexeme=yytext(); 
                          return new Symbol(sym.entoncess,yytext());}
-"sino"                {lexeme=yytext(); 
+"sino "                {lexeme=yytext(); 
                          return new Symbol(sym.els,yytext());}
 "constructor"                {lexeme=yytext(); 
                          return new Symbol(sym.constru,yytext());}

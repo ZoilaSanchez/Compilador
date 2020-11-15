@@ -9,52 +9,55 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 public interface sym {
   /* terminals */
   public static final int newline = 17;
+  public static final int condicionales = 51;
   public static final int fin_de_linea = 9;
   public static final int tipo_bol = 14;
   public static final int tipo_cadena = 16;
-  public static final int haccer = 38;
+  public static final int haccer = 37;
   public static final int boleano = 6;
-  public static final int paquetes = 41;
+  public static final int paquetes = 40;
   public static final int tabu = 21;
   public static final int coma = 8;
   public static final int entrada = 4;
   public static final int metodos = 25;
-  public static final int insta = 45;
+  public static final int insta = 44;
   public static final int identificador = 7;
   public static final int real = 3;
-  public static final int entoncess = 31;
+  public static final int entoncess = 30;
   public static final int salida = 5;
-  public static final int ifs = 30;
-  public static final int whiles = 35;
-  public static final int desdes = 34;
-  public static final int comentarios = 44;
-  public static final int sumarr = 36;
-  public static final int instafr = 48;
-  public static final int destruir = 39;
+  public static final int ifs = 29;
+  public static final int whiles = 34;
+  public static final int desdes = 33;
+  public static final int comentarios = 43;
+  public static final int sumarr = 35;
+  public static final int instafr = 47;
+  public static final int destruir = 38;
+  public static final int opcadnum = 50;
+  public static final int aumento = 48;
   public static final int EOF = 0;
   public static final int parb = 19;
   public static final int tipo_real = 15;
   public static final int para = 18;
+  public static final int opnum = 49;
   public static final int error = 1;
   public static final int entero = 2;
-  public static final int Parainstancias = 47;
-  public static final int pun = 46;
+  public static final int Parainstancias = 46;
+  public static final int pun = 45;
   public static final int propiedades = 24;
-  public static final int constru = 33;
+  public static final int constru = 32;
   public static final int salto = 20;
-  public static final int operadores = 27;
-  public static final int comentario = 43;
-  public static final int els = 32;
+  public static final int comentario = 42;
+  public static final int els = 31;
   public static final int retornar = 26;
-  public static final int operador_Logico = 28;
-  public static final int clases = 29;
+  public static final int operador_Logico = 27;
+  public static final int clases = 28;
   public static final int IDmayu = 22;
-  public static final int porc = 42;
-  public static final int restarr = 37;
+  public static final int porc = 41;
+  public static final int restarr = 36;
   public static final int principal = 23;
   public static final int asignacion = 11;
   public static final int libre = 12;
-  public static final int borrar = 40;
+  public static final int borrar = 39;
   public static final int tipo_ent = 13;
   public static final int cadena = 10;
   public static final String[] terminalNames = new String[] {
@@ -85,7 +88,6 @@ public interface sym {
   "propiedades",
   "metodos",
   "retornar",
-  "operadores",
   "operador_Logico",
   "clases",
   "ifs",
@@ -106,7 +108,11 @@ public interface sym {
   "insta",
   "pun",
   "Parainstancias",
-  "instafr"
+  "instafr",
+  "aumento",
+  "opnum",
+  "opcadnum",
+  "condicionales"
   };
 }
 

@@ -3,3 +3,15 @@ escribir r.r
 r = instanciar Rectangulo()
 eliminar r
 
+si numero % 2 entonces 
+	devolver 2
+sino numero % 3 entonces 
+	devolver 3
+sino numero % 3 entonces 
+	devolver 3
+
+
+
+
+
+
