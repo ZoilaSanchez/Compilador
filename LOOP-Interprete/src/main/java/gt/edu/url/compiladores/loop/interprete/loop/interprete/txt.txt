@@ -1,5 +1,8 @@
 Rectangulo r = instanciar Rectangulo()
+/* asjdfl
 
+ */
+// otro comen
 escribir r.r
 r = instanciar Rectangulo()
 eliminar r

@@ -28,7 +28,9 @@ S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
             | MES 
             |FUNCIONESS 
-            |Linstancias;
+            |Linstancias
+            |comentarios
+            |comentario;
 
 
 lineas::=est
