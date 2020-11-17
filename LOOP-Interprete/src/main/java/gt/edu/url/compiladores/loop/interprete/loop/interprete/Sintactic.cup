@@ -12,7 +12,8 @@ els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentari
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
-corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex;
+corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex,
+propu,propri,propro;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -23,7 +24,8 @@ non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,Cadenas
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
-non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID;
+non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
+CONTENIDOCLASES,DEC;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -33,7 +35,8 @@ codigoli::= DECLARACION
             |COMM   
             |CILCOS
             |ASIGNA
-            |Whiles;
+            |Whiles
+            |CLASESA;
 
 lineas::=est
             |FunE
@@ -46,6 +49,13 @@ lineas::=est
  * Todo lo de clases
  **/
 
+CLASESA::= clase libre IDmayu newline salto CONTENIDOCLASES;
+
+CONTENIDOCLASES::=propiedades libre propu newline salto salto DEC 
+                propiedades libre propri newline salto salto DEC 
+                propiedades libre propro newline salto salto DEC;   
+
+DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -72,12 +82,6 @@ DECLAREAL ::= reducciondetiporeal VARSECUE finales
              | reducciondetiporeal VARSECUE libre asignacion libre Compreal finales;
 
 Compreal::=entero | real | cadena |boleano;
-/**
- * INCREMENTOS Y DECREMENTOS
- **/
-
-
-
 
 /**
  * Metodos de entrada y salida

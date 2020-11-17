@@ -32,6 +32,8 @@ public interface sym {
   public static final int tipo_ca2 = 52;
   public static final int libre = 12;
   public static final int tipo_real = 15;
+  public static final int propro = 77;
+  public static final int propri = 76;
   public static final int cs = 59;
   public static final int propiedades = 25;
   public static final int whiles = 36;
@@ -54,6 +56,7 @@ public interface sym {
   public static final int boleano = 6;
   public static final int retornar = 27;
   public static final int metodos = 26;
+  public static final int propu = 75;
   public static final int sumarr = 37;
   public static final int opcadnum = 51;
   public static final int restarr = 38;
@@ -158,7 +161,10 @@ public interface sym {
   "haccer",
   "SIGdiv",
   "SIGpor",
-  "SIGex"
+  "SIGex",
+  "propu",
+  "propri",
+  "propro"
   };
 }
 

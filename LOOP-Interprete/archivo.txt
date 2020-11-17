@@ -17,23 +17,15 @@ desde i = 0 mientras i > 5 decrementar 4 hacer
 desde entero i = 0 mientras i > 5 hacer
 	escribir i;
 
-d=0
-d=-3
-d=d
 
-d=5+b
-d=b+b
-d=5+5
-d=b+4
-
-
-hacer
-	a=5+b
-	b=b%d
-	ancho = a
-	largo = b
-
-mientras b < 10
+clase Ejemplo
+	propiedades publicas:
+		entero a
+		cadena b
+	propiedades privadas:
+		cadena c
+	propiedades protegidas:
+		cadena p
 
 
 
