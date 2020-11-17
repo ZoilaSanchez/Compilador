@@ -21,7 +21,7 @@ PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos
 non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
 
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
-Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM;
+Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -93,8 +93,10 @@ Msalida::= salida libre identificador finales;
  * comentarios
  **/
 
-COMM::= comentarios finales;
-
+COMM::= comentario finales 
+|comentarios newline cuerpocomentarios comfin finales ;
+cuerpocomentarios ::= comentariose finales 
+                | comentariose newline cuerpocomentarios;
 /**
  * Funciones 
  **/

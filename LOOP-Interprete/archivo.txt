@@ -5,6 +5,11 @@ r = instanciar Rectangulo()
 eliminar r
 
 /* dfddd
+* ddfdf
+* como van
+*/
+// hola qui vamod de nuevo
+
 
 
 

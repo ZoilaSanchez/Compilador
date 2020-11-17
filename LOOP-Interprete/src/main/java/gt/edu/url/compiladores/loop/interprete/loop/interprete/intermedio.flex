@@ -30,7 +30,6 @@ comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
 comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
 comentariose = "*"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
-
 retu="devolver "[\u0020]*
 nocome=[\u002F]
 enter = "-"?[0-9]+
@@ -99,6 +98,7 @@ palabrasReservadas = ("propiedades"|"metodos"
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
                         return new Symbol(sym.salida,yytext());}
+{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
 {boleanos}              {lexeme=yytext();  
                         return new Symbol(sym.boleano,yytext());}
 
@@ -173,7 +173,7 @@ palabrasReservadas = ("propiedades"|"metodos"
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
 {comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
 {comentariose}          {lexeme=yytext();  return new Symbol(sym.comentariose,yytext());}
-{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
+
 
 // funciones especiales en el lenguaje
 
