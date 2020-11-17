@@ -21,7 +21,7 @@ PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos
 non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
 
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
-Compaentero,Compcadena,Compboo,Compreal, CuerpoClases;
+Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -35,6 +35,15 @@ lineas::=est
             |contructoDes
             |Arrays
             |TiposArr;
+
+
+/**
+ * Todo lo de clases
+ **/
+
+CLASES ::= identificadorC libre IDmayu libre herencia libre IDmayu CuerpoClases |identificadorC libre IDmayu CuerpoClases;
+CuerpoClases ::= newline TABULA Propiedades;
+Propiedades ::= propiedades libre finales;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -84,11 +93,6 @@ TIP::=  cadena coma libre TIP
 Msalida::= salida libre identificador finales;
 
 
-/**
- * Todo lo de clases
- **/
-
-CLASES ::= identificadorC libre IDmayu libre herencia libre IDmayu newline|identificadorC libre IDmayu newline;
 /**
  * Funciones 
  **/

@@ -1,4 +1,8 @@
-clase Casa extiende Perro
+clase Casa Perro extiende
+	propiedades 
+	
+		
+
 
 
 
