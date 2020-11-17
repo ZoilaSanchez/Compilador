@@ -11,7 +11,6 @@ public interface sym {
   public static final int llavb = 64;
   public static final int llava = 63;
   public static final int newline = 17;
-  public static final int identificadorC = 29;
   public static final int fin_de_linea = 9;
   public static final int condicionales = 22;
   public static final int tipo_ca = 60;
@@ -37,6 +36,7 @@ public interface sym {
   public static final int salida = 5;
   public static final int ifs = 31;
   public static final int whiles = 36;
+  public static final int clase = 29;
   public static final int desdes = 35;
   public static final int comentarios = 44;
   public static final int sumarr = 37;
@@ -104,7 +104,7 @@ public interface sym {
   "metodos",
   "retornar",
   "operador_Logico",
-  "identificadorC",
+  "clase",
   "clases",
   "ifs",
   "entoncess",

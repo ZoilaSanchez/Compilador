@@ -91,7 +91,7 @@ palabrasReservadas = ("propiedades"|"metodos"
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
 {clases}                  {lexeme=yytext(); return new Symbol(sym.IDmayu,yytext());}  
 "clase"                {lexeme=yytext(); 
-                         return new Symbol(sym.identificadorC,yytext());}
+                         return new Symbol(sym.clase,yytext());}
 "extiende"                     {lexeme = yytext();
                            return new Symbol(sym.herencia,yytext());} 
 "escribir"              {lexeme=yytext(); 

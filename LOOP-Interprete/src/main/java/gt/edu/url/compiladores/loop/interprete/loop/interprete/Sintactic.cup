@@ -7,7 +7,7 @@ terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
 libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,condicionales,IDmayu;
 
-terminal principal,propiedades,metodos,retornar,operador_Logico,identificadorC,clases,ifs,entoncess,
+terminal principal,propiedades,metodos,retornar,operador_Logico,clase,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentario,
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
@@ -21,14 +21,14 @@ PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatos
 non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
 
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
-Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades;
+Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
             | MES 
             |FUNCIONESS 
             |Linstancias
-            |CLASES;
+            |COMM;
 
 lineas::=est
             |FunE
@@ -41,9 +41,6 @@ lineas::=est
  * Todo lo de clases
  **/
 
-CLASES ::= identificadorC libre IDmayu libre herencia libre IDmayu CuerpoClases |identificadorC libre IDmayu CuerpoClases;
-CuerpoClases ::= newline TABULA Propiedades;
-Propiedades ::= propiedades libre finales;
 
 /**
  * Declaracion de variables y asignacion de las mismas
@@ -92,6 +89,11 @@ TIP::=  cadena coma libre TIP
 
 Msalida::= salida libre identificador finales;
 
+/**
+ * comentarios
+ **/
+
+COMM::= comentario finales;
 
 /**
  * Funciones 

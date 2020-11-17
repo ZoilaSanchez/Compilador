@@ -4,43 +4,7 @@ escribir r.r
 r = instanciar Rectangulo()
 eliminar r
 
-si numero % 2 entonces 
-	devolver 2
-sino numero % 3 entonces 
-	devolver 3
-sino numero % 3 entonces 
-	devolver 3
-
-entero cadenaAEntero(cadena e)
-entero cadenaAReal(cadena e)
-
-
-constructor(entero a, entero l)
-	ancho = a
-	largo = b
-destructor()
-	eliminar anc
-entero a[3] ={ 1, 2, 3 }
-real a[3] ={ 1.2, 2.2, 23.1 }
-cadena a[3] ={ "hola", "como", "estan" }
-boolean a[3] ={ verdadero, falso }
-
-
-
-cadena b[]
-
-
-
-
-b[0] = 1
-b = instanciar entero[2]
-
-
-
-
-
-
-
+// hola
 
 
 

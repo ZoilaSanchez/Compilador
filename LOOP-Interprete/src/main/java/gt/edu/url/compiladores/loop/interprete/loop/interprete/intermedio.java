@@ -1478,7 +1478,7 @@ class intermedio implements java_cup.runtime.Scanner {
           case 90: break;
           case 36:
             { lexeme=yytext(); 
-                         return new Symbol(sym.identificadorC,yytext());
+                         return new Symbol(sym.clase,yytext());
             }
             // fall through
           case 91: break;
