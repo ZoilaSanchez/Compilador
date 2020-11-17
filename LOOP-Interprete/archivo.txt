@@ -35,8 +35,7 @@ clase Ejemplo extiende Rectangulo
 
 
 incluir "../../impresion.loop"
-
-
+r.r=3;
 
 
 

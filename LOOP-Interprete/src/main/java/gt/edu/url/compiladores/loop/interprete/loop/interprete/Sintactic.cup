@@ -143,11 +143,6 @@ TIP::=  cadena coma libre TIP
 
 
 Msalida::= salida libre identificador finales;
-/**
- * Asignaciones
- **/
-
-
 
 /**
  * comentarios
@@ -234,9 +229,12 @@ Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONE
 /**
  * Asignaciones
  **/
-ASIGNA::=    identificador asignacion operacionesmatematicas finales
+
+ASIGNA::=    identificador pun identificador asignacion operacionesmatematicas finales
+            |identificador asignacion operacionesmatematicas finales
               |identificador libre asignacion libre operacionesmatematicas finales
               |identificador libre asignacion libre operacionesmatematicas finales  TABULA ASIGNA
+              |identificador pun identificador asignacion operacionesmatematicas finales  TABULA ASIGNA
             | identificador asignacion operacionesmatematicas finales TABULA ASIGNA;
 
 
