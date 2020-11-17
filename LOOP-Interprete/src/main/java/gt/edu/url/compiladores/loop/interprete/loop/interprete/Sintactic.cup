@@ -12,7 +12,7 @@ els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentari
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
-corcheteb,llava,llavb, herencia;
+corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -93,7 +93,7 @@ Msalida::= salida libre identificador finales;
  * comentarios
  **/
 
-COMM::= comentario finales;
+COMM::= comentarios finales;
 
 /**
  * Funciones 

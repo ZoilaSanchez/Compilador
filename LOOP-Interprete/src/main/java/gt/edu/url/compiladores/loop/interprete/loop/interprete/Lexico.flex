@@ -27,7 +27,7 @@ comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letr
 comn=[\u002A]({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos}|{FINLINEA})*{comfin}
+comentarios = {comini}([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*|"*"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
 retu="devolver"[\u0020]*
 nocome=[\u002F]
@@ -142,7 +142,4 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {nova}                  {lexeme=yytext();
                         System.out.println("Error verificar "+yytext());
                         return No;}
-{nocomentarios}         {lexeme=yytext();
-                        System.out.println("Error verificar "+yytext());
-                        return nocom;}
 .                       { System.out.println("Error verificar "+yytext());}

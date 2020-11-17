@@ -29,6 +29,7 @@ public interface sym {
   public static final int coma = 8;
   public static final int entrada = 4;
   public static final int metodos = 26;
+  public static final int comfin = 67;
   public static final int insta = 45;
   public static final int identificador = 7;
   public static final int real = 3;
@@ -38,6 +39,7 @@ public interface sym {
   public static final int whiles = 36;
   public static final int clase = 29;
   public static final int desdes = 35;
+  public static final int cominicio = 66;
   public static final int comentarios = 44;
   public static final int sumarr = 37;
   public static final int instafr = 48;
@@ -66,6 +68,7 @@ public interface sym {
   public static final int clases = 30;
   public static final int IDmayu = 23;
   public static final int porc = 42;
+  public static final int comentariose = 68;
   public static final int restarr = 38;
   public static final int principal = 24;
   public static final int asignacion = 11;
@@ -140,7 +143,10 @@ public interface sym {
   "corcheteb",
   "llava",
   "llavb",
-  "herencia"
+  "herencia",
+  "cominicio",
+  "comfin",
+  "comentariose"
   };
 }
 

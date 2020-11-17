@@ -28,8 +28,9 @@ fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos}|{FINLINEA})*{comfin}
-nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
+comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
+comentariose = "*"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
+
 retu="devolver "[\u0020]*
 nocome=[\u002F]
 enter = "-"?[0-9]+
@@ -171,6 +172,8 @@ palabrasReservadas = ("propiedades"|"metodos"
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
 {comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
+{comentariose}          {lexeme=yytext();  return new Symbol(sym.comentariose,yytext());}
+{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
 
 // funciones especiales en el lenguaje
 
@@ -201,9 +204,6 @@ palabrasReservadas = ("propiedades"|"metodos"
 {nova}                  {lexeme=yytext();
                         return new Symbol(sym.error);}
                    
-{nocomentarios}         {lexeme=yytext();
-                        System.out.println("Error verificar "+yytext());
-                        return new Symbol(sym.error);}
 .                       { System.out.println("Error verificar . "+yytext());
                         return new Symbol(sym.error);}
 <<EOF>> {return new Symbol(sym.EOF ); }

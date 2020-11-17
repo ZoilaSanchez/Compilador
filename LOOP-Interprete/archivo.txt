@@ -4,7 +4,7 @@ escribir r.r
 r = instanciar Rectangulo()
 eliminar r
 
-// hola
+/* dfddd
 
 
 
