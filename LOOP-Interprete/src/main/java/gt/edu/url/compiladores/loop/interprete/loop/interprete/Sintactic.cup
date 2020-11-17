@@ -23,6 +23,7 @@ non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,Cadenas
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
+non terminal cuerpociclos;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -167,7 +168,8 @@ cond::= entero libre opnum libre entero
  * Estructuras Iterativas
  **/
 
-CILCOS::= desdes libre INICIALES  libre whiles libre  OPCIONESID libre CONDICIONES libre OPCIONESID libre INCREMENTOS libre  entero libre haccer finales;
+CILCOS::= desdes libre INICIALES  libre whiles libre  OPCIONESID libre CONDICIONES libre OPCIONESID libre INCREMENTOS libre  entero libre haccer finales cuerpociclos;
+cuerpociclos::= Mentrada;
 CONDICIONES::= opcadnum|condicionales;
 INCREMENTOS::= sumarr|restarr;
 INICIALES::= identificador

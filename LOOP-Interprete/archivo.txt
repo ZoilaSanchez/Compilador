@@ -11,6 +11,7 @@ eliminar r
 // hola qui vamod de nuevo
 
 desde i mientras i > 5 decrementar 4 hacer
+escribir i;
 
 
 
