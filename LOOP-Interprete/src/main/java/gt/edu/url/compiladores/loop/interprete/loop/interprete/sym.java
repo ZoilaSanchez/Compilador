@@ -47,6 +47,7 @@ public interface sym {
   public static final int desdes = 35;
   public static final int entrada = 4;
   public static final int salida = 5;
+  public static final int estatico = 82;
   public static final int tabu = 21;
   public static final int herencia = 65;
   public static final int real = 3;
@@ -172,7 +173,8 @@ public interface sym {
   "propum",
   "proprim",
   "proprom",
-  "extension"
+  "extension",
+  "estatico"
   };
 }
 

@@ -124,7 +124,8 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
                          return new Symbol(sym.entoncess,yytext());}
 "sino "                {lexeme=yytext(); 
                          return new Symbol(sym.els,yytext());}
-
+"estatico"                {lexeme=yytext(); 
+                         return new Symbol(sym.estatico,yytext());}
 // estructura de for
 
 "desde"                {lexeme=yytext(); 

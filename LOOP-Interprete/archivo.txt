@@ -20,7 +20,7 @@ desde entero i = 0 mientras i > 5 hacer
 
 clase Ejemplo extiende Rectangulo
 	propiedades publicas:
-		entero a
+		estatico entero a
 		cadena b
 	propiedades privadas:
 		cadena c

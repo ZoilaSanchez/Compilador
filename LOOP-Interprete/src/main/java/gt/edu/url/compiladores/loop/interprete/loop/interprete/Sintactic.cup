@@ -13,7 +13,7 @@ comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
 corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex,
-propu,propri,propro,propum,proprim,proprom,extension;
+propu,propri,propro,propum,proprim,proprom,extension,estatico;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -99,18 +99,26 @@ DECLARACION ::= DECENTERO
                 | DECLAREAL ;
 
 DECENTERO ::= reducciondetipoente VARSECUE finales 
+            | estatico libre reducciondetipoente VARSECUE finales    
+            |estatico libre reducciondetipoente VARSECUE libre asignacion libre Compaentero finales
             | reducciondetipoente VARSECUE libre asignacion libre Compaentero finales;
             
 Compaentero::=entero | real | cadena |boleano;
 
 
 DECCADENA ::= reducciondetipocadena VARSECUE finales
+            |estatico libre reducciondetipocadena VARSECUE finales
+             | estatico libre reducciondetipocadena VARSECUE libre asignacion libre cadena finales
              | reducciondetipocadena VARSECUE libre asignacion libre cadena finales;
 
 DECBOLEAN ::= reducciondetipobol VARSECUE finales
+            |estatico libre reducciondetipobol VARSECUE finales
+            |estatico libre reducciondetipobol VARSECUE libre asignacion libre Compboo finales
              | reducciondetipobol VARSECUE libre asignacion libre Compboo finales;
 Compboo::=entero | real | boleano;
 DECLAREAL ::= reducciondetiporeal VARSECUE finales
+            | estatico libre reducciondetiporeal VARSECUE finales
+             | estatico libre reducciondetiporeal VARSECUE libre asignacion libre Compreal finales
              | reducciondetiporeal VARSECUE libre asignacion libre Compreal finales;
 
 Compreal::=entero | real | cadena |boleano;
