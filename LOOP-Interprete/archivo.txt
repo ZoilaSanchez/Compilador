@@ -10,12 +10,12 @@ eliminar r
 */
 // hola qui vamod de nuevo
 
-desde i mientras i > 5 decrementar 4 hacer
-escribir i;
+desde i = 0 mientras i > 5 decrementar 4 hacer
+	escribir i;
 
 
-
-
+desde entero i = 0 mientras i > 5 hacer
+	escribir i;
 
 
 
