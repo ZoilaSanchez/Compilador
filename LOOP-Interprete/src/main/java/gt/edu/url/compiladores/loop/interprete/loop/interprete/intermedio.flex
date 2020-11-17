@@ -103,7 +103,12 @@ palabrasReservadas = ("propiedades"|"metodos"
                         return new Symbol(sym.SIG,yytext());}
 "-"                  {lexeme=yytext(); 
                         return new Symbol(sym.SIGme,yytext());}
-
+"/"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIGdiv,yytext());}
+"%"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIGpor,yytext());}
+"^"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIGex,yytext());}
 ","                     {lexeme=yytext(); 
                         return new Symbol(sym.coma,yytext());}
 "."                     {lexeme=yytext(); 
@@ -133,7 +138,8 @@ palabrasReservadas = ("propiedades"|"metodos"
 "hacer"                {lexeme=yytext(); 
                          return new Symbol(sym.haccer,yytext());}
 
-
+{Solonum}                  {lexeme=yytext(); 
+                          return new Symbol(sym.opnum,yytext());}
 
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}

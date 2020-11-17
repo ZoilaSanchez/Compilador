@@ -9,6 +9,7 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 public interface sym {
   /* terminals */
   public static final int clases = 30;
+  public static final int SIGex = 74;
   public static final int identificador = 7;
   public static final int fin_de_linea = 9;
   public static final int salto = 20;
@@ -18,6 +19,7 @@ public interface sym {
   public static final int constru = 34;
   public static final int SIG = 69;
   public static final int aumento = 49;
+  public static final int SIGdiv = 72;
   public static final int cadena = 10;
   public static final int comentarios = 44;
   public static final int tipo_ca8 = 58;
@@ -74,6 +76,7 @@ public interface sym {
   public static final int parb = 19;
   public static final int para = 18;
   public static final int newline = 17;
+  public static final int SIGpor = 73;
   public static final int tipo_ca = 60;
   public static final int coma = 8;
   public static final int pun = 46;
@@ -152,7 +155,10 @@ public interface sym {
   "comentariose",
   "SIG",
   "SIGme",
-  "haccer"
+  "haccer",
+  "SIGdiv",
+  "SIGpor",
+  "SIGex"
   };
 }
 

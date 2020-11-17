@@ -12,7 +12,7 @@ els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentari
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
-corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer;
+corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -23,7 +23,7 @@ non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,Cadenas
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
-non terminal cuerpociclos,ID;
+non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -31,7 +31,8 @@ codigoli::= DECLARACION
             |FUNCIONESS 
             |Linstancias
             |COMM   
-            |CILCOS;
+            |CILCOS
+            |ASIGNA;
 
 lineas::=est
             |FunE
@@ -179,6 +180,22 @@ INICIALES::= identificador libre
 
 ID::=identificador libre;
 OPCIONESID::= identificador | entero;
+
+/**
+ * Whiles
+ **/
+
+//Whiles::= haccer newline TABULA ASIGNA newline whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
+/**
+ * Asignaciones
+ **/
+ASIGNA::= identificador asignacion operacionesmatematicas finales;
+operacionesmatematicas::= entero simbolosdeopera entero 
+                           |identificador simbolosdeopera identificador
+                           |entero simbolosdeopera identificador
+                             |identificador simbolosdeopera entero ;
+
+simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex;
 
 /**
  * Funciones Especiales

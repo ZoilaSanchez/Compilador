@@ -17,7 +17,10 @@ desde i = 0 mientras i > 5 decrementar 4 hacer
 desde entero i = 0 mientras i > 5 hacer
 	escribir i;
 
-
+d=5+b
+d=b+b
+d=5+5
+d=b+4
 
 
 

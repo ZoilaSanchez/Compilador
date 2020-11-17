@@ -44,7 +44,12 @@ menin={tipos}[\u0020]"Principal"[\u0020]"("({tipos}[\u0020]{variables})*")"
 insta= {letrasmi}+"."{letrasmi}+(("()")|"("{tipos}[\u0020]({variables}|{num})+(","[\u0020]+{tipos}[\u0020]+({variables}|{num})*")")*)|"instanciar"[\u0020]{may}+({letrasmi}+|{may}+)*("("({num}*|{variables}*)*")")*
 noclases={num}+{may}+{letrasmi}*({ace}*|{noace}*|{letrasmi}|{letrasma}|{num}|{diago}*|{simbolos})*
 nova={num}+{noace2}*{diago}+({ace}*|{noace}*|{num}|{diago}*)*|({letrasmi}*{letrasma}*{noace}{diago}*)*{letrasmi}*{letrasma}*{diago}*
-opera="="|"++"|"--"|"+"|"-"|"*"|"/"|"%"|"^"|">"|"<"|"=="|"!="
+aumentos="++"|"--"
+Solonum="+"|"*"|"-"|"/"|"%"|"^"
+// para estructuras de if
+condi="<"|">"|"%"
+ambos="=="|"!="
+
 operalo="AND"|"OR"
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
@@ -104,7 +109,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                         return opcional;}
 ";"                     {lexeme=yytext(); 
                         return fin_de_linea;}
-{opera}                  {lexeme=yytext(); 
+{Solonum}                  {lexeme=yytext(); 
                          return operadores;}
 {operalo}                {lexeme=yytext(); 
                          return operador_Logico;}
