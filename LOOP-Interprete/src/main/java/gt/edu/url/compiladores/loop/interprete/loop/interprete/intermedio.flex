@@ -62,6 +62,7 @@ pro=("privadas:"|"publicas:")
 me=("privados:"|"publicos:")
 parena=[\u0028]
 parenb=[\u0029]
+SIGNO="+"|"-"
 palabrasReservadas = ("propiedades"|"metodos"
     |"si"|"entonces"|"sino"|"devolver"|"constructor"|"escribir"|"leer"
     |"devolver"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
@@ -98,12 +99,11 @@ palabrasReservadas = ("propiedades"|"metodos"
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
                         return new Symbol(sym.salida,yytext());}
-{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
-{boleanos}              {lexeme=yytext();  
-                        return new Symbol(sym.boleano,yytext());}
+"+"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIG,yytext());}
+"-"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIGme,yytext());}
 
-{variables}             {lexeme=yytext(); 
-                         return new Symbol(sym.identificador,yytext());}
 ","                     {lexeme=yytext(); 
                         return new Symbol(sym.coma,yytext());}
 "."                     {lexeme=yytext(); 
@@ -156,6 +156,13 @@ palabrasReservadas = ("propiedades"|"metodos"
                         linea= yyline; 
                         return new Symbol(sym.retornar,yytext());}
 
+{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
+{boleanos}              {lexeme=yytext();  
+                        return new Symbol(sym.boleano,yytext());}
+
+{variables}             {lexeme=yytext(); 
+                         return new Symbol(sym.identificador,yytext());}
+
 {aumentos}                  {lexeme=yytext(); 
                           return new Symbol(sym.aumento,yytext());}
 {Solonum}                  {lexeme=yytext(); 
@@ -201,8 +208,6 @@ palabrasReservadas = ("propiedades"|"metodos"
                         System.out.println("Error verificar "+yytext());
                         return new Symbol(sym.error);}
 
-{nova}                  {lexeme=yytext();
-                        return new Symbol(sym.error);}
                    
 .                       { System.out.println("Error verificar . "+yytext());
                         return new Symbol(sym.error);}

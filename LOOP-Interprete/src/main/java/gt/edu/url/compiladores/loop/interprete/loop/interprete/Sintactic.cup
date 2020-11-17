@@ -12,7 +12,7 @@ els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentari
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
-corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose;
+corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -22,13 +22,15 @@ non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,Cadenas
 
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
+non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
             | MES 
             |FUNCIONESS 
             |Linstancias
-            |COMM;
+            |COMM   
+            |CILCOS;
 
 lineas::=est
             |FunE
@@ -67,6 +69,12 @@ DECLAREAL ::= reducciondetiporeal VARSECUE finales
              | reducciondetiporeal VARSECUE libre asignacion libre Compreal finales;
 
 Compreal::=entero | real | cadena |boleano;
+/**
+ * INCREMENTOS Y DECREMENTOS
+ **/
+
+
+
 
 /**
  * Metodos de entrada y salida
@@ -88,11 +96,17 @@ TIP::=  cadena coma libre TIP
 
 
 Msalida::= salida libre identificador finales;
+/**
+ * Asignaciones
+ **/
+
+
 
 /**
  * comentarios
  **/
 
+           
 COMM::= comentario finales 
 |comentarios newline cuerpocomentarios comfin finales ;
 cuerpocomentarios ::= comentariose finales 
@@ -149,6 +163,16 @@ cond::= entero libre opnum libre entero
         |entero libre opnum libre identificador
         |identificador libre opnum libre identificador;
 
+/**
+ * Estructuras Iterativas
+ **/
+
+CILCOS::= desdes libre INICIALES  libre whiles libre  OPCIONESID libre CONDICIONES libre OPCIONESID libre INCREMENTOS libre  entero libre haccer finales;
+CONDICIONES::= opcadnum|condicionales;
+INCREMENTOS::= sumarr|restarr;
+INICIALES::= identificador
+            | tipo_ent libre identificador libre asignacion entero;
+OPCIONESID::= identificador | entero;
 
 /**
  * Funciones Especiales

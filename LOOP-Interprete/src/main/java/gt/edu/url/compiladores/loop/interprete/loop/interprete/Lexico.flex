@@ -139,7 +139,4 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                         System.out.println("Error verificar "+yytext());
                         return noclas;}
 
-{nova}                  {lexeme=yytext();
-                        System.out.println("Error verificar "+yytext());
-                        return No;}
 .                       { System.out.println("Error verificar "+yytext());}
