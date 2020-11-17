@@ -111,36 +111,6 @@ palabrasReservadas = ("propiedades"|"metodos"
                         return new Symbol(sym.asignacion,yytext());}
 ";"                     {lexeme=yytext(); 
                          return  new Symbol(sym.fin_de_linea,yytext());}
-
-//metodos funciones y palabras reservadas, comentarios
-
-
-"Principal"                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.principal,yytext());}
-"propiedades"                {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.propiedades,yytext());}
-"metodos"                   {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.metodos,yytext());}
-"devolver "                {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.retornar,yytext());}
-
-{aumentos}                  {lexeme=yytext(); 
-                          return new Symbol(sym.aumento,yytext());}
-{Solonum}                  {lexeme=yytext(); 
-                          return new Symbol(sym.opnum,yytext());}
-{ambos}                  {lexeme=yytext(); 
-                          return new Symbol(sym.opcadnum,yytext());}
-
-{condi}                  {lexeme=yytext(); 
-                          return new Symbol(sym.condicionales,yytext());}
-{operalo}                {lexeme=yytext(); 
-                         return new Symbol(sym.operador_Logico,yytext());}
-
-
 // estructura del If
 "si "                {lexeme=yytext(); 
                          return new Symbol(sym.ifs,yytext());}
@@ -169,6 +139,33 @@ palabrasReservadas = ("propiedades"|"metodos"
 
 "instanciar "                {lexeme=yytext(); 
                          return new Symbol(sym.insta,yytext());}
+//metodos funciones y palabras reservadas, comentarios
+
+
+"Principal"                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.principal,yytext());}
+"propiedades"                {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.propiedades,yytext());}
+"metodos"                   {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.metodos,yytext());}
+"devolver "                {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.retornar,yytext());}
+
+{aumentos}                  {lexeme=yytext(); 
+                          return new Symbol(sym.aumento,yytext());}
+{Solonum}                  {lexeme=yytext(); 
+                          return new Symbol(sym.opnum,yytext());}
+{ambos}                  {lexeme=yytext(); 
+                          return new Symbol(sym.opcadnum,yytext());}
+
+{condi}                  {lexeme=yytext(); 
+                          return new Symbol(sym.condicionales,yytext());}
+{operalo}                {lexeme=yytext(); 
+                         return new Symbol(sym.operador_Logico,yytext());}
 
 //comernarios
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
