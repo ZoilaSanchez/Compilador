@@ -8,69 +8,71 @@ package gt.edu.url.compiladores.loop.interprete.loop.interprete;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int llavb = 63;
-  public static final int llava = 62;
+  public static final int llavb = 64;
+  public static final int llava = 63;
   public static final int newline = 17;
+  public static final int identificadorC = 29;
   public static final int fin_de_linea = 9;
   public static final int condicionales = 22;
-  public static final int tipo_ca = 59;
-  public static final int tipo_ca8 = 57;
+  public static final int tipo_ca = 60;
+  public static final int tipo_ca8 = 58;
   public static final int tipo_bol = 14;
-  public static final int tipo_ca7 = 56;
+  public static final int tipo_ca7 = 57;
   public static final int tipo_cadena = 16;
-  public static final int tipo_ca6 = 55;
-  public static final int tipo_ca5 = 54;
-  public static final int tipo_ca4 = 53;
-  public static final int tipo_ca3 = 52;
-  public static final int tipo_ca2 = 51;
+  public static final int tipo_ca6 = 56;
+  public static final int tipo_ca5 = 55;
+  public static final int tipo_ca4 = 54;
+  public static final int tipo_ca3 = 53;
+  public static final int tipo_ca2 = 52;
   public static final int boleano = 6;
-  public static final int paquetes = 40;
+  public static final int paquetes = 41;
   public static final int tabu = 21;
   public static final int coma = 8;
   public static final int entrada = 4;
   public static final int metodos = 26;
-  public static final int insta = 44;
+  public static final int insta = 45;
   public static final int identificador = 7;
   public static final int real = 3;
-  public static final int entoncess = 31;
+  public static final int entoncess = 32;
   public static final int salida = 5;
-  public static final int ifs = 30;
-  public static final int whiles = 35;
-  public static final int desdes = 34;
-  public static final int comentarios = 43;
-  public static final int sumarr = 36;
-  public static final int instafr = 47;
-  public static final int destruir = 38;
-  public static final int cs = 58;
-  public static final int opcadnum = 50;
-  public static final int aumento = 48;
+  public static final int ifs = 31;
+  public static final int whiles = 36;
+  public static final int desdes = 35;
+  public static final int comentarios = 44;
+  public static final int sumarr = 37;
+  public static final int instafr = 48;
+  public static final int destruir = 39;
+  public static final int cs = 59;
+  public static final int opcadnum = 51;
+  public static final int aumento = 49;
   public static final int EOF = 0;
   public static final int parb = 19;
   public static final int tipo_real = 15;
   public static final int para = 18;
-  public static final int opnum = 49;
+  public static final int opnum = 50;
   public static final int error = 1;
   public static final int entero = 2;
-  public static final int Parainstancias = 46;
-  public static final int pun = 45;
+  public static final int Parainstancias = 47;
+  public static final int pun = 46;
   public static final int propiedades = 25;
-  public static final int constru = 33;
+  public static final int constru = 34;
   public static final int salto = 20;
-  public static final int corcheteb = 61;
-  public static final int corchetea = 60;
-  public static final int comentario = 42;
-  public static final int els = 32;
+  public static final int corcheteb = 62;
+  public static final int corchetea = 61;
+  public static final int comentario = 43;
+  public static final int els = 33;
   public static final int retornar = 27;
   public static final int operador_Logico = 28;
-  public static final int clases = 29;
+  public static final int clases = 30;
   public static final int IDmayu = 23;
-  public static final int porc = 41;
-  public static final int restarr = 37;
+  public static final int porc = 42;
+  public static final int restarr = 38;
   public static final int principal = 24;
   public static final int asignacion = 11;
   public static final int libre = 12;
-  public static final int borrar = 39;
+  public static final int borrar = 40;
   public static final int tipo_ent = 13;
+  public static final int herencia = 65;
   public static final int cadena = 10;
   public static final String[] terminalNames = new String[] {
   "EOF",
@@ -102,6 +104,7 @@ public interface sym {
   "metodos",
   "retornar",
   "operador_Logico",
+  "identificadorC",
   "clases",
   "ifs",
   "entoncess",
@@ -136,7 +139,8 @@ public interface sym {
   "corchetea",
   "corcheteb",
   "llava",
-  "llavb"
+  "llavb",
+  "herencia"
   };
 }
 

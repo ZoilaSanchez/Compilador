@@ -7,31 +7,28 @@ terminal Double real;
 terminal entrada,salida,boleano,identificador,coma,fin_de_linea,cadena,asignacion,
 libre,tipo_ent,tipo_bol,tipo_real,tipo_cadena,newline,para, parb,salto,tabu,condicionales,IDmayu;
 
-terminal principal,propiedades,metodos,retornar,operador_Logico,clases,ifs,entoncess,
+terminal principal,propiedades,metodos,retornar,operador_Logico,identificadorC,clases,ifs,entoncess,
 els,constru,desdes,whiles,sumarr,restarr,destruir,borrar,paquetes,porc,comentario,
 comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
-corcheteb,llava,llavb;
+corcheteb,llava,llavb, herencia;
 
-non terminal S,codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
+non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
 PARAMETROSR,TABULA,Linstancias,est,cond,seguimiento,FunE,Tipofun,datos,tipodatoss,CUERPOD,contructoDes;
 
 non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,CadenasA,CadenaBO,TiposArr,TiposArr2,lineas;
 
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
-Compaentero,Compcadena,Compboo,Compreal;
+Compaentero,Compcadena,Compboo,Compreal, CuerpoClases;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
-
 codigoli::= DECLARACION 
             | MES 
             |FUNCIONESS 
             |Linstancias
-            |comentarios
-            |comentario;
-
+            |CLASES;
 
 lineas::=est
             |FunE
@@ -87,6 +84,11 @@ TIP::=  cadena coma libre TIP
 Msalida::= salida libre identificador finales;
 
 
+/**
+ * Todo lo de clases
+ **/
+
+CLASES ::= identificadorC libre IDmayu libre herencia libre IDmayu newline|identificadorC libre IDmayu newline;
 /**
  * Funciones 
  **/
@@ -189,6 +191,7 @@ TiposArr::= reducciondetipoente identificador corchetea corcheteb finales
         |reducciondetipocadena  identificador corchetea corcheteb finales
         | identificador corchetea entero corcheteb libre asignacion libre tipodatoss finales
         | identificador libre asignacion libre insta tipodatosnombre corchetea entero corcheteb finales;
+
 
 /**
  * Reduccion tipo entero

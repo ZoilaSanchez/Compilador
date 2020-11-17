@@ -28,7 +28,7 @@ fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}([\u0020]|[\u0020]*|{num}*|{ace}*|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos}|{simbolos}{FINLINEA})*{comfin}
+comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos}|{FINLINEA})*{comfin}
 nocomentarios = {comini}({num}*|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}{simbolos})*
 retu="devolver "[\u0020]*
 nocome=[\u002F]
@@ -62,7 +62,7 @@ pro=("privadas:"|"publicas:")
 me=("privados:"|"publicos:")
 parena=[\u0028]
 parenb=[\u0029]
-palabrasReservadas = ("clase"|"propiedades"|"metodos"
+palabrasReservadas = ("propiedades"|"metodos"
     |"si"|"entonces"|"sino"|"devolver"|"constructor"|"escribir"|"leer"
     |"devolver"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
     |"eliminar"|"extiende"|"incluir")
@@ -90,6 +90,10 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
 {clases}                  {lexeme=yytext(); return new Symbol(sym.IDmayu,yytext());}  
+"clase"                {lexeme=yytext(); 
+                         return new Symbol(sym.identificadorC,yytext());}
+"extiende"                     {lexeme = yytext();
+                           return new Symbol(sym.herencia,yytext());} 
 "escribir"              {lexeme=yytext(); 
                         return new Symbol(sym.entrada,yytext());}
 "leer"                  {lexeme=yytext(); 
@@ -135,8 +139,7 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                           return new Symbol(sym.condicionales,yytext());}
 {operalo}                {lexeme=yytext(); 
                          return new Symbol(sym.operador_Logico,yytext());}
-"clase"                {lexeme=yytext(); 
-                         return new Symbol(sym.clases,yytext());}
+
 
 // estructura del If
 "si "                {lexeme=yytext(); 

@@ -112,7 +112,6 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                          return clases;}
 
 
-
          
                      
 
