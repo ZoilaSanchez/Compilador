@@ -67,7 +67,7 @@ palabrasReservadas = ("propiedades"|"metodos"
     |"si"|"entonces"|"sino"|"devolver"|"constructor"|"escribir"|"leer"
     |"devolver"|"desde"|"mientras"|"incrementar"|"hacer"|"destructor"
     |"eliminar"|"extiende"|"incluir")
-
+biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*".loop"\u0022
 %{
     public String lexeme;
     public int linea;
@@ -143,7 +143,8 @@ palabrasReservadas = ("propiedades"|"metodos"
 
 "incluir"                {lexeme=yytext(); 
                          return new Symbol(sym.paquetes,yytext());}
-
+{biblio}               {lexeme=yytext(); 
+                         return new Symbol(sym.extension,yytext());}
 "instanciar "                {lexeme=yytext(); 
                          return new Symbol(sym.insta,yytext());}
 //metodos funciones y palabras reservadas, comentarios

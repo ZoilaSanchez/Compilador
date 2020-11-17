@@ -13,7 +13,7 @@ comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
 corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex,
-propu,propri,propro,propum,proprim,proprom;
+propu,propri,propro,propum,proprim,proprom,extension;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -25,7 +25,7 @@ non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reduc
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
-CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase;
+CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -36,7 +36,8 @@ codigoli::= DECLARACION
             |CILCOS
             |ASIGNA
             |Whiles
-            |CLASESA;
+            |CLASESA
+            |BIBLIOTECAS;
 
 lineas::=est
             |FunE
@@ -80,6 +81,13 @@ CONTENIDOCLASES::=propiedades libre propu newline salto salto DEC
                ;   
 
 DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
+/**
+ * Area de biliotecas
+ **/
+
+BIBLIOTECAS::=paquetes libre extension newline; 
+
+
 
 /**
  * Declaracion de variables y asignacion de las mismas

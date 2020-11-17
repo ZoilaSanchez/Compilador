@@ -74,6 +74,7 @@ public interface sym {
   public static final int corcheteb = 62;
   public static final int corchetea = 61;
   public static final int entero = 2;
+  public static final int extension = 81;
   public static final int propum = 78;
   public static final int SIGme = 70;
   public static final int comentario = 43;
@@ -170,7 +171,8 @@ public interface sym {
   "propro",
   "propum",
   "proprim",
-  "proprom"
+  "proprom",
+  "extension"
   };
 }
 
