@@ -18,7 +18,7 @@ desde entero i = 0 mientras i > 5 hacer
 	escribir i;
 
 
-clase Ejemplo
+clase Ejemplo extiende Rectangulo
 	propiedades publicas:
 		entero a
 		cadena b
@@ -32,6 +32,8 @@ clase Ejemplo
 		cadena d
 	metodos protegidos:
 		cadena d
+
+
 
 
 
