@@ -26,6 +26,14 @@ clase Ejemplo
 		cadena c
 	propiedades protegidas:
 		cadena p
+	metodos publicos:
+		cadena c
+	metodos privados:
+		cadena d
+	metodos protegidos:
+		cadena d
+
+
 
 
 

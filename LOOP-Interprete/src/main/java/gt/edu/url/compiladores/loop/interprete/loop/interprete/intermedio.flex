@@ -158,6 +158,9 @@ palabrasReservadas = ("propiedades"|"metodos"
 "publicas:"                {lexeme=yytext();  return new Symbol(sym.propu,yytext());}
 "privadas:"                {lexeme=yytext();  return new Symbol(sym.propri,yytext());}
 "protegidas:"                {lexeme=yytext();  return new Symbol(sym.propro,yytext());}
+"publicos:"                {lexeme=yytext();  return new Symbol(sym.propum,yytext());}
+"privados:"                {lexeme=yytext();  return new Symbol(sym.proprim,yytext());}
+"protegidos:"                {lexeme=yytext();  return new Symbol(sym.proprom,yytext());}
 "metodos"                   {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.metodos,yytext());}

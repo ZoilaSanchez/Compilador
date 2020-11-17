@@ -13,7 +13,7 @@ comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
 corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex,
-propu,propri,propro;
+propu,propri,propro,propum,proprim,proprom;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -25,7 +25,7 @@ non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reduc
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
-CONTENIDOCLASES,DEC;
+CONTENIDOCLASES,DEC,METODOSCLASES;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -49,11 +49,34 @@ lineas::=est
  * Todo lo de clases
  **/
 
-CLASESA::= clase libre IDmayu newline salto CONTENIDOCLASES;
+CLASESA::= clase libre IDmayu newline salto CONTENIDOCLASES METODOSCLASES;
+METODOSCLASES::=metodos libre propum newline salto salto DEC
+                metodos libre proprim newline salto salto DEC 
+                metodos libre proprom newline salto salto DEC
+               |metodos libre propum newline salto salto DEC
+                metodos libre proprim newline salto salto DEC 
+                |metodos libre propum newline salto salto DEC
+                metodos libre proprom newline salto salto DEC    
+               |metodos libre proprim newline salto salto DEC 
+                metodos libre proprom newline salto salto DEC 
+                |metodos libre propum newline salto salto DEC
+                |metodos libre proprim newline salto salto DEC 
+                |metodos libre proprom newline salto salto DEC;
+
 
 CONTENIDOCLASES::=propiedades libre propu newline salto salto DEC 
                 propiedades libre propri newline salto salto DEC 
-                propiedades libre propro newline salto salto DEC;   
+                propiedades libre propro newline salto salto DEC
+            |propiedades libre propu newline salto salto DEC 
+                propiedades libre propri newline salto salto DEC 
+            |    propiedades libre propu newline salto salto DEC 
+                propiedades libre propro newline salto salto DEC  
+                |propiedades libre propri newline salto salto DEC 
+                propiedades libre propro newline salto salto DEC
+|propiedades libre propu newline salto salto DEC 
+|propiedades libre propri newline salto salto DEC 
+| propiedades libre propro newline salto salto DEC
+               ;   
 
 DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
 

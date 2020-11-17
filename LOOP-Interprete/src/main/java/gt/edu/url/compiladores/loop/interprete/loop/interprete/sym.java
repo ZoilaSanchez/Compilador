@@ -62,6 +62,8 @@ public interface sym {
   public static final int restarr = 38;
   public static final int instafr = 48;
   public static final int EOF = 0;
+  public static final int proprim = 79;
+  public static final int proprom = 80;
   public static final int els = 33;
   public static final int tipo_bol = 14;
   public static final int entoncess = 32;
@@ -72,6 +74,7 @@ public interface sym {
   public static final int corcheteb = 62;
   public static final int corchetea = 61;
   public static final int entero = 2;
+  public static final int propum = 78;
   public static final int SIGme = 70;
   public static final int comentario = 43;
   public static final int comentariose = 68;
@@ -164,7 +167,10 @@ public interface sym {
   "SIGex",
   "propu",
   "propri",
-  "propro"
+  "propro",
+  "propum",
+  "proprim",
+  "proprom"
   };
 }
 
