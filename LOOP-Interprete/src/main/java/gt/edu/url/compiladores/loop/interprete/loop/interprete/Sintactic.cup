@@ -185,7 +185,7 @@ OPCIONESID::= identificador | entero;
  * Whiles
  **/
 
-//Whiles::= haccer newline TABULA ASIGNA newline whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
+Whiles::= haccer newline TABULA ASIGNA newline whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
 /**
  * Asignaciones
  **/
@@ -193,7 +193,11 @@ ASIGNA::= identificador asignacion operacionesmatematicas finales;
 operacionesmatematicas::= entero simbolosdeopera entero 
                            |identificador simbolosdeopera identificador
                            |entero simbolosdeopera identificador
-                             |identificador simbolosdeopera entero ;
+                             |identificador simbolosdeopera entero 
+                             |SIGme identificador 
+                            |SIGme entero 
+                            | identificador
+                            | entero    ;
 
 simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex;
 
