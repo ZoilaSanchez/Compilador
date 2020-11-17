@@ -23,7 +23,7 @@ non terminal tipodatosnombre,CUERPOFD,CUERPODES,Arrays,Numeros,NumerosRe,Cadenas
 non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reducciondetipobol,
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
-non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera;
+non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -32,7 +32,8 @@ codigoli::= DECLARACION
             |Linstancias
             |COMM   
             |CILCOS
-            |ASIGNA;
+            |ASIGNA
+            |Whiles;
 
 lineas::=est
             |FunE
@@ -185,11 +186,16 @@ OPCIONESID::= identificador | entero;
  * Whiles
  **/
 
-Whiles::= haccer newline TABULA ASIGNA newline whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
+Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
 /**
  * Asignaciones
  **/
-ASIGNA::= identificador asignacion operacionesmatematicas finales;
+ASIGNA::=    identificador asignacion operacionesmatematicas finales
+              |identificador libre asignacion libre operacionesmatematicas finales
+              |identificador libre asignacion libre operacionesmatematicas finales  TABULA ASIGNA
+            | identificador asignacion operacionesmatematicas finales TABULA ASIGNA;
+
+
 operacionesmatematicas::= entero simbolosdeopera entero 
                            |identificador simbolosdeopera identificador
                            |entero simbolosdeopera identificador
@@ -218,8 +224,7 @@ Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
 
 contructoDes::= constru para tipodatosnombre libre identificador coma libre tipodatosnombre libre identificador parb newline CUERPOD 
                 |   destruir para parb newline CUERPODES;
-CUERPOD::=  TABULA identificador libre asignacion libre identificador finales
-            |TABULA identificador libre asignacion libre identificador finales CUERPOD;
+CUERPOD::=  ASIGNA;
 
 CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
 
