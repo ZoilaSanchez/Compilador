@@ -179,8 +179,8 @@ PARAMETROSR::=reducciondetiporeal identificador coma PARAMETROSR
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
 CUERPOF::= newline TABULA retornar libre identificador libre opnum libre identificador
-          | newline TABULA retornar entero
-           | newline TABULA retornar identificador sumores identificador para identificador libre sumores libre entero parb ;
+          | newline TABULA retornar libre entero
+           | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb ;
 sumores::= SIG|SIGme;
 
 
@@ -199,17 +199,18 @@ datos::= tipodatoss coma libre tipodatoss;
  * Estructuras Selectivas
  **/
 
-est::= ifs cond libre entoncess CUERPOF finales seguimiento
-        | ifs cond libre entoncess CUERPOF finales  ;
+est::= ifs libre cond libre entoncess CUERPOF finales seguimiento
+        | ifs libre cond libre entoncess CUERPOF finales ;
 
-seguimiento::=  els cond libre entoncess CUERPOF finales seguimiento
-                |els cond libre entoncess CUERPOF finales
+seguimiento::=  els libre cond libre entoncess CUERPOF finales seguimiento
+                |els libre cond libre entoncess CUERPOF finales
+                |els CUERPOF finales
               ;
 
-cond::= entero libre opnum libre entero
-        |identificador libre opnum libre entero
-        |entero libre opnum libre identificador
-        |identificador libre opnum libre identificador;
+cond::= entero libre simbolosdeopera libre entero
+        |identificador libre simbolosdeopera libre entero
+        |entero libre simbolosdeopera libre identificador
+        |identificador libre simbolosdeopera libre identificador;
 
 /**
  * Estructuras Iterativas
@@ -270,7 +271,7 @@ OPERADORESLOGICOS::= identificador  and identificador or identificador
                     |identificador  or identificador and identificador
                     |identificador  and identificador 
                     |identificador  or identificador    ;
-simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex;
+simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex|porc;
 
 /**
  * Funciones Especiales

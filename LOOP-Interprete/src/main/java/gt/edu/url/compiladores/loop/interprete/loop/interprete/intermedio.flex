@@ -122,11 +122,11 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 ";"                     {lexeme=yytext(); 
                          return  new Symbol(sym.fin_de_linea,yytext());}
 // estructura del If
-"si "                {lexeme=yytext(); 
+"si"                {lexeme=yytext(); 
                          return new Symbol(sym.ifs,yytext());}
-"entonces "                {lexeme=yytext(); 
+"entonces"                {lexeme=yytext(); 
                          return new Symbol(sym.entoncess,yytext());}
-"sino "                {lexeme=yytext(); 
+"sino"                {lexeme=yytext(); 
                          return new Symbol(sym.els,yytext());}
 "estatico"                {lexeme=yytext(); 
                          return new Symbol(sym.estatico,yytext());}
@@ -173,7 +173,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 "metodos"                   {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.metodos,yytext());}
-"devolver "                {lexeme=yytext(); 
+"devolver"                {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.retornar,yytext());}
 

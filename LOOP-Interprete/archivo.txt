@@ -18,3 +18,33 @@ c=d--;
 
 b = d OR c;
 b = d AND d OR b;
+
+
+entero a = 2
+real b = 10.2
+escribir a, b, 23, 2.3, "hola mundo ";
+
+escribir "ingrese un numero "
+leer variableEntera;
+escribir "ingrese su nombre"
+leer variablecadena;
+
+
+// estructura selectivas
+
+
+si numero % 2 entonces
+	devolver 1
+sino numero % 2 entonces
+	devolver 3
+sino
+	devolver 3
+
+
+
+
+
+
+
+
+
