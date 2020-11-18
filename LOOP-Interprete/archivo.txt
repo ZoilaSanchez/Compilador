@@ -33,6 +33,9 @@ clase Ejemplo extiende Rectangulo
 	metodos protegidos:
 		cadena d
 
+entero funcionRecursiva(entero valor)
+	devolver valor+funcionRecursiva(valor - 1)
+
 
 incluir "../../impresion.loop"
 r.r=3;

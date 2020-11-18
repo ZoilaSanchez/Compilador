@@ -25,7 +25,7 @@ non terminal reducciondetipoente,reducciondetiporeal,reducciondetipocadena,reduc
 Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedades,COMM,cuerpocomentarios;
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
-CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS;
+CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -174,8 +174,9 @@ PARAMETROSR::=reducciondetiporeal identificador coma PARAMETROSR
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
 CUERPOF::= newline TABULA retornar libre identificador libre opnum libre identificador
-          | newline TABULA retornar entero;
-
+          | newline TABULA retornar entero
+           | newline TABULA retornar identificador sumores identificador para identificador libre sumores libre entero parb ;
+sumores::= SIG|SIGme;
 
 
 /**
@@ -226,6 +227,16 @@ OPCIONESID::= identificador | entero;
  **/
 
 Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
+
+/**
+ * recursividad
+ **/
+
+RECURSION::= tipo_ent identificador para tipo_ent libre identificador parb newline CUERPORE;
+CUERPORE::=  CUERPOF;
+
+
+
 /**
  * Asignaciones
  **/
