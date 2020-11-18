@@ -28,7 +28,7 @@ non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
 operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
-reduce,Funcion;
+reduce,Funcion,noaplica;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -57,7 +57,17 @@ lineas::=est
 CLASESA::= tipodeclase newline salto CONTENIDOCLASES 
             |tipodeclase newline salto METODOSCLASES 
            |tipodeclase newline salto CONTENIDOCLASES METODOSCLASES ;
-tipodeclase::= clase libre IDmayu | clase libre IDmayu libre herencia libre IDmayu;
+tipodeclase::= clase libre IDmayu 
+                | clase libre IDmayu libre herencia libre IDmayu
+                | IDmayu:n
+                {:
+                    System.out.println("Error en estructura de la clase:  "+n);
+                :}
+                | IDmayu:n libre herencia libre IDmayu
+                {:
+                    System.out.println("Error en estructura de la clase:  "+n);
+                :}    ;
+
 METODOSCLASES::=metodos libre propum newline salto salto DEC
                 metodos libre proprim newline salto salto DEC 
                 metodos libre proprom newline salto salto DEC
@@ -69,22 +79,97 @@ METODOSCLASES::=metodos libre propum newline salto salto DEC
                 metodos libre proprom newline salto salto DEC 
                 |metodos libre propum newline salto salto DEC
                 |metodos libre proprim newline salto salto DEC 
-                |metodos libre proprom newline salto salto DEC;
+                |metodos libre proprom newline salto salto DEC
+                |metodos:s newline salto salto DEC
+                {:
+                    System.out.println("Error especificar el tipo de metodo: "+s);
+                :}
+                |propum:r newline salto salto DEC
+                
+                proprim:p newline salto salto DEC 
+                proprom:q newline salto salto DEC
+                {:
+                    System.out.println("Error en estructura de metodos revisar: "+p +" " +q+" " +r);
+                :}
+               |propum:p newline salto salto DEC
+                proprim:q newline salto salto DEC 
+                {:
+                    System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
+                :}
+                |propum:p newline salto salto DEC
+                proprom:q newline salto salto DEC   
+                {:
+                     System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
+                :}
+               |proprim:p newline salto salto DEC 
+                proprom:q newline salto salto DEC 
+                {:
+                     System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
+                :}
+                |propum:p newline salto salto DEC
+                {:
+                     System.out.println("Error en estructura de metodos revisar: "+p);
+                :}
+                |proprim:n newline salto salto DEC 
+                {:
+                     System.out.println("Error en estructura de metodos revisar: "+n);
+                :}
+                |proprom:n newline salto salto DEC
+                {:
+                    System.out.println("Error en estructura de metodos revisar: "+n);
+                :};
 
 
-CONTENIDOCLASES::=propiedades libre propu newline salto salto DEC 
-                propiedades libre propri newline salto salto DEC 
-                propiedades libre propro newline salto salto DEC
-            |propiedades libre propu newline salto salto DEC 
-                propiedades libre propri newline salto salto DEC 
-            |    propiedades libre propu newline salto salto DEC 
-                propiedades libre propro newline salto salto DEC  
+CONTENIDOCLASES::=propiedades:s newline salto salto DEC
+                {:
+                    System.out.println("Error especificar el tipo de propiedad "+s);
+                :}
+                |propu:p newline salto salto DEC 
+                 propri:q newline salto salto DEC 
+                 propro:r newline salto salto DEC
+                {:
+                    System.out.println("Error en estructura de clases revisar: "+p +" " +q+" " +r);
+                :}
+                |propu:p newline salto salto DEC 
+                 propri:q newline salto salto DEC 
+                {:
+                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
+                :}
+               | propu:p newline salto salto DEC 
+                propro:q newline salto salto DEC  
+                {:
+                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
+                :}
+            |propri:p newline salto salto DEC 
+                propro:q newline salto salto DEC
+                {:
+                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
+                :}
+            |propu:p newline salto salto DEC 
+            {:
+                    System.out.println("Error en estructura de clases revisar: "+p );
+                :}
+            | propri:p newline salto salto DEC 
+            {:
+                    System.out.println("Error en estructura de clases revisar: "+p );
+                :}
+            |  propro:p newline salto salto DEC
+{:
+                    System.out.println("Error en estructura de clases revisar: "+p );
+                :}
+               |propiedades libre propu newline salto salto DEC 
+                  propiedades libre propri newline salto salto DEC 
+                  propiedades libre propro newline salto salto DEC
+                 |propiedades libre propu newline salto salto DEC 
+                  propiedades libre propri newline salto salto DEC 
+                | propiedades libre propu newline salto salto DEC 
+                  propiedades libre propro newline salto salto DEC  
                 |propiedades libre propri newline salto salto DEC 
-                propiedades libre propro newline salto salto DEC
-|propiedades libre propu newline salto salto DEC 
-|propiedades libre propri newline salto salto DEC 
-| propiedades libre propro newline salto salto DEC
-               ;   
+                 propiedades libre propro newline salto salto DEC
+                |propiedades libre propu newline salto salto DEC 
+                |propiedades libre propri newline salto salto DEC 
+                |propiedades libre propro newline salto salto DEC;
+                
 
 DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
 /**
@@ -137,15 +222,37 @@ MES::= Mentrada
 
 Mentrada::= entrada libre TIP finales;
 
-TIP::=  cadena coma libre TIP
-      | entero coma libre TIP
-      | real coma libre TIP
-      | identificador coma libre TIP
-      | cadena 
-      | entero
-      | real
-      | identificador
-      | identificador pun identificador;
+TIP::=  cadena:s coma:c libre TIP:t
+
+      | entero:s coma:c libre TIP:t
+        
+      | real:s coma:c libre TIP:t
+        
+      | identificador:s coma:c libre TIP:t
+       
+      | cadena:s 
+        {:          
+         
+            System.out.println(s); 
+        :}
+      | entero:c
+      {:          
+           
+            System.out.println(c); 
+        :}
+      | real:r;
+      {:          
+            System.out.println(r); 
+        :}
+      | identificador:r
+      {:          
+          
+            System.out.println(r); 
+        :}
+      | identificador:s pun:c identificador:t
+        {:          
+            System.out.println(s+""+c+""+t); 
+                    :};
 
 
 Msalida::= salida libre identificador finales;
@@ -292,13 +399,85 @@ simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex|porc;
  * Funciones Especiales y recusion
  **/
 
-FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador parb finales
-        | reducciondetiporeal tipo_ca2 para reducciondetipocadena identificador parb finales
-        | reducciondetipobol tipo_ca3 para reducciondetipocadena identificador parb finales
-        | reducciondetiporeal Tipofun para reducciondetiporeal identificador parb finales
+FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador:s parb finales
+        {:int x= 0;
+         int valor=0;
+        try {
+	valor= Integer.parseInt((String) s);
+		x= 0;
+	} catch (NumberFormatException nfe){
+		x=1;
+	}
+          if(x==0){
+            
+		 System.out.println("Es un numero " +valor  ); 
+	}else{
+             System.out.println("No es un entero"); 
+        }
+        :}
+        | reducciondetiporeal tipo_ca2 para reducciondetipocadena identificador:s parb finales
+        {:int x= 0;
+         Double valor=0.0;
+        try {
+	valor= Double.parseDouble((String) s);
+		x= 0;
+	} catch (NumberFormatException nfe){
+		x=1;
+	}
+          if(x==0){
+            
+		 System.out.println("Es un numero " +valor  ); 
+	}else{
+             System.out.println("No es un numero real"); 
+        }
+        :}
+        | reducciondetipobol tipo_ca3 para reducciondetipocadena identificador:s parb finales
+          {:
+            String compara=(String)s;
+          if(compara.compareTo("verdadero")==0||compara.compareTo("falso")==0){
+          	 System.out.println("Cambio exitoso"); 
+	}else{
+             System.out.println("no se puede realizar el cambio"); 
+        }
+        :}
+        | reducciondetiporeal tipo_ca4:s para reducciondetiporeal identificador parb finales
+        {:
+        String compara=(String) s ;
+          if(compara.compareTo("seno")==0){
+          	 System.out.println("La operacion a realizar es el calculo de seno"); 
+	}        
+        :}
+        | reducciondetiporeal tipo_ca5:s para reducciondetiporeal identificador parb finales
+        {:
+        String compara=(String) s ;
+          if(compara.compareTo("coseno")==0){
+          	 System.out.println("La operacion a realizar es el calculo de coseno"); 
+	}        
+        :}
+        | reducciondetiporeal tipo_ca6:s para reducciondetiporeal identificador parb finales
+        {:
+        String compara=(String) s ;
+          if(compara.compareTo("tangente")==0){
+          	 System.out.println("La operacion a realizar es el calculo de la tangente"); 
+	}        
+        :}
+        |reducciondetiporeal tipo_ca7:s para reducciondetiporeal identificador parb finales
+        {:
+        String compara=(String) s ;
+          if(compara.compareTo("logaritmo")==0){
+          	 System.out.println("La operacion a realizar es el calculo del logaritmo"); 
+	}        
+        :}
+        |reducciondetiporeal tipo_ca8:s para reducciondetiporeal identificador parb finales
+        {:
+        String compara=(String) s ;
+          if(compara.compareTo("raiz")==0){
+          	 System.out.println("La operacion a realizar es el calculo dela raiz"); 
+	}        
+        :}
         |tipo_ent identificador para tipo_ent libre identificador parb newline CUERPOF;
-
-Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
+       
+Tipofun::=tipo_ca4:s|tipo_ca5:s|tipo_ca6:s|tipo_ca7:s|tipo_ca8:s;
 /**
  * recursividad
  **/
@@ -383,4 +562,3 @@ tipodatoss::=entero
             | cadena   
             |boleano
             | real;
-
