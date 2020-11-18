@@ -24,6 +24,7 @@ TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]+
 saltar="\t"
 saltar2="\t\t"
+tabulacionesindefinidas=[\t]|[\t]*
 ESPACIOENBLANCO = " "
 fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
@@ -213,7 +214,6 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 {TABULADOR}             {return new Symbol(sym.tabu,yytext());}
 {TABULADORES}           {}
 {saltar}                {return new Symbol(sym.salto,yytext());}
-
 
 {FINLINEA}              {return new Symbol(sym.newline,yytext());}
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}

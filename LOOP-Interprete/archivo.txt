@@ -149,23 +149,3 @@ cadena b[]
 b[0] = 1
 b = instanciar entero[3]
 
-clase Ejemplo
-	propiedades privadas:
-		entero a
-		cadena b
-
-
-
-clase Ejemplo
-	propiedades publicas:
-		entero a
-		cadena b
-	propiedades privadas:
-		entero c
-	propiedades protegidas:
-		cadena ae,n,n
-	metodos publicos:
-		entero area
-		entero largo
-
-
