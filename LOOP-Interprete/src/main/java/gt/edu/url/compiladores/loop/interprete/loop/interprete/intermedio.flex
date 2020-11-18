@@ -13,7 +13,7 @@ letrasmi=[a-z]+
 ace=[\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC]
 noace=[0-9\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005C\u005E\u0060\u007C\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
 noace2=[A-Z\u00F1\u00E1\u00E9\u00ED\u00F3\u00FA\u00FC\u0023\u0022\u0024\u003C\u003E\u003D\u003D\u0021\u003D\u0021\u0025\u0026\u0027\u002D\u002B\u003D\u005C\u005E\u0060\u007C\u003D\u007E\u00A1\u00B4\u003D\u00BF\u01C0\u01C3\u02C4\u003A]
-simbolos=[\u0020\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u002A\u002B\u002C\u002D\u003A\u003B\u003C\u002D\u002F\u0040\u005C\u005E\u0022\u005F\u007C\u007E\u00A1\u02B9\u00C3]
+simbolos=[\u00B4\u003B\u0028\u0029\u003A\u0020\u0021\u0022\u0023\u0024\u0025\u0026\u0027\u002A\u002B\u002C\u002D\u003A\u003B\u003C\u002D\u002F\u0040\u005C\u005E\u0022\u005F\u007C\u007E\u00A1\u02B9\u00C3]
 diago=[\u002F]
 signo="_"
 num=[0-9]
@@ -76,7 +76,9 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 %}
 %%
 
-
+"Principal"                 {lexeme=yytext(); 
+                        linea= yyline; 
+                        return new Symbol(sym.principal,yytext());}
 "entero"                 {lexeme=yytext(); return new Symbol(sym.tipo_ent,yytext());}
 "cadenaAEntero"                 {lexeme=yytext(); return new Symbol(sym.tipo_ca,yytext());}
 "cadenaAReal"                 {lexeme=yytext(); return new Symbol(sym.tipo_ca2,yytext());}
@@ -161,9 +163,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 " OR "                {lexeme=yytext(); 
                          return new Symbol(sym.or,yytext());}
 
-"Principal"                 {lexeme=yytext(); 
-                        linea= yyline; 
-                        return new Symbol(sym.principal,yytext());}
+
 "propiedades"                {lexeme=yytext(); 
                         linea= yyline; 
                         return new Symbol(sym.propiedades,yytext());}

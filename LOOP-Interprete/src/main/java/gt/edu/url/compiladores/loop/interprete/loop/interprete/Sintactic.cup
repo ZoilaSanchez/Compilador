@@ -28,7 +28,7 @@ non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
 operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
-reduce,Funcion,noaplica,comentariooleer;
+reduce,Funcion,noaplica,comentariooleer,primero;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -40,15 +40,18 @@ codigoli::= DECLARACION
             |ASIGNA
             |Whiles
             |CLASESA
-            |BIBLIOTECAS;
-
+            |BIBLIOTECAS   
+            |primero;
+            
 lineas::=est
             |FunE
             |contructoDes
             |Arrays
             |TiposArr
-            |newline;
+            |newline ;
 
+primero::=tipo_ent libre principal para tipo_cadena libre identificador parb finales
+        |tipo_ent libre principal para parb finales;
 
 /**
  * Todo lo de clases
@@ -57,9 +60,9 @@ lineas::=est
 CLASESA::= tipodeclase newline  salto CONTENIDOCLASES 
             |tipodeclase newline salto METODOSCLASES 
            |tipodeclase newline salto CONTENIDOCLASES METODOSCLASES
-            |tipodeclase newline COMM salto CONTENIDOCLASES 
-            |tipodeclase newline COMM salto METODOSCLASES 
-           |tipodeclase newline COMM salto CONTENIDOCLASES METODOSCLASES  ;
+            |tipodeclase newline comentariooleer salto CONTENIDOCLASES 
+            |tipodeclase newline comentariooleer salto METODOSCLASES 
+           |tipodeclase newline comentariooleer salto CONTENIDOCLASES METODOSCLASES  ;
 tipodeclase::= clase libre IDmayu 
                 | clase libre IDmayu libre herencia libre IDmayu
                 | IDmayu:n
@@ -69,9 +72,13 @@ tipodeclase::= clase libre IDmayu
                 | IDmayu:n libre herencia libre IDmayu
                 {:
                     System.out.println("Error en estructura de la clase:  "+n);
-                :}    ;
+                :} 
+                   ;
 
-METODOSCLASES::=metodos libre propum newline salto salto DEC
+METODOSCLASES::=metodos libre propum newline
+                |metodos libre proprim newline
+                |metodos libre proprom newline
+                |metodos libre propum newline salto salto DEC
                 metodos libre proprim newline salto salto DEC 
                 metodos libre proprom newline salto salto DEC
                |metodos libre propum newline salto salto DEC
@@ -123,7 +130,10 @@ METODOSCLASES::=metodos libre propum newline salto salto DEC
                 :};
 
 
-CONTENIDOCLASES::=propiedades:s newline salto salto DEC
+CONTENIDOCLASES::=propiedades libre propu newline
+                |propiedades libre propri newline
+                |propiedades libre propro newline  
+                |propiedades:s newline salto salto DEC
                 {:
                     System.out.println("Error especificar el tipo de propiedad "+s);
                 :}
@@ -229,6 +239,7 @@ TIP::=  cadena coma libre TIP
       | entero coma libre TIP
       | real coma libre TIP
       | identificador coma libre TIP
+      | identificador pun identificador para parb coma libre TIP
       | cadena:s 
         {:          
             System.out.println(s); 
@@ -249,7 +260,11 @@ TIP::=  cadena coma libre TIP
       | identificador:s pun:c identificador:t
         {:          
             System.out.println(s+""+c+""+t); 
-                    :};
+                    :}
+       | identificador:s pun:c identificador:t para:x parb:y
+        {:          
+            System.out.println(s+""+c+""+t+""+x+""+y); 
+                    :} ;
 
 
 Msalida::= salida libre identificador finales;
@@ -278,7 +293,7 @@ FUNCIONESS::= reducciondetipoente identificador  para CANTIDADDEPARAMETROS parb 
             | reducciondetiporeal identificador  para  parb  CUERPOF  newline
            ;
 
- 
+
 PARAMETROSE::= tipo_ent libre identificador coma PARAMETROSE
                 | tipo_ent libre identificador;
                 
@@ -305,15 +320,15 @@ CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera li
             |newline TABULA retornar libre real libre simbolosdeopera real identificador
           | newline TABULA retornar libre entero
            | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb 
-            
             | newline comentariooleer  TABULA retornar libre identificador libre simbolosdeopera libre identificador
            |newline comentariooleer  TABULA retornar libre boleano
             |newline comentariooleer  TABULA retornar libre entero libre simbolosdeopera libre entero
             |newline comentariooleer  TABULA retornar libre real libre simbolosdeopera real identificador
           |newline comentariooleer   TABULA retornar libre entero
            | newline comentariooleer  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb
-;
-comentariooleer::=COMM |MES | MES comentariooleer  |COMM comentariooleer  ;
+          
+           ;
+comentariooleer::=COMM |MES |est |MES comentariooleer |est comentariooleer |COMM comentariooleer  ;
 sumores::= SIG|SIGme;
 
 
@@ -325,6 +340,8 @@ sumores::= SIG|SIGme;
 Linstancias::=  IDmayu libre identificador libre asignacion libre insta  IDmayu para parb finales
                 |IDmayu libre identificador libre asignacion libre insta  IDmayu para datos parb finales
                |identificador libre asignacion libre insta  IDmayu para parb finales 
+                |identificador pun identificador para parb finales 
+                |IDmayu pun asignacion para parb finales 
                |borrar  identificador finales;
 datos::= tipodatoss coma libre tipodatoss;
 
@@ -378,10 +395,13 @@ Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONE
 ASIGNA::=    identificador pun identificador asignacion operacionesmatematicas finales
             |identificador asignacion operacionesmatematicas finales
               |identificador libre asignacion libre operacionesmatematicas finales
+              |identificador asignacion IDmayu para parb finales
               |identificador libre asignacion libre operacionesmatematicas finales  TABULA ASIGNA
               |identificador pun identificador asignacion operacionesmatematicas finales  TABULA ASIGNA
             | identificador asignacion operacionesmatematicas finales TABULA ASIGNA
+             |identificador asignacion IDmayu para parb finales TABULA ASIGNA   
             |SUBIR;
+
 
 
 operacionesmatematicas::= entero simbolosdeopera entero 
@@ -464,7 +484,8 @@ Tipofun::=tipo_ca4:s|tipo_ca5:s|tipo_ca6:s|tipo_ca7:s|tipo_ca8:s;
  * Construcotres y destructores
  **/
 
-contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD 
+contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD
+                | constru para  parb newline CUERPOD
                 |  destruir para parb newline CUERPODES
                 ;
 
@@ -472,6 +493,8 @@ CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
 
 CUERPOD::=   TABULA identificador libre asignacion libre identificador finales
             |TABULA identificador libre asignacion libre identificador finales CUERPOD
+            
+         
             ;
 
 

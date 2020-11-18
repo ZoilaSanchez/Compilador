@@ -1,42 +1,11 @@
-entero contador = 0
-entero j,j = 0
-entero a,d,b,s
-
-entero a = "hola"
-
-// comentario
-/* comentario */
-/* cometnario 
-** comentario 
-*/
-
-rectangulo.alto=3
-x=2;
-a=-b
-b=++b
-c=d--;
-
-b = d OR c;
-b = d AND d OR b;
+clase Impar
+	propiedades publicas:
+		cadena hola
 
 
-entero a = 2
-real b = 10.2
-escribir a, b, 23, 2.3, "hola mundo ";
-
-escribir "ingrese un numero "
-leer variableEntera;
-escribir "ingrese su nombre"
-leer variablecadena;
-
-
-// estructura selectivas
-
+entero esImpar(entero numero)
 
 si numero % 2 entonces
-// este comentario
-leer nombre;
-leer nombre;
 	devolver 1
 sino numero % 2 entonces
 	devolver 3
@@ -46,99 +15,63 @@ sino numero % 2 entonces
 	devolver 3
 sino
 	devolver 3
-
-// Estructurss iterativas
-
-entero i = 10
-desde i mientras i > 5 decrementar 2 hacer
-	escribir i;
-
-desde entero i = 10 mientras i > 5 decrementar 2 hacer
-	escribir i;
+	devolver 0
 
 
-desde entero i = 10 mientras i > 5 decrementar 2 hacer
-	escribir i;
-entero i
-desde i = 10 mientras i > 5 hacer
-	escribir i;
+// las funcioens siempre deben de llevar un devovler 
+// las funciones con algo adentro deben de llevar enter
 
-hacer
-	a=5+d
-	b=b%3
-mientras a > 10
-
-// funciones sueltas
-
-
-
-entero sumar(entero a,entero b)
-// CLASDFALKSDFJAKLSDFJKLJ
-	devolver a + b
-
-
-// funciones sueltas
-
-
-// CLASDFALKSDFJAKLSDFJKLJ
-
-clase Ejemplo
-// CLASDFALKSDFJAKLSDFJKLJ
-	propiedades publicas:
-		entero a
-		cadena b
+clase HolaMundo
 	propiedades privadas:
-		entero c
-	propiedades protegidas:
-		cadena ae,f,g
-
-// instancias
-
-Rectangulo r = instanciar Rectangulo()
-escribir r.ancho
-escribir r.area
-
-r = instanciar Rectangulo()
-
-
-Rectangulo r = instanciar Rectangulo(3, 4)
-
-
-// constructores y destructores
-
-
-
-destructor()
-	eliminar ancho
-
-constructor(entero a,entero b)
-	ancho = a
-	x = como
-
-// HRENCIAS
-
-clase Cuadrado extiende Rectangulo
+		entero a
+		cadena nombre
+		entero var
 	metodos publicos:
-		entero area
-		entero largo
+constructor()
+	a = d
+	nombre = d
+// en los construcotore no se puede asignar valores por lo que vi
+// solo se pueden asignar a variables
 
 
+entero inicio()
 
-entero sumar()
-	devolver a * b
+escribir " escriba su nombre "
+// se guarda una cadena de texto en la variable nombre
+leer nombre;
+escribir " escriba un valor entre 1 y 30"
+// se guarda un numero en la variable a
+leer a
+/* escribe en pantalla la constante junto
+** al valor de la variable nombre
+*/
+escribir " Hola ", nombre
+si numero % 2 entonces
+	devolver 1
+sino
+	devolver 3
+
+	devolver 0
+
+// asi se coloca para meter ciclos
+
+/* comentario */
+/* area de declaracion de funcion de carga inicial */
 
 
-incluir "impresion.loop"
-incluir "lectura.loop"
-
-entero multiplicar(entero a,entero b)
-	devolver a * b
-
-
-boleano sImpar(entero numero)
-	devolver falso
+entero Principal()
+// comentario
+HolaMundo hola = instanciar HolaMundo()
+hola.inicio()
 entero a[4] ={ 1, 3, 4 }
 cadena b[]
 b[0] = 1
 b = instanciar entero[3]
+
+escribir r1.obteenrARea(), re2.obtenerARe()
+
+
+
+
+
 
