@@ -28,7 +28,7 @@ fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
-comentarios = {comini}([\u0020]|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
+comentarios = {comini}([\u0020]*|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
 comentariose = "*"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
 retu="devolver "[\u0020]*
 nocome=[\u002F]
@@ -170,7 +170,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
                         linea= yyline; 
                         return new Symbol(sym.retornar,yytext());}
 
-{comfin}          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
+"*/"          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
 {boleanos}              {lexeme=yytext();  
                         return new Symbol(sym.boleano,yytext());}
 

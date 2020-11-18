@@ -1,48 +1,8 @@
-Rectangulo r = instanciar Rectangulo()
-
-escribir r.r
-r = instanciar Rectangulo()
-eliminar r
-
-/* dfddd
-* ddfdf
-* como van
+// hola
+/* hola como estan todoe
+* hol
 */
-// hola qui vamod de nuevo
-
-desde i = 0 mientras i > 5 decrementar 4 hacer
-	escribir i;
-
-
-desde entero i = 0 mientras i > 5 hacer
-	escribir i;
-
-
-clase Ejemplo extiende Rectangulo
-	propiedades publicas:
-		estatico entero a
-		cadena b
-	propiedades privadas:
-		cadena c
-	propiedades protegidas:
-		cadena p
-	metodos publicos:
-		cadena c
-	metodos privados:
-		cadena d
-	metodos protegidos:
-		cadena d
-
-entero funcionRecursiva(entero valor)
-	devolver valor+funcionRecursiva(valor - 1)
-
-
-incluir "../../impresion.loop"
-r.r=3;
-
-
-
-
+/* hola como estan todoe*/ */
 
 
 

@@ -150,9 +150,11 @@ Msalida::= salida libre identificador finales;
 
            
 COMM::= comentario finales 
-|comentarios newline cuerpocomentarios comfin finales ;
+        |comentarios newline cuerpocomentarios comfin finales
+        |comentarios finales ;
+
 cuerpocomentarios ::= comentariose finales 
-                | comentariose newline cuerpocomentarios;
+        | comentariose newline cuerpocomentarios;
 /**
  * Funciones 
  **/
