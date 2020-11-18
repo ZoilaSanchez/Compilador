@@ -1,4 +1,4 @@
-clase Impar
+..clase Impar
 	propiedades publicas :
 		cadena hola
 	metodos publicos :
@@ -37,7 +37,7 @@ clase HolaMundo
 			devolver 0
 
 /* ´area de declaraci´on de funci´on de carga inicial */
-entero Principal ()
+..entero Principal ()
 	HolaMundo hola = nuevo HolaMundo ()
 	hola.inicio ()
 	devolver 0

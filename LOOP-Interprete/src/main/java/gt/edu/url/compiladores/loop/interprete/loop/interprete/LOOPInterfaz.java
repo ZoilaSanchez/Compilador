@@ -531,7 +531,7 @@ public void crear(){
 
 private void leerArchivo(String archivo) throws IOException
     {
-        
+        int contarLinea = 0;
         FileReader file = null;
         try {
             String cadena;
@@ -540,7 +540,9 @@ private void leerArchivo(String archivo) throws IOException
             try {
                 while((cadena = breader.readLine())!= null)
                 {
+                    txaCodigo.setText(txaCodigo.getText() + contarLinea + ". ");
                     txaCodigo.setText(txaCodigo.getText() + cadena + "\n");
+                    contarLinea++;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(LOOPInterfaz.class.getName()).log(Level.SEVERE, null, ex);
