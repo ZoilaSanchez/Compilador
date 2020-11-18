@@ -13,7 +13,8 @@ comentarios,insta,pun,Parainstancias,instafr,aumento,opnum,opcadnum;
 
 terminal tipo_ca2,tipo_ca3,tipo_ca4,tipo_ca5,tipo_ca6,tipo_ca7,tipo_ca8,cs,tipo_ca,corchetea,
 corcheteb,llava,llavb, herencia,cominicio,comfin,comentariose,SIG,SIGme,haccer,SIGdiv,SIGpor,SIGex,
-propu,propri,propro,propum,proprim,proprom,extension,estatico;
+propu,propri,propro,propum,proprim,proprom,extension,estatico,
+SI,SIme;
 
 non terminal S,CLASES, codigoli,DECLARACION,DECENTERO,DECCADENA,DECBOLEAN,DECLAREAL,VARSECUE,finales,
 nuevaslineas,MES,Mentrada,Msalida,TIP,escri,FUNCIONESS,CUERPOF,PARAMETROSE,PARAMETROSC,PARAMETROSB,
@@ -43,7 +44,8 @@ lineas::=est
             |FunE
             |contructoDes
             |Arrays
-            |TiposArr;
+            |TiposArr
+            |newline;
 
 
 /**
@@ -248,7 +250,8 @@ ASIGNA::=    identificador pun identificador asignacion operacionesmatematicas f
               |identificador libre asignacion libre operacionesmatematicas finales
               |identificador libre asignacion libre operacionesmatematicas finales  TABULA ASIGNA
               |identificador pun identificador asignacion operacionesmatematicas finales  TABULA ASIGNA
-            | identificador asignacion operacionesmatematicas finales TABULA ASIGNA;
+            | identificador asignacion operacionesmatematicas finales TABULA ASIGNA
+            |SUBIR;
 
 
 operacionesmatematicas::= entero simbolosdeopera entero 
@@ -310,6 +313,15 @@ TiposArr::= reducciondetipoente identificador corchetea corcheteb finales
         |reducciondetipocadena  identificador corchetea corcheteb finales
         | identificador corchetea entero corcheteb libre asignacion libre tipodatoss finales
         | identificador libre asignacion libre insta tipodatosnombre corchetea entero corcheteb finales;
+
+/**
+ * incrementos y decrementos
+ **/
+
+SUBIR::= identificador asignacion SI identificador finales 
+        |identificador asignacion SI entero finales     
+        |identificador asignacion  identificador SIme finales 
+        |identificador asignacion entero SIme finales;
 
 
 /**

@@ -16,6 +16,7 @@ public interface sym {
   public static final int operador_Logico = 28;
   public static final int IDmayu = 23;
   public static final int insta = 45;
+  public static final int SI = 83;
   public static final int constru = 34;
   public static final int SIG = 69;
   public static final int aumento = 49;
@@ -64,6 +65,7 @@ public interface sym {
   public static final int instafr = 48;
   public static final int EOF = 0;
   public static final int proprim = 79;
+  public static final int SIme = 84;
   public static final int proprom = 80;
   public static final int els = 33;
   public static final int tipo_bol = 14;
@@ -174,7 +176,9 @@ public interface sym {
   "proprim",
   "proprom",
   "extension",
-  "estatico"
+  "estatico",
+  "SI",
+  "SIme"
   };
 }
 

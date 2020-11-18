@@ -101,6 +101,10 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
                         return new Symbol(sym.salida,yytext());}
 "+"                  {lexeme=yytext(); 
                         return new Symbol(sym.SIG,yytext());}
+"++"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SI,yytext());}
+"--"                  {lexeme=yytext(); 
+                        return new Symbol(sym.SIme,yytext());}
 "-"                  {lexeme=yytext(); 
                         return new Symbol(sym.SIGme,yytext());}
 "/"                  {lexeme=yytext(); 
