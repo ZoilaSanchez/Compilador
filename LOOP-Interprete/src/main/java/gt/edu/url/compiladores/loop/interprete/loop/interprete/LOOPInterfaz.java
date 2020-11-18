@@ -413,7 +413,7 @@ public void limpiar() throws IOException{
             leerArchivo(archivo_txt);
             leer(archivo_txt);
         if(errores.length()>0){
-            System.out.println(" Revisar escritura incorrecta ");
+            System.out.println(" Revisar Errores Lexicos ");
         }else{
         intermedio lex = new intermedio(new FileReader(archivo_txt));// le enviamos el archvio
         Sintactico sintactico = new Sintactico(lex);
