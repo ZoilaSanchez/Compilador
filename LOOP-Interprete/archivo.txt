@@ -155,6 +155,10 @@ entero multiplicar(entero a,entero b)
 
 boleano sImpar(entero numero)
 	devolver falso
+entero a[4] ={ 1, 3, 4 }
+cadena b[]
+b[0] = 1
+b = instanciar entero[3]
 
 
 
