@@ -222,25 +222,19 @@ MES::= Mentrada
 
 Mentrada::= entrada libre TIP finales;
 
-TIP::=  cadena:s coma:c libre TIP:t
-
-      | entero:s coma:c libre TIP:t
-        
-      | real:s coma:c libre TIP:t
-        
-      | identificador:s coma:c libre TIP:t
-       
+TIP::=  cadena coma libre TIP
+      | entero coma libre TIP
+      | real coma libre TIP
+      | identificador coma libre TIP
       | cadena:s 
         {:          
-         
             System.out.println(s); 
         :}
       | entero:c
       {:          
-           
             System.out.println(c); 
         :}
-      | real:r;
+      | real:r
       {:          
             System.out.println(r); 
         :}
@@ -302,12 +296,19 @@ CANTIDADDEPARAMETROS::= PARAMETROSE  CANTIDADDEPARAMETROS
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
+CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
            |newline TABULA retornar libre boleano
             |newline TABULA retornar libre entero libre simbolosdeopera libre entero
             |newline TABULA retornar libre real libre simbolosdeopera real identificador
           | newline TABULA retornar libre entero
-           | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb ;
+           | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb 
+            
+            | newline COMM newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
+           |newline COMM newline TABULA retornar libre boleano
+            |newline COMM newline TABULA retornar libre entero libre simbolosdeopera libre entero
+            |newline COMM newline TABULA retornar libre real libre simbolosdeopera real identificador
+          |newline COMM  newline TABULA retornar libre entero
+           | newline COMM newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb;
 sumores::= SIG|SIGme;
 
 
