@@ -412,9 +412,13 @@ public void limpiar() throws IOException{
 //            creartxt(txaCodigo.getText(), nombre_del_archivo);
             leerArchivo(archivo_txt);
             leer(archivo_txt);
+        if(errores.length()>0){
+            System.out.println(" Revisar escritura incorrecta ");
+        }else{
         intermedio lex = new intermedio(new FileReader(archivo_txt));// le enviamos el archvio
         Sintactico sintactico = new Sintactico(lex);
         sintactico.parse();
+        }
             
 
     
