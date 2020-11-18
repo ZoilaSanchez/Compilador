@@ -416,7 +416,7 @@ public void limpiar() throws IOException{
         if(errores.length()>0){
             System.out.println(" Revisar Errores Lexicos ");
         }else{
-        intermedio lex = new intermedio(new FileReader(archivo_txt));// le enviamos el archvio
+        intermedio lex = new intermedio(new FileReader(archivo_txt,Charset.forName("UTF-8")));// le enviamos el archvio
         Sintactico sintactico = new Sintactico(lex);
         sintactico.parse();
         }

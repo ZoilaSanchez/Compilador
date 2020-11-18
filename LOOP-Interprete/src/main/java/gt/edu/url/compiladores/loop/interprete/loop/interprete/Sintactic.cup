@@ -28,7 +28,7 @@ non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
 operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
-reduce,Funcion,noaplica,comentariooleer,primero;
+reduce,Funcion,noaplica,comentariooleer,primero,Tipometodos,Tipopropied;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -74,115 +74,45 @@ tipodeclase::= clase libre IDmayu
                     System.out.println("Error en estructura de la clase:  "+n);
                 :} 
                    ;
+Tipometodos::=propum|proprim|proprom;
+METODOSCLASES::= metodos libre Tipometodos newline 
+                |metodos libre Tipometodos newline salto salto DEC 
+                |metodos libre Tipometodos newline salto METODOSCLASES
+                |metodos newline salto salto DEC METODOSCLASES
+                |Tipometodos newline salto salto DEC METODOSCLASES
+                  {:
+                    System.out.println("Error en estructura de metodos revisar: ");
+                :}
 
-METODOSCLASES::=metodos libre propum newline
-                |metodos libre proprim newline
-                |metodos libre proprom newline
-                |metodos libre propum newline salto salto DEC
-                metodos libre proprim newline salto salto DEC 
-                metodos libre proprom newline salto salto DEC
-               |metodos libre propum newline salto salto DEC
-                metodos libre proprim newline salto salto DEC 
-                |metodos libre propum newline salto salto DEC
-                metodos libre proprom newline salto salto DEC    
-               |metodos libre proprim newline salto salto DEC 
-                metodos libre proprom newline salto salto DEC 
-                |metodos libre propum newline salto salto DEC
-                |metodos libre proprim newline salto salto DEC 
-                |metodos libre proprom newline salto salto DEC
+                |metodos libre Tipometodos newline salto salto DEC METODOSCLASES
                 |metodos:s newline salto salto DEC
                 {:
                     System.out.println("Error especificar el tipo de metodo: "+s);
                 :}
-                |propum:r newline salto salto DEC
-                
-                proprim:p newline salto salto DEC 
-                proprom:q newline salto salto DEC
+                |Tipometodos newline salto salto DEC
                 {:
-                    System.out.println("Error en estructura de metodos revisar: "+p +" " +q+" " +r);
-                :}
-               |propum:p newline salto salto DEC
-                proprim:q newline salto salto DEC 
-                {:
-                    System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
-                :}
-                |propum:p newline salto salto DEC
-                proprom:q newline salto salto DEC   
-                {:
-                     System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
-                :}
-               |proprim:p newline salto salto DEC 
-                proprom:q newline salto salto DEC 
-                {:
-                     System.out.println("Error en estructura de metodos revisar: "+p +" " +q);
-                :}
-                |propum:p newline salto salto DEC
-                {:
-                     System.out.println("Error en estructura de metodos revisar: "+p);
-                :}
-                |proprim:n newline salto salto DEC 
-                {:
-                     System.out.println("Error en estructura de metodos revisar: "+n);
-                :}
-                |proprom:n newline salto salto DEC
-                {:
-                    System.out.println("Error en estructura de metodos revisar: "+n);
+                    System.out.println("Error en estructura de metodos revisar: ");
                 :};
 
-
-CONTENIDOCLASES::=propiedades libre propu newline
-                |propiedades libre propri newline
-                |propiedades libre propro newline  
+Tipopropied::=propu|propri|propro;
+CONTENIDOCLASES::=propiedades libre Tipopropied newline
+                | propiedades libre Tipopropied newline salto CONTENIDOCLASES
                 |propiedades:s newline salto salto DEC
                 {:
                     System.out.println("Error especificar el tipo de propiedad "+s);
                 :}
-                |propu:p newline salto salto DEC 
-                 propri:q newline salto salto DEC 
-                 propro:r newline salto salto DEC
+                |Tipopropied newline salto salto DEC 
                 {:
-                    System.out.println("Error en estructura de clases revisar: "+p +" " +q+" " +r);
+                    System.out.println("Error en estructura de clases revisar" );
                 :}
-                |propu:p newline salto salto DEC 
-                 propri:q newline salto salto DEC 
+                |Tipopropied newline salto salto DEC CONTENIDOCLASES
                 {:
-                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
+                    System.out.println("Error en estructura de clases revisar");
                 :}
-               | propu:p newline salto salto DEC 
-                propro:q newline salto salto DEC  
-                {:
-                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
-                :}
-            |propri:p newline salto salto DEC 
-                propro:q newline salto salto DEC
-                {:
-                    System.out.println("Error en estructura de clases revisar: "+p +" " +q);
-                :}
-            |propu:p newline salto salto DEC 
-            {:
-                    System.out.println("Error en estructura de clases revisar: "+p );
-                :}
-            | propri:p newline salto salto DEC 
-            {:
-                    System.out.println("Error en estructura de clases revisar: "+p );
-                :}
-            |  propro:p newline salto salto DEC
-{:
-                    System.out.println("Error en estructura de clases revisar: "+p );
-                :}
-               |propiedades libre propu newline salto salto DEC 
-                  propiedades libre propri newline salto salto DEC 
-                  propiedades libre propro newline salto salto DEC
-                 |propiedades libre propu newline salto salto DEC 
-                  propiedades libre propri newline salto salto DEC 
-                | propiedades libre propu newline salto salto DEC 
-                  propiedades libre propro newline salto salto DEC  
-                |propiedades libre propri newline salto salto DEC 
-                 propiedades libre propro newline salto salto DEC
-                |propiedades libre propu newline salto salto DEC 
-                |propiedades libre propri newline salto salto DEC 
-                |propiedades libre propro newline salto salto DEC;
-                
+                | propiedades libre Tipopropied newline salto salto DEC 
+                | propiedades libre Tipopropied newline salto salto DEC CONTENIDOCLASES
+
+                | propiedades:s newline salto salto DEC CONTENIDOCLASES;
 
 DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
 /**

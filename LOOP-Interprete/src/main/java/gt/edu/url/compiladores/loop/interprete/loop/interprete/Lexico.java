@@ -995,7 +995,7 @@ class Lexico {
             // fall through
           case 25: break;
           case 2:
-            { System.out.println("Error verificar "+yytext());
+            { lexeme=yytext(); System.out.println("Error verificar "+yytext());
             }
             // fall through
           case 26: break;
