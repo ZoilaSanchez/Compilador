@@ -116,8 +116,10 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
                          return operador_Logico;}
 {clases}                 {lexeme=yytext(); 
                          return clases;}
-
-
+"AND"               {lexeme=yytext(); 
+                         }
+"OR"                {lexeme=yytext(); 
+                         }
          
                      
 

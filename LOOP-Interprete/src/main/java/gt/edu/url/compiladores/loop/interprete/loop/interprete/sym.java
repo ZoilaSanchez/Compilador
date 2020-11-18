@@ -39,6 +39,7 @@ public interface sym {
   public static final int propiedades = 25;
   public static final int whiles = 36;
   public static final int principal = 24;
+  public static final int or = 86;
   public static final int destruir = 39;
   public static final int cominicio = 66;
   public static final int asignacion = 11;
@@ -55,6 +56,7 @@ public interface sym {
   public static final int ifs = 31;
   public static final int comfin = 67;
   public static final int paquetes = 41;
+  public static final int and = 85;
   public static final int boleano = 6;
   public static final int retornar = 27;
   public static final int metodos = 26;
@@ -178,7 +180,9 @@ public interface sym {
   "extension",
   "estatico",
   "SI",
-  "SIme"
+  "SIme",
+  "and",
+  "or"
   };
 }
 

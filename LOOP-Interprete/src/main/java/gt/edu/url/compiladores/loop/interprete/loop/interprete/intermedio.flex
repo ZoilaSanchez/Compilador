@@ -54,7 +54,7 @@ CORa="["
 CORb="]"
 LLa="{"
 LLb="}"
-operalo="AND"|"OR"
+
 Instanciars= {variables}"."{variables}
 fun={tipos}[\u0020]+{letrasmi}+({may}|{letrasmi})*("("[\u0020]*({tipos}[\u0020]*{variables})(","[\u0020]*{tipos}[\u0020]+{variables})*[\u0020]*")"|[\u0020]*"("")")[\u0020]*
 estructura={tipos}{variables}({coma}{variables})*({ESPACIOENBLANCO}|{igual}{num}+|{fin})
@@ -153,7 +153,10 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 "instanciar "                {lexeme=yytext(); 
                          return new Symbol(sym.insta,yytext());}
 //metodos funciones y palabras reservadas, comentarios
-
+" AND "               {lexeme=yytext(); 
+                         return new Symbol(sym.and,yytext());}
+" OR "                {lexeme=yytext(); 
+                         return new Symbol(sym.or,yytext());}
 
 "Principal"                 {lexeme=yytext(); 
                         linea= yyline; 
@@ -175,6 +178,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
                         return new Symbol(sym.retornar,yytext());}
 
 "*/"          {lexeme=yytext();  return new Symbol(sym.comfin,yytext());}
+
 {boleanos}              {lexeme=yytext();  
                         return new Symbol(sym.boleano,yytext());}
 
@@ -190,8 +194,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 
 {condi}                  {lexeme=yytext(); 
                           return new Symbol(sym.condicionales,yytext());}
-{operalo}                {lexeme=yytext(); 
-                         return new Symbol(sym.operador_Logico,yytext());}
+
 
 //comernarios
 "*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
