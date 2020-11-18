@@ -140,10 +140,12 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 
 
 //Estos son los errores que consideramos
-{NoNum}                 {lexeme=yytext();  
+{NoNum}                 {lexeme=yytext();
+                        linea = yyline;
                         System.out.println("Error verificar "+yytext());
                         return nonu;}
-{noclases}              {lexeme=yytext();  
+{noclases}              {lexeme=yytext(); 
+                        linea = yyline; 
                         System.out.println("Error verificar "+yytext());
                         return noclas;}
 

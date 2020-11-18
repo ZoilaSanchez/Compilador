@@ -1012,7 +1012,8 @@ class Lexico {
             // fall through
           case 28: break;
           case 5:
-            { lexeme=yytext();  
+            { lexeme=yytext();
+                        linea = yyline;
                         System.out.println("Error verificar "+yytext());
                         return nonu;
             }
@@ -1081,7 +1082,8 @@ class Lexico {
             // fall through
           case 40: break;
           case 17:
-            { lexeme=yytext();  
+            { lexeme=yytext(); 
+                        linea = yyline; 
                         System.out.println("Error verificar "+yytext());
                         return noclas;
             }

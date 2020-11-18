@@ -1,166 +1,43 @@
-entero contador = 0
-entero j,j = 0
-entero a,d,b,s
+clase Impar
+	propiedades publicas :
+		cadena hola
+	metodos publicos :
+		entero esImpar ( entero numero )
+			si numero % 2 entonces
+				devolver 1
+			sino
+				devolver 0
 
-entero a = "hola"
+clase HolaMundo
+	propiedades privadas:
+		entero a
+		cadena nombre
+		entero var
+	metodos publicos :
+		constructor ()
+			var = nuevo Impar ()
+			a = 0
+			nombre = ""
 
-// comentario
-/* comentario */
-/* cometnario 
-** comentario 
+		entero inicio ()
+			escribir " escriba su nombre "
+			// se guarda una cadena de texto en la variable nombre
+			leer nombre ;
+			escribir " escriba un valor entre 1 y 30"
+			// se guarda un numero en la variable a
+			leer a
+/* escribe en pantalla la constante junto
+* al valor de la variable nombre
 */
+			escribir " Hola ", nombre
+			si var.esImpar entonces
+				escribir "El numero que eligio es impar "
+			sino
+				escribir "El numero que eligio es par "
+			devolver 0
 
-rectangulo.alto=3
-x=2;
-a=-b
-b=++b
-c=d--;
-
-b = d OR c;
-b = d AND d OR b;
-
-
-entero a = 2
-real b = 10.2
-escribir a, b, 23, 2.3, "hola mundo ";
-
-escribir "ingrese un numero "
-leer variableEntera;
-escribir "ingrese su nombre"
-leer variablecadena;
-
-
-// estructura selectivas
-
-
-si numero % 2 entonces
-	devolver 1
-sino numero % 2 entonces
-	devolver 3
-sino numero + numero entonces
-	devolver 3
-sino numero % 2 entonces
-	devolver 3
-sino
-	devolver 3
-
-// Estructurss iterativas
-
-entero i = 10
-desde i mientras i > 5 decrementar 2 hacer
-	escribir i;
-
-desde entero i = 10 mientras i > 5 decrementar 2 hacer
-	escribir i;
-
-
-desde entero i = 10 mientras i > 5 decrementar 2 hacer
-	escribir i;
-entero i
-desde i = 10 mientras i > 5 hacer
-	escribir i;
-
-hacer
-	a=5+d
-	b=b%3
-mientras a > 10
-
-// funciones sueltas
-
-
-
-entero sumar(entero a,entero b)
-	devolver a + b
-
-
-// funciones sueltas
-
-real seno(real n)
-real coseno(real d)
-real tangente(real d)
-real logaritmo(real d)
-real raiz(real n)
-
-entero cadenaAEntero(cadena e)
-
-real cadenaAReal(cadena e)
-
-boleano cadenaABoleano(cadena e)
-
-// clases
-
-clase Ejemplo
-	propiedades publicas:
-		entero a
-		cadena b
-	propiedades privadas:
-		entero c
-	propiedades protegidas:
-		cadena ae,f,g
-
-clase Ejemplo
-	propiedades publicas:
-		entero a
-		cadena b
-	propiedades privadas:
-		entero c
-	propiedades protegidas:
-		cadena ae,n,n
-	metodos publicos:
-		entero area
-		entero largo
-
-// instancias
-
-Rectangulo r = instanciar Rectangulo()
-escribir r.ancho
-escribir r.area
-
-r = instanciar Rectangulo()
-
-
-Rectangulo r = instanciar Rectangulo(3, 4)
-
-
-// constructores y destructores
-
-
-
-destructor()
-	eliminar ancho
-
-constructor(entero a,entero b)
-	ancho = a
-	x = como
-
-// HRENCIAS
-
-clase Cuadrado extiende Rectangulo
-	metodos publicos:
-		entero area
-		entero largo
-
-
-
-entero sumar()
-	devolver a * b
-
-
-incluir "impresion.loop"
-incluir "lectura.loop"
-
-entero multiplicar(entero a,entero b)
-	devolver a * b
-
-
-boleano sImpar(entero numero)
-	devolver falso
-entero a[4] ={ 1, 3, 4 }
-cadena b[]
-b[0] = 1
-b = instanciar entero[3]
-
-
-
-
-
+/* ´area de declaraci´on de funci´on de carga inicial */
+entero Principal ()
+	HolaMundo hola = nuevo HolaMundo ()
+	hola.inicio ()
+	devolver 0

@@ -369,6 +369,7 @@ ArrayListTokens aux=new ArrayListTokens();
                     resultado += "boleano " + lexico.lexeme + "\n";
                 }else if(toke==nonu||toke ==No||toke ==nocom|| toke==noclas||toke==nocom){
                     errores+="Error revisar : "+lexico.lexeme+ "\n";
+                    errores+="En la linea: "+lexico.linea+"\n";
                 }         
                 if(toke==No||toke == nonu||toke ==nocom|| toke==error|| toke==noclas|| toke==nocom){
                     
