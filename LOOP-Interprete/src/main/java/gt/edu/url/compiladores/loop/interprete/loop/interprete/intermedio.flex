@@ -122,6 +122,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
                         return new Symbol(sym.asignacion,yytext());}
 ";"                     {lexeme=yytext(); 
                          return  new Symbol(sym.fin_de_linea,yytext());}
+"*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
 // estructura del If
 "si"                {lexeme=yytext(); 
                          return new Symbol(sym.ifs,yytext());}
@@ -198,7 +199,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 
 
 //comernarios
-"*"                     {lexeme=yytext();  return new Symbol(sym.porc,yytext());}
+
 {comentario}           {lexeme=yytext();  return new Symbol(sym.comentario,yytext());}
 {comentarios}          {lexeme=yytext();  return new Symbol(sym.comentarios,yytext());}
 {comentariose}          {lexeme=yytext();  return new Symbol(sym.comentariose,yytext());}

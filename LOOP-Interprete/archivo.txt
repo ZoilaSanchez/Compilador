@@ -142,6 +142,19 @@ clase Cuadrado extiende Rectangulo
 
 
 
+entero sumar()
+	devolver a * b
+
+
+incluir "impresion.loop"
+incluir "lectura.loop"
+
+entero multiplicar(entero a,entero b)
+	devolver a * b
+
+
+boleano sImpar(entero numero)
+	devolver falso
 
 
 

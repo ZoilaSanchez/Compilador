@@ -27,7 +27,8 @@ Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedad
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
-operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS;
+operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
+reduce,Funcion;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -163,23 +164,26 @@ cuerpocomentarios ::= comentariose finales
 /**
  * Funciones Sueltas
  **/
-FUNCIONESS::= reducciondetipoente identificador  para PARAMETROSE parb  CUERPOF finales
-            | reducciondetipocadena identificador  para PARAMETROSC  parb CUERPOF finales
-            | reducciondetipobol identificador  para PARAMETROSB parb  CUERPOF finales
-            | reducciondetiporeal identificador  para PARAMETROSR parb  CUERPOF finales
+FUNCIONESS::= reducciondetipoente identificador  para CANTIDADDEPARAMETROS parb  CUERPOF finales
+            | reducciondetipocadena identificador  para CANTIDADDEPARAMETROS  parb CUERPOF finales
+            | reducciondetipobol identificador  para CANTIDADDEPARAMETROS parb  CUERPOF finales
+            | reducciondetiporeal identificador  para CANTIDADDEPARAMETROS parb  CUERPOF finales
             | reducciondetipoente identificador  para  parb  CUERPOF newline
             | reducciondetipocadena identificador  para  parb CUERPOF newline
             | reducciondetipobol identificador  para  parb CUERPOF   newline
-            | reducciondetiporeal identificador  para  parb  CUERPOF  newline;
+            | reducciondetiporeal identificador  para  parb  CUERPOF  newline
+           ;
+
  
-PARAMETROSE::= reducciondetipoente identificador coma PARAMETROSE
-                | reducciondetipoente identificador;
+PARAMETROSE::= tipo_ent libre identificador coma PARAMETROSE
+                | tipo_ent libre identificador;
+                
 PARAMETROSC::= tipo_cadena  libre identificador coma PARAMETROSC
                 | tipo_cadena  libre identificador;
 PARAMETROSB::=tipo_bol  libre identificador coma PARAMETROSB
                 | tipo_bol  libre identificador;
-PARAMETROSR::=reducciondetiporeal identificador coma PARAMETROSR
-                | reducciondetiporeal identificador;
+PARAMETROSR::=tipo_real libre identificador coma PARAMETROSR
+                | tipo_real libre identificador;
 CANTIDADDEPARAMETROS::= PARAMETROSE  CANTIDADDEPARAMETROS
                     |PARAMETROSC CANTIDADDEPARAMETROS
                     |PARAMETROSB CANTIDADDEPARAMETROS
@@ -192,6 +196,7 @@ CANTIDADDEPARAMETROS::= PARAMETROSE  CANTIDADDEPARAMETROS
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
 CUERPOF::= newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
+           |newline TABULA retornar libre boleano
             |newline TABULA retornar libre entero libre simbolosdeopera libre entero
             |newline TABULA retornar libre real libre simbolosdeopera real identificador
           | newline TABULA retornar libre entero
@@ -338,7 +343,10 @@ TiposArr::= reducciondetipoente identificador corchetea corcheteb finales
         |reducciondetipobol  identificador corchetea corcheteb finales
         |reducciondetipocadena  identificador corchetea corcheteb finales
         | identificador corchetea entero corcheteb libre asignacion libre tipodatoss finales
-        | identificador libre asignacion libre insta tipodatosnombre corchetea entero corcheteb finales;
+        | identificador libre asignacion libre insta tipo_ent corchetea entero corcheteb finales
+        | identificador libre asignacion libre insta tipo_cadena corchetea entero corcheteb finales
+        | identificador libre asignacion libre insta tipo_real corchetea entero corcheteb finales
+        | identificador libre asignacion libre insta tipo_bol corchetea entero corcheteb finales;
 
 /**
  * incrementos y decrementos
@@ -358,6 +366,8 @@ reducciondetipoente::= tipo_ent libre;
 reducciondetiporeal::= tipo_real libre;
 reducciondetipobol::=tipo_bol libre;
 reducciondetipocadena::= tipo_cadena libre;
+
+
 /**
  * Suencias de variables y finales de lines, incluye nueva linea 
  * para finales lleva incluido el ; y new linew solo salto
@@ -373,8 +383,4 @@ tipodatoss::=entero
             | cadena   
             |boleano
             | real;
-tipodatosnombre::=tipo_ent 
-            |tipo_cadena   
-            |tipo_bol 
-            | tipo_real;
 
