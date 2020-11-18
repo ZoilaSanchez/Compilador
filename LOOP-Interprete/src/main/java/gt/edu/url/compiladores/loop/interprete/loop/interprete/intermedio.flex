@@ -214,7 +214,6 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 {TABULADOR}             {return new Symbol(sym.tabu,yytext());}
 {TABULADORES}           {}
 {saltar}                {return new Symbol(sym.salto,yytext());}
-
 {FINLINEA}              {return new Symbol(sym.newline,yytext());}
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}
 {parena}       {return new Symbol(sym.para,yytext());}

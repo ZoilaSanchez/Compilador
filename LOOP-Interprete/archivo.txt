@@ -70,15 +70,17 @@ mientras a > 10
 
 
 entero sumar(entero a,entero b)
+// CLASDFALKSDFJAKLSDFJKLJ
 	devolver a + b
 
 
 // funciones sueltas
 
 
-// clases
+// CLASDFALKSDFJAKLSDFJKLJ
 
 clase Ejemplo
+// CLASDFALKSDFJAKLSDFJKLJ
 	propiedades publicas:
 		entero a
 		cadena b
@@ -86,18 +88,6 @@ clase Ejemplo
 		entero c
 	propiedades protegidas:
 		cadena ae,f,g
-
-clase Ejemplo
-	propiedades publicas:
-		entero a
-		cadena b
-	propiedades privadas:
-		entero c
-	propiedades protegidas:
-		cadena ae,n,n
-	metodos publicos:
-		entero area
-		entero largo
 
 // instancias
 

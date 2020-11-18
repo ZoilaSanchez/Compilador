@@ -54,9 +54,12 @@ lineas::=est
  * Todo lo de clases
  **/
 
-CLASESA::= tipodeclase newline salto CONTENIDOCLASES 
+CLASESA::= tipodeclase newline  salto CONTENIDOCLASES 
             |tipodeclase newline salto METODOSCLASES 
-           |tipodeclase newline salto CONTENIDOCLASES METODOSCLASES ;
+           |tipodeclase newline salto CONTENIDOCLASES METODOSCLASES
+            |tipodeclase newline COMM salto CONTENIDOCLASES 
+            |tipodeclase newline COMM salto METODOSCLASES 
+           |tipodeclase newline COMM salto CONTENIDOCLASES METODOSCLASES  ;
 tipodeclase::= clase libre IDmayu 
                 | clase libre IDmayu libre herencia libre IDmayu
                 | IDmayu:n
@@ -303,12 +306,12 @@ CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera li
           | newline TABULA retornar libre entero
            | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb 
             
-            | newline COMM newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
-           |newline COMM newline TABULA retornar libre boleano
-            |newline COMM newline TABULA retornar libre entero libre simbolosdeopera libre entero
-            |newline COMM newline TABULA retornar libre real libre simbolosdeopera real identificador
-          |newline COMM  newline TABULA retornar libre entero
-           | newline COMM newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb;
+            | newline COMM  TABULA retornar libre identificador libre simbolosdeopera libre identificador
+           |newline COMM  TABULA retornar libre boleano
+            |newline COMM  TABULA retornar libre entero libre simbolosdeopera libre entero
+            |newline COMM  TABULA retornar libre real libre simbolosdeopera real identificador
+          |newline COMM   TABULA retornar libre entero
+           | newline COMM  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb;
 sumores::= SIG|SIGme;
 
 
@@ -441,40 +444,12 @@ FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador:s p
              System.out.println("no se puede realizar el cambio"); 
         }
         :}
-        | reducciondetiporeal tipo_ca4:s para reducciondetiporeal identificador parb finales
+        | reducciondetiporeal Tipofun para reducciondetiporeal identificador parb finales
         {:
-        String compara=(String) s ;
-          if(compara.compareTo("seno")==0){
-          	 System.out.println("La operacion a realizar es el calculo de seno"); 
-	}        
-        :}
-        | reducciondetiporeal tipo_ca5:s para reducciondetiporeal identificador parb finales
-        {:
-        String compara=(String) s ;
-          if(compara.compareTo("coseno")==0){
-          	 System.out.println("La operacion a realizar es el calculo de coseno"); 
-	}        
-        :}
-        | reducciondetiporeal tipo_ca6:s para reducciondetiporeal identificador parb finales
-        {:
-        String compara=(String) s ;
-          if(compara.compareTo("tangente")==0){
-          	 System.out.println("La operacion a realizar es el calculo de la tangente"); 
-	}        
-        :}
-        |reducciondetiporeal tipo_ca7:s para reducciondetiporeal identificador parb finales
-        {:
-        String compara=(String) s ;
-          if(compara.compareTo("logaritmo")==0){
-          	 System.out.println("La operacion a realizar es el calculo del logaritmo"); 
-	}        
-        :}
-        |reducciondetiporeal tipo_ca8:s para reducciondetiporeal identificador parb finales
-        {:
-        String compara=(String) s ;
-          if(compara.compareTo("raiz")==0){
-          	 System.out.println("La operacion a realizar es el calculo dela raiz"); 
-	}        
+            
+          
+          	 System.out.println("Operacion matematica"); 
+	
         :}
         |tipo_ent identificador para tipo_ent libre identificador parb newline CUERPOF;
        
