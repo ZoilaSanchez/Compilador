@@ -7,7 +7,7 @@ entero a = "hola"
 // comentario
 /* comentario */
 /* cometnario 
-* comentario 
+** comentario 
 */
 
 rectangulo.alto=3
@@ -37,9 +37,108 @@ si numero % 2 entonces
 	devolver 1
 sino numero % 2 entonces
 	devolver 3
+sino numero + numero entonces
+	devolver 3
+sino numero % 2 entonces
+	devolver 3
 sino
 	devolver 3
 
+// Estructurss iterativas
+
+entero i = 10
+desde i mientras i > 5 decrementar 2 hacer
+	escribir i;
+
+desde entero i = 10 mientras i > 5 decrementar 2 hacer
+	escribir i;
+
+
+desde entero i = 10 mientras i > 5 decrementar 2 hacer
+	escribir i;
+entero i
+desde i = 10 mientras i > 5 hacer
+	escribir i;
+
+hacer
+	a=5+d
+	b=b%3
+mientras a > 10
+
+// funciones sueltas
+
+
+
+entero sumar(entero a,entero b)
+	devolver a + b
+
+
+// funciones sueltas
+
+real seno(real n)
+real coseno(real d)
+real tangente(real d)
+real logaritmo(real d)
+real raiz(real n)
+
+entero cadenaAEntero(cadena e)
+
+real cadenaAReal(cadena e)
+
+boleano cadenaABoleano(cadena e)
+
+// clases
+
+clase Ejemplo
+	propiedades publicas:
+		entero a
+		cadena b
+	propiedades privadas:
+		entero c
+	propiedades protegidas:
+		cadena ae,f,g
+
+clase Ejemplo
+	propiedades publicas:
+		entero a
+		cadena b
+	propiedades privadas:
+		entero c
+	propiedades protegidas:
+		cadena ae,n,n
+	metodos publicos:
+		entero area
+		entero largo
+
+// instancias
+
+Rectangulo r = instanciar Rectangulo()
+escribir r.ancho
+escribir r.area
+
+r = instanciar Rectangulo()
+
+
+Rectangulo r = instanciar Rectangulo(3, 4)
+
+
+// constructores y destructores
+
+
+
+destructor()
+	eliminar ancho
+
+constructor(entero a,entero b)
+	ancho = a
+	x = como
+
+// HRENCIAS
+
+clase Cuadrado extiende Rectangulo
+	metodos publicos:
+		entero area
+		entero largo
 
 
 

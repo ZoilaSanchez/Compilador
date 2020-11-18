@@ -23,13 +23,14 @@ TABULADOR = "    "
 TABULADORES = {TABULADOR}*
 FINLINEA = [\r|\n|\r\n]+
 saltar="\t"
+saltar2="\t\t"
 ESPACIOENBLANCO = " "
 fin=";"
 comentario = [\u002F][\u002F][\u0020]*([\u0020]*|{num}*|{ace}*|{letrasma}*|{letrasmi}*|{noace}|{diago}|{simbolos})*
 comini=[\u002F][\u002A]
 comfin=[\u002A][\u002F]
 comentarios = {comini}([\u0020]*|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
-comentariose = "*"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
+comentariose = "**"([\u0020]+|[\u0020]|{num}|{ace}|{letrasma}|{letrasmi}|{noace}|{diago}|{simbolos}|{simbolos})*
 retu="devolver "[\u0020]*
 nocome=[\u002F]
 enter = "-"?[0-9]+
@@ -87,7 +88,7 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 "constructor"                   {lexeme=yytext(); return new Symbol(sym.constru,yytext());}
 "destructor"                {lexeme=yytext();       return new Symbol(sym.destruir,yytext());}
 "eliminar "                {lexeme=yytext();                return new Symbol(sym.borrar,yytext());}
-"boolean"                 {lexeme=yytext(); return new Symbol(sym.tipo_bol,yytext());}
+"boleano"                 {lexeme=yytext(); return new Symbol(sym.tipo_bol,yytext());}
 "real"                {lexeme=yytext(); return new Symbol(sym.tipo_real,yytext());}
 "cadena"                 {lexeme=yytext(); return new Symbol(sym.tipo_cadena,yytext());}
 {clases}                  {lexeme=yytext(); return new Symbol(sym.IDmayu,yytext());}  
@@ -211,6 +212,8 @@ biblio= \u0022("../")*[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t
 {TABULADOR}             {return new Symbol(sym.tabu,yytext());}
 {TABULADORES}           {}
 {saltar}                {return new Symbol(sym.salto,yytext());}
+
+
 {FINLINEA}              {return new Symbol(sym.newline,yytext());}
 {ESPACIOENBLANCO}       {return new Symbol(sym.libre,yytext());}
 {parena}       {return new Symbol(sym.para,yytext());}

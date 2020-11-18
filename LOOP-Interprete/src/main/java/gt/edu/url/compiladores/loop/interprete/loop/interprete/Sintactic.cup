@@ -27,7 +27,7 @@ Compaentero,Compcadena,Compboo,Compreal, CuerpoClases, OpcionesClases, Propiedad
 non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,OPCIONESID;
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
-operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS;
+operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -53,7 +53,9 @@ lineas::=est
  * Todo lo de clases
  **/
 
-CLASESA::= tipodeclase newline salto CONTENIDOCLASES METODOSCLASES;
+CLASESA::= tipodeclase newline salto CONTENIDOCLASES 
+            |tipodeclase newline salto METODOSCLASES 
+           |tipodeclase newline salto CONTENIDOCLASES METODOSCLASES ;
 tipodeclase::= clase libre IDmayu | clase libre IDmayu libre herencia libre IDmayu;
 METODOSCLASES::=metodos libre propum newline salto salto DEC
                 metodos libre proprim newline salto salto DEC 
@@ -159,12 +161,16 @@ COMM::= comentario finales
 cuerpocomentarios ::= comentariose finales 
         | comentariose newline cuerpocomentarios;
 /**
- * Funciones 
+ * Funciones Sueltas
  **/
 FUNCIONESS::= reducciondetipoente identificador  para PARAMETROSE parb  CUERPOF finales
-            | reducciondetipocadena identificador  para PARAMETROSC  CUERPOF finales
+            | reducciondetipocadena identificador  para PARAMETROSC  parb CUERPOF finales
             | reducciondetipobol identificador  para PARAMETROSB parb  CUERPOF finales
-            | reducciondetiporeal identificador  para PARAMETROSR parb  CUERPOF finales;
+            | reducciondetiporeal identificador  para PARAMETROSR parb  CUERPOF finales
+            | reducciondetipoente identificador  para  parb  CUERPOF newline
+            | reducciondetipocadena identificador  para  parb CUERPOF newline
+            | reducciondetipobol identificador  para  parb CUERPOF   newline
+            | reducciondetiporeal identificador  para  parb  CUERPOF  newline;
  
 PARAMETROSE::= reducciondetipoente identificador coma PARAMETROSE
                 | reducciondetipoente identificador;
@@ -174,11 +180,20 @@ PARAMETROSB::=tipo_bol  libre identificador coma PARAMETROSB
                 | tipo_bol  libre identificador;
 PARAMETROSR::=reducciondetiporeal identificador coma PARAMETROSR
                 | reducciondetiporeal identificador;
-
+CANTIDADDEPARAMETROS::= PARAMETROSE  CANTIDADDEPARAMETROS
+                    |PARAMETROSC CANTIDADDEPARAMETROS
+                    |PARAMETROSB CANTIDADDEPARAMETROS
+                    |PARAMETROSR CANTIDADDEPARAMETROS
+                    |PARAMETROSE  
+                    |PARAMETROSC 
+                    |PARAMETROSB 
+                    |PARAMETROSR ;
 /**
  * el cuerpo de las funciones aun falta agreagar parametros
  **/
-CUERPOF::= newline TABULA retornar libre identificador libre opnum libre identificador
+CUERPOF::= newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
+            |newline TABULA retornar libre entero libre simbolosdeopera libre entero
+            |newline TABULA retornar libre real libre simbolosdeopera real identificador
           | newline TABULA retornar libre entero
            | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb ;
 sumores::= SIG|SIGme;
@@ -234,12 +249,7 @@ OPCIONESID::= identificador | entero;
 
 Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
 
-/**
- * recursividad
- **/
 
-RECURSION::= tipo_ent identificador para tipo_ent libre identificador parb newline CUERPORE;
-CUERPORE::=  CUERPOF;
 
 
 
@@ -258,7 +268,7 @@ ASIGNA::=    identificador pun identificador asignacion operacionesmatematicas f
 
 operacionesmatematicas::= entero simbolosdeopera entero 
                            |identificador simbolosdeopera identificador
-                           |entero simbolosdeopera identificador
+                           |entero simbolosdeopera  identificador
                              |identificador simbolosdeopera entero 
                              |SIGme identificador 
                             |SIGme entero 
@@ -270,29 +280,37 @@ operacionesmatematicas::= entero simbolosdeopera entero
 OPERADORESLOGICOS::= identificador  and identificador or identificador
                     |identificador  or identificador and identificador
                     |identificador  and identificador 
-                    |identificador  or identificador    ;
+                    |identificador  or identificador  ;
 simbolosdeopera::=SIG|SIGme|SIGdiv|SIGpor|SIGex|porc;
 
 /**
- * Funciones Especiales
+ * Funciones Especiales y recusion
  **/
 
 FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador parb finales
-        | reducciondetipoente tipo_ca2 para reducciondetipocadena identificador parb finales
-        | reducciondetipoente tipo_ca3 para reducciondetipocadena identificador parb finales
-        | reducciondetiporeal Tipofun para reducciondetiporeal identificador parb finales;
+        | reducciondetiporeal tipo_ca2 para reducciondetipocadena identificador parb finales
+        | reducciondetipobol tipo_ca3 para reducciondetipocadena identificador parb finales
+        | reducciondetiporeal Tipofun para reducciondetiporeal identificador parb finales
+        |tipo_ent identificador para tipo_ent libre identificador parb newline CUERPOF;
 
 Tipofun::=tipo_ca4|tipo_ca5|tipo_ca6|tipo_ca7|tipo_ca8;
+/**
+ * recursividad
+ **/
 
 /**
  * Construcotres y destructores
  **/
 
-contructoDes::= constru para tipodatosnombre libre identificador coma libre tipodatosnombre libre identificador parb newline CUERPOD 
-                |   destruir para parb newline CUERPODES;
-CUERPOD::=  ASIGNA;
+contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD 
+                |  destruir para parb newline CUERPODES
+                ;
 
 CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
+
+CUERPOD::=   TABULA identificador libre asignacion libre identificador finales
+            |TABULA identificador libre asignacion libre identificador finales CUERPOD
+            ;
 
 
 /**
