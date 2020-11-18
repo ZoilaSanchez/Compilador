@@ -34,6 +34,9 @@ leer variablecadena;
 
 
 si numero % 2 entonces
+// este comentario
+leer nombre;
+leer nombre;
 	devolver 1
 sino numero % 2 entonces
 	devolver 3

@@ -28,7 +28,7 @@ non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
 operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
-reduce,Funcion,noaplica;
+reduce,Funcion,noaplica,comentariooleer;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -306,12 +306,14 @@ CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera li
           | newline TABULA retornar libre entero
            | newline TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb 
             
-            | newline COMM  TABULA retornar libre identificador libre simbolosdeopera libre identificador
-           |newline COMM  TABULA retornar libre boleano
-            |newline COMM  TABULA retornar libre entero libre simbolosdeopera libre entero
-            |newline COMM  TABULA retornar libre real libre simbolosdeopera real identificador
-          |newline COMM   TABULA retornar libre entero
-           | newline COMM  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb;
+            | newline comentariooleer  TABULA retornar libre identificador libre simbolosdeopera libre identificador
+           |newline comentariooleer  TABULA retornar libre boleano
+            |newline comentariooleer  TABULA retornar libre entero libre simbolosdeopera libre entero
+            |newline comentariooleer  TABULA retornar libre real libre simbolosdeopera real identificador
+          |newline comentariooleer   TABULA retornar libre entero
+           | newline comentariooleer  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb
+;
+comentariooleer::=COMM |MES | MES comentariooleer  |COMM comentariooleer  ;
 sumores::= SIG|SIGme;
 
 
