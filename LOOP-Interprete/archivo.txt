@@ -44,5 +44,22 @@ desde i mientras i > 5 decrementar 2 hacer
 hacer /*Comentarios dentro de código*/
 	a=5+b
 mientras a < 10
-
+si 3 % d = f entonces
 escribir hola
+escribir hola.getNombre(), i;
+escribir "valor actual de i:", i;
+escribir "hola", hola.getNombre(), "gracias por usar éste programa"
+
+
+
+
+
+
+
+	devolver 0
+
+
+
+
+
+

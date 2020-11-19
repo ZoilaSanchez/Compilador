@@ -38,7 +38,7 @@ enter = "-"?[0-9]+
 real = "-"?[0-9]+("." [0-9]+)?
 boleanos = "verdadero"|"falso"
 nulo = "nulo"
-Cadena =\u0022[a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]*\u0022
+Cadena =\u0022([\u0020]+|{variables}|{ace}|{num})*([a-zA-Z0-9" "_.\+\-@,\*\^\|&=/\[\]\{\}\(\)$#!\?><;:¿¡~\t´]{ace}|{simbolos})*\u0022
 NoNum = [a-zA-Z0-9_]+
 tipos=("entero"|"boolean"|"real"|"cadena")
 variables={letrasmi}+({signo}*|{ace}|{letrasma}|{letrasmi}+|{num})*
