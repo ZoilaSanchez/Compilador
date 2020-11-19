@@ -45,8 +45,4 @@ hacer /*Comentarios dentro de código*/
 	a=5+b
 mientras a < 10
 
-si numero % 2 entonces
-	devolver 1
-sino
-	devolver 3
-
+escribir hola

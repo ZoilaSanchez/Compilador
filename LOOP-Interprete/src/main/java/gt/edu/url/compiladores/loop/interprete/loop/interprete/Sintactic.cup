@@ -28,7 +28,7 @@ non terminal SUBIR,Asignacionesvar,asi,CILCOS,INICIALES,CONDICIONES,INCREMENTOS,
 non terminal cuerpociclos,ID,Whiles,ASIGNA,operacionesmatematicas,simbolosdeopera,TABID,CLASESA,
 CONTENIDOCLASES,DEC,METODOSCLASES,tipodeclase,BIBLIOTECAS,sumores,CUERPORE,RECURSION,
 operacionesnormales,operacionessimples,parentesisopera,OPERADORESLOGICOS,CANTIDADDEPARAMETROS,
-reduce,Funcion,noaplica,comentariooleer,primero,Tipometodos,Tipopropied;
+reduce,Funcion,noaplica,comentariooleer,primero,Tipometodos,Tipopropied,CUERPODD;
 
 S ::=   codigoli |lineas|lineas S| codigoli S;
 codigoli::= DECLARACION 
@@ -260,6 +260,7 @@ CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera li
           |newline comentariooleer   TABULA retornar libre entero
            | newline comentariooleer  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb
           |newline TABULA retornar identificador pun identificador para datos parb finales
+          | newline TABULA   MES
            ;
 comentariooleer::=COMM |MES |est |MES comentariooleer |est comentariooleer |COMM comentariooleer  ;
 sumores::= SIG|SIGme;
@@ -282,18 +283,20 @@ datos::= tipodatoss coma libre tipodatoss|tipodatoss|VARSECUE;
  * Estructuras Selectivas
  **/
 
-est::= ifs libre cond libre entoncess CUERPOF finales seguimiento
-        | ifs libre cond libre entoncess CUERPOF finales ;
+est::= ifs libre cond libre entoncess CUERPOF finales  seguimiento
+        | ifs libre cond libre entoncess  CUERPOF finales  ;
 
 seguimiento::=  els libre cond libre entoncess CUERPOF finales seguimiento
                 |els libre cond libre entoncess CUERPOF finales
-                |els CUERPOF finales
+                |els CUERPOF  finales
               ;
 
 cond::= entero libre simbolosdeopera libre entero
         |identificador libre simbolosdeopera libre entero
         |entero libre simbolosdeopera libre identificador
         |identificador libre simbolosdeopera libre identificador;
+
+
 
 /**
  * Estructuras Iterativas
