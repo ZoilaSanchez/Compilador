@@ -85,6 +85,8 @@ palabrasReservadas = ("clase"|"propiedades"|"metodos"
 {pro}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return propiedades;}
+{igual}                 {lexeme=yytext();}
+{condi}                 {lexeme=yytext();}
 {me}                 {lexeme=yytext(); 
                         linea= yyline; 
                         return metodos;}
