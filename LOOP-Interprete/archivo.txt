@@ -1,65 +1,19 @@
-/* área de inclusión de bibliotecas externas */
-// ninguna librería que cargar
-
-/* área de declaración de clases */
-
-
-
-clase Impar
+Ejemplo
 	propiedades publicas:
-		cadena hola
-		cadena holi
-	propiedades privadas:
-	propiedades publicas:
-
-
-entero esImpar(entero numero)
-
-si numero % 2 entonces
-	devolver 1;
-sino
-	devolver 0;
-	devolver 0
-
-
-clase HolaMundo
-	propiedades privadas:
 		entero a
-		cadena nombre
-		entero var
-	metodos publicos:
-constructor()
-	a = 4
-	nombre = ""
-	devolver i.esImpar(a)
-cadena getNombre()
-	devolver nombre
+		cadena b
+	privadas:
+		entero c
 
-/* área de declaración de función de carga inicial */
-entero Principal()
-HolaMundo hola = instanciar HolaMundo()
-/* comentarios en la mísma línea */
-i = 60
-desde i mientras i > 5 decrementar 2 hacer
-hacer /*Comentarios dentro de código*/
-	a=5+b
-mientras a < 10
-si 3 % d = f entonces
-escribir hola
-escribir hola.getNombre(), i;
-escribir "valor actual de i:", i;
-escribir "hola", hola.getNombre(), "gracias por usar éste programa"
-
-
-
-
-
-
-
-	devolver 0
-
-
-
-
-
-
+Ejemplo
+	publicas:
+		entero a
+		cadena b
+	privadas:
+		entero c
+Ejemplo
+	propiedades
+		entero a
+		cadena b
+	privadas:
+		entero c

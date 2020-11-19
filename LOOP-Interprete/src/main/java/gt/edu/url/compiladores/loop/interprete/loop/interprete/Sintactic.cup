@@ -412,11 +412,7 @@ FunE::= reducciondetipoente tipo_ca para reducciondetipocadena identificador:s p
        
 Tipofun::=tipo_ca4:s|tipo_ca5:s|tipo_ca6:s|tipo_ca7:s|tipo_ca8:s;
 /**
- * recursividad
- **/
-
-/**
- * Construcotres y destructores
+ * Constructores y destructores 
  **/
 
 contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD
@@ -424,7 +420,7 @@ contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD
                 |  destruir para parb newline CUERPODES
                 ;
 
-CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
+CUERPODES::= TABULA borrar identificador finales; 
 
 CUERPOD::=   TABULA retornar libre identificador pun identificador para identificador parb finales
            |TABULA identificador libre asignacion libre tipodatoss finales
@@ -447,7 +443,7 @@ Arrays::= reducciondetipoente identificador corchetea entero corcheteb libre asi
           |reducciondetipocadena identificador corchetea entero corcheteb libre asignacion llava libre CadenasA llavb finales  
           |reducciondetipobol identificador corchetea entero corcheteb libre asignacion llava libre CadenaBO llavb finales;
 
-// arreglos con inicializacion de valores
+// arreglos con inicialización de valores
 Numeros::= entero libre| entero coma libre Numeros;
 NumerosRe::= real libre| real coma libre NumerosRe;
 CadenasA::= cadena libre| cadena coma libre CadenasA;
@@ -477,7 +473,7 @@ SUBIR::= identificador asignacion SI identificador finales
 
 
 /**
- * Reduccion tipo entero
+ * * Reducción tipos
  **/
 
 reducciondetipoente::= tipo_ent libre;
@@ -487,9 +483,9 @@ reducciondetipocadena::= tipo_cadena libre;
 
 
 /**
- * Suencias de variables y finales de lines, incluye nueva linea 
- * para finales lleva incluido el ; y new linew solo salto
+ * Secuencias de variables y finales de líneas, incluye nueva línea para finales lleva incluido el ; y newline solo salto
  **/
+
 
 VARSECUE  ::= identificador coma VARSECUE | identificador;
 
