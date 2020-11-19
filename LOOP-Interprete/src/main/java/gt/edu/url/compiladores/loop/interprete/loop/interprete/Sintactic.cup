@@ -114,7 +114,7 @@ CONTENIDOCLASES::=propiedades libre Tipopropied newline
 
                 | propiedades:s newline salto salto DEC CONTENIDOCLASES;
 
-DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC;
+DEC::=  DECLARACION |DECLARACION salto |  DECLARACION salto salto DEC| est;
 /**
  * Area de biliotecas
  **/
@@ -221,6 +221,8 @@ FUNCIONESS::= reducciondetipoente identificador  para CANTIDADDEPARAMETROS parb 
             | reducciondetipocadena identificador  para  parb CUERPOF newline
             | reducciondetipobol identificador  para  parb CUERPOF   newline
             | reducciondetiporeal identificador  para  parb  CUERPOF  newline
+            
+    
            ;
 
 
@@ -246,6 +248,7 @@ CANTIDADDEPARAMETROS::= PARAMETROSE  CANTIDADDEPARAMETROS
  **/
 CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera libre identificador
            |newline TABULA retornar libre boleano
+           |newline TABULA retornar libre identificador
             |newline TABULA retornar libre entero libre simbolosdeopera libre entero
             |newline TABULA retornar libre real libre simbolosdeopera real identificador
           | newline TABULA retornar libre entero
@@ -256,7 +259,7 @@ CUERPOF::=  newline TABULA retornar libre identificador libre simbolosdeopera li
             |newline comentariooleer  TABULA retornar libre real libre simbolosdeopera real identificador
           |newline comentariooleer   TABULA retornar libre entero
            | newline comentariooleer  TABULA retornar  libre identificador sumores identificador para identificador libre sumores libre entero parb
-          
+          |newline TABULA retornar identificador pun identificador para datos parb finales
            ;
 comentariooleer::=COMM |MES |est |MES comentariooleer |est comentariooleer |COMM comentariooleer  ;
 sumores::= SIG|SIGme;
@@ -273,7 +276,7 @@ Linstancias::=  IDmayu libre identificador libre asignacion libre insta  IDmayu 
                 |identificador pun identificador para parb finales 
                 |IDmayu pun asignacion para parb finales 
                |borrar  identificador finales;
-datos::= tipodatoss coma libre tipodatoss;
+datos::= tipodatoss coma libre tipodatoss|tipodatoss|VARSECUE;
 
 /**
  * Estructuras Selectivas
@@ -298,7 +301,7 @@ cond::= entero libre simbolosdeopera libre entero
 
 CILCOS::= desdes libre INICIALES  whiles libre  OPCIONESID libre CONDICIONES libre OPCIONESID libre INCREMENTOS libre  entero libre haccer finales cuerpociclos
         | desdes libre INICIALES  whiles libre  OPCIONESID libre CONDICIONES libre OPCIONESID libre haccer finales cuerpociclos;
-cuerpociclos::= TABULA Mentrada;
+cuerpociclos::= TABULA Mentrada | Whiles;
 CONDICIONES::= opcadnum|condicionales;
 INCREMENTOS::= sumarr|restarr;
 INICIALES::= identificador libre
@@ -312,7 +315,9 @@ OPCIONESID::= identificador | entero;
  * Whiles
  **/
 
-Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales;
+Whiles::= haccer newline TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales 
+        | haccer libre COMM  TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales 
+        | haccer newline COMM  TABULA ASIGNA  whiles libre OPCIONESID libre CONDICIONES libre OPCIONESID  finales  ;
 
 
 
@@ -421,7 +426,10 @@ contructoDes::=  constru para CANTIDADDEPARAMETROS parb newline CUERPOD
 
 CUERPODES::= TABULA borrar identificador finales; // agregar aun mas parametros
 
-CUERPOD::=   TABULA identificador libre asignacion libre identificador finales
+CUERPOD::=   TABULA retornar libre identificador pun identificador para identificador parb finales
+           |TABULA identificador libre asignacion libre tipodatoss finales
+            |TABULA identificador libre asignacion libre identificador finales
+            |TABULA identificador libre asignacion libre tipodatoss finales CUERPOD
             |TABULA identificador libre asignacion libre identificador finales CUERPOD
             
          
